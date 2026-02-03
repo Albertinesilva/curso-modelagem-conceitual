@@ -1,4 +1,4 @@
-package com.albertsilva.cursomc.cursomc;
+package com.albertsilva.cursomc;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
