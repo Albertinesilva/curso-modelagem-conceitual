@@ -11,6 +11,8 @@ Esta seção apresenta os fundamentos da modelagem, definindo o que é um domín
 - Domínio: É definido como a área de negócio que está sendo observada.
 - Modelo de Domínio: É um modelo que descreve as entidades presentes naquele domínio e as inter-relações existentes entre elas.
 
+<img src="/secoes/assets/img/introducao/dominio-e-modelo-de-dominio.png" alt="O que e modelo de dominio?" width="70%" height="70%">
+
 ---
 
 ### **2. Níveis de Abstração do Modelo**
@@ -59,6 +61,18 @@ A modelagem progride através de diferentes níveis, cada um com responsabilidad
 </table>
 
 ---
+
+<img src="/secoes/assets/img/introducao/conceitual-analise-sistema.png" alt="Conceitual ou de análise de sistema" width="70%" height="70%">
+<img src="/secoes/assets/img/introducao/conceitual-analise-negocio.png" alt="Conceitual ou de análise de negocio" width="70%" height="70%">
+
+<img src="/secoes/assets/img/introducao/1nivel-logico-ou-design.png" alt="Nivel lógico ou de design" width="70%" height="70%">
+<img src="/secoes/assets/img/introducao/2nivel-logico-ou-design.png" alt="Nivel lógico ou de design" width="70%" height="70%">
+
+<img src="/secoes/assets/img/introducao/1nivel-fisico-ou-implementacao.png" alt="Nivel fisico ou implementação" width="70%" height="70%">
+<img src="/secoes/assets/img/introducao/2nivel-fisico-ou-implementacao.png" alt="Nivel fisico ou implementação" width="70%" height="70%">
+
+<img src="/secoes/assets/img/introducao/paradigma-estruturado-relacional.png" alt="Paradigma estruturado relacional" width="70%" height="70%">
+<img src="/secoes/assets/img/introducao/paradigma-orientado-objetos.png" alt="Paradigma orientado a objeto" width="70%" height="70%">
 
 ### **3. Análise vs. Design**
 
