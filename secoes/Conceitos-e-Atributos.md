@@ -10,9 +10,17 @@
 
 O Modelo Conceitual (MC) é uma visão do Modelo de Domínio em nível de **Análise**. Sua principal característica é a vinculação ao **escopo do problema**, mantendo-se agnóstico à implementação técnica.
 
+<div style="display: flex; gap: 16px; justify-content: center;">
+  <img src="/secoes/assets/img/modelo-conceitual/modelo-conceitual.png" alt="Modelo Conceitual" width="100%">
+</div>
+
 * **Foco:** Descrever a estrutura das informações que o sistema gerenciará.
 * **Abstração:** Independente de paradigma (OO ou Relacional) e de tecnologia (Linguagens ou SGBDs).
 * **Ferramenta:** Utiliza-se o **Diagrama de Classes da UML** para a representação gráfica.
+
+<div style="display: flex; gap: 16px; justify-content: center;">
+  <img src="/secoes/assets/img/modelo-conceitual/descreve.png" alt="Modelo Conceitual Descreve" width="100%">
+</div>
 
 ---
 
@@ -101,3 +109,4 @@ Exemplo de estruturação de um conceito com diferentes tipos de atributos:
 
 > [!IMPORTANT]
 > **Regra de Ouro da Modelagem Conceitual:** > Evite "poluir" o modelo com chaves estrangeiras (FKs) como atributos. As ligações entre conceitos devem ser representadas exclusivamente por **Associações** (linhas), que serão tratadas na próxima seção.
+
