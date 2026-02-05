@@ -114,7 +114,7 @@ gerais,os requisitos do sistema. Sistema de Controle Escolar" width="100%">
 por meio da troca de informações entre usuários (atores de sistema)e o sistema." width="100%">
 </div>
 
-### **4. Orientações para Identificação de Conceitos**
+### **7. Orientações para Identificação de Conceitos**
 
 A identificação de conceitos é uma atividade de extração analítica. As fontes de informação incluem:
 
@@ -140,7 +140,7 @@ A identificação de conceitos é uma atividade de extração analítica. As fon
 
 ---
 
-### **5. Representação Visual**
+### **8. Representação Visual**
 
 Exemplo de estruturação de um conceito com diferentes tipos de atributos:
 
@@ -175,3 +175,4 @@ Exemplo de estruturação de um conceito com diferentes tipos de atributos:
 
 > [!IMPORTANT]
 > **Regra de Ouro da Modelagem Conceitual:** > Evite "poluir" o modelo com chaves estrangeiras (FKs) como atributos. As ligações entre conceitos devem ser representadas exclusivamente por **Associações** (linhas), que serão tratadas na próxima seção.
+
