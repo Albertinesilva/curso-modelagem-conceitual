@@ -23,42 +23,40 @@ A modelagem progride através de diferentes níveis, cada um com responsabilidad
       <th colspan="4">NÍVEIS DE ABSTRAÇÃO DO MODELO DE DOMÍNIO</th>
     </tr>
     <tr style="background-color:#708090; color:white;">
-      <th>Nível</th>
-      <th>Responsável</th>
-      <th>Objetivo</th>
-      <th>Dependência</th>
+      <th width="20%">Nível</th>
+      <th width="15%">Responsável</th>
+      <th width="35%">Objetivo (O Quê)</th>
+      <th width="30%">Dependência (Vínculos)</th>
     </tr>
   </thead>
 
   <tbody>
-    <tr align="center">
-      <td><b>`Conceitual` ou de Análise (de Negócio)</b></td>
+    <tr>
+      <td><b>Conceitual (Negócio)</b></td>
       <td>Analista de Negócio</td>
-      <td>Descrever as entidades do domínio **(do negócio)** e suas inter-relações: **Independentemente de SISTEMA**.</td>
-      <td>Independente de SISTEMA.</td>
+      <td>Modelar as regras e entidades fundamentais do negócio sob a ótica do cliente.</td>
+      <td>Independente de <b>Sistema</b>.</td>
     </tr>
-    <tr align="center">
-      <td><b>**Conceitual** Ou de Análise **(de Sistema)**</b></td>
+    <tr>
+      <td><b>Conceitual (Sistema)</b></td>
       <td>Analista de Sistemas</td>
-      <td>Descrever as entidades do domínio **(do sistema)** e suas inter-relações Independentemente de PARADIGMA E TECNOLOGIA.</td>
-      <td>Independente de PARADIGMA E TECNOLOGIA.</td>
+      <td>Mapear as entidades do domínio que farão parte da solução computacional.</td>
+      <td>Independente de <b>Paradigma e Tecnologia</b>.</td>
     </tr>
-    <tr align="center">
-      <td><b>**Lógico** ou de Design</b></td>
+    <tr>
+      <td><b>Lógico (Design)</b></td>
       <td>Projetista</td>
-      <td>Descrever as entidades do domínio **(do sistema)** e suas inter-relações: preso a um PARADIGMA **(Ex: Relacional, Orientado a Objetos)** .</td>
-      Independentemente de TECNOLOGIA.
-      <td>Independente de TECNOLOGIA.</td>
+      <td>Definir a estrutura e o comportamento dos dados conforme um modelo computacional.</td>
+      <td>Vinculado a um <b>Paradigma</b> (Ex: OO ou Relacional); Independente de Tecnologia.</td>
     </tr>
-    <tr align="center">
-      <td><b>**Físico** ou de (Implementação)</b></td>
+    <tr>
+      <td><b>Físico (Implementação)</b></td>
       <td>Implementador</td>
-      <td>Descrever as entidades do domínio **(do sistema)** e suas inter-relações: preso a um PARADIGMA (ex: Relacional, Orientado a Objetos), Preso a uma TECNOLOGIA (ex:Java, C#, PHP, Python, Ruby, NodeJS).</td>
-      <td>Preso a uma TECNOLOGIA (Ex: Java, C#, SQL).</td>
+      <td>Codificar, instanciar e persistir o modelo em um ambiente de execução real.</td>
+      <td>Vinculado a <b>Paradigma e Tecnologia</b> (Ex: Java, C#, SQL, NoSQL).</td>
     </tr>
   </tbody>
 </table>
-
 ---
 
 ### **3. Análise vs. Design**
