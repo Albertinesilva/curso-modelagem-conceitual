@@ -32,27 +32,28 @@ A modelagem progride através de diferentes níveis, cada um com responsabilidad
 
   <tbody>
     <tr align="center">
-      <td><b>Conceitual (Negócio)</b></td>
-      <td>Analista de Negócio [cite: 91, 358]</td>
-      <td>Descrever as entidades do domínio e suas inter-relações[cite: 99, 368].</td>
-      <td>Independente de SISTEMA[cite: 99, 368].</td>
+      <td><b>`Conceitual` ou de Análise (de Negócio)</b></td>
+      <td>Analista de Negócio</td>
+      <td>Descrever as entidades do domínio **(do negócio)** e suas inter-relações: **Independentemente de SISTEMA**.</td>
+      <td>Independente de SISTEMA.</td>
     </tr>
     <tr align="center">
-      <td><b>Conceitual (Sistema)</b></td>
-      <td>Analista de Sistemas [cite: 93, 360]</td>
-      <td>Descrever as entidades do domínio do sistema e suas inter-relações[cite: 100, 369].</td>
-      <td>Independente de PARADIGMA E TECNOLOGIA[cite: 100, 369].</td>
+      <td><b>**Conceitual** Ou de Análise **(de Sistema)**</b></td>
+      <td>Analista de Sistemas</td>
+      <td>Descrever as entidades do domínio **(do sistema)** e suas inter-relações Independentemente de PARADIGMA E TECNOLOGIA.</td>
+      <td>Independente de PARADIGMA E TECNOLOGIA.</td>
     </tr>
     <tr align="center">
-      <td><b>Lógico (Design)</b></td>
-      <td>Projetista [cite: 95, 361]</td>
-      <td>Descrever as entidades do domínio do sistema presas a um paradigma (Ex: OO ou Relacional)[cite: 101, 370].</td>
-      <td>Independente de TECNOLOGIA[cite: 101, 370].</td>
+      <td><b>**Lógico** ou de Design</b></td>
+      <td>Projetista</td>
+      <td>Descrever as entidades do domínio **(do sistema)** e suas inter-relações: preso a um PARADIGMA **(Ex: Relacional, Orientado a Objetos)** .</td>
+      Independentemente de TECNOLOGIA.
+      <td>Independente de TECNOLOGIA.</td>
     </tr>
     <tr align="center">
-      <td><b>Físico (Implementação)</b></td>
-      <td>Implementador [cite: 97, 363]</td>
-      <td>Descrever as entidades do domínio do sistema presas a um paradigma e a uma tecnologia.</td>
+      <td><b>**Físico** ou de (Implementação)</b></td>
+      <td>Implementador</td>
+      <td>Descrever as entidades do domínio **(do sistema)** e suas inter-relações: preso a um PARADIGMA (ex: Relacional, Orientado a Objetos), Preso a uma TECNOLOGIA (ex:Java, C#, PHP, Python, Ruby, NodeJS).</td>
       <td>Preso a uma TECNOLOGIA (Ex: Java, C#, SQL).</td>
     </tr>
   </tbody>
