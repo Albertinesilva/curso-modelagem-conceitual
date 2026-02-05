@@ -1,4 +1,6 @@
 ﻿<h2 align="center">📊 Modelagem Conceitual com UML</h2>
+ 
+ [![UML Diagram](https://img.shields.io/badge/UML-Diagram-blue?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgc3Ryb2tlPSIjMDAyMjg4IiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=)](https://www.uml.org/)
 
 <br>
 
@@ -63,4 +65,7 @@ Abaixo estão listados os módulos fundamentais da modelagem conceitual, organiz
 - Backend: Java 17+, Spring Boot, JPA/Hibernate
 - Banco de Dados: H2 / PostgreSQL
 
-[![UML Diagram](https://img.shields.io/badge/UML-Diagram-blue?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgc3Ryb2tlPSIjMDAyMjg4IiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=)](https://www.uml.org/)
+---
+| 🌎 LinkedIn                                                              | 👨‍💻 **Autor**                                                                 |
+| ------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| [LinkedIn](https://www.linkedin.com/in/albert-backend-java-spring-boot/) | [Albert Silva](https://www.linkedin.com/in/albert-backend-java-spring-boot/) |
