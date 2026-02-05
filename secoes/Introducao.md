@@ -57,6 +57,7 @@ A modelagem progride através de diferentes níveis, cada um com responsabilidad
     </tr>
   </tbody>
 </table>
+
 ---
 
 ### **3. Análise vs. Design**
