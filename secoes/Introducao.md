@@ -10,8 +10,8 @@
 
 A modelagem de domínio é o alicerce de qualquer software robusto. Ela permite que desenvolvedores e especialistas de negócio falem a mesma língua.
 
-* **Domínio:** Representa o ecossistema do problema — a área específica de negócio, suas regras, processos e restrições (Ex: Logística, Finanças, Saúde).
-* **Modelo de Domínio:** É a representação abstrata e visual desse ecossistema. Ele descreve as **entidades** (objetos de interesse) e as **inter-relações** (como elas colaboram) para atender aos requisitos.
+- **Domínio:** Representa o ecossistema do problema — a área específica de negócio, suas regras, processos e restrições (Ex: Logística, Finanças, Saúde).
+- **Modelo de Domínio:** É a representação abstrata e visual desse ecossistema. Ele descreve as **entidades** (objetos de interesse) e as **inter-relações** (como elas colaboram) para atender aos requisitos.
 
 <p align="center">
   <img src="/secoes/assets/img/introducao/dominio-e-modelo-de-dominio.png" alt="Abstração do Modelo de Domínio" width="75%">
@@ -70,8 +70,8 @@ O desenvolvimento de software moderno exige a transição entre diferentes níve
 
 Na engenharia de software, dividimos o projeto em dois grandes momentos:
 
-* **Fase de Análise:** Foca na **compreensão do problema**. O objetivo é garantir que "estamos construindo a coisa certa". É puramente conceitual.
-* **Fase de Design (Projeto):** Foca na **construção da solução**. O objetivo é garantir que "estamos construindo a coisa da maneira certa", já considerando limitações técnicas.
+- **Fase de Análise:** Foca na **compreensão do problema**. O objetivo é garantir que "estamos construindo a coisa certa". É puramente conceitual.
+- **Fase de Design (Projeto):** Foca na **construção da solução**. O objetivo é garantir que "estamos construindo a coisa da maneira certa", já considerando limitações técnicas.
 
 > [!TIP]
 > **Convergência no Mundo Orientado a Objetos (OO):** No paradigma OO, a barreira entre Análise e Design é tênue, pois o modelo conceitual frequentemente evolui diretamente para o modelo de implementação.
@@ -83,6 +83,7 @@ Na engenharia de software, dividimos o projeto em dois grandes momentos:
 Abaixo, observamos a metamorfose de um artefato de negócio (**Nota Fiscal**) através dos níveis de abstração:
 
 #### **A. Perspectiva Conceitual (Análise)**
+
 Foco nas entidades e na semântica. Identificamos que uma nota possui itens e produtos, sem nos preocuparmos com tabelas ou classes de acesso.
 
 <div style="display: flex; gap: 16px; justify-content: center;">
@@ -93,6 +94,7 @@ Foco nas entidades e na semântica. Identificamos que uma nota possui itens e pr
 ---
 
 #### **B. Perspectiva Lógica (Design de Solução)**
+
 Aqui o modelo se divide. À esquerda, a visão **Relacional** (normalização e chaves); à direita, a visão **Orientada a Objetos** (associações e métodos).
 
 <div style="display: flex; gap: 16px; justify-content: center;">
@@ -103,6 +105,7 @@ Aqui o modelo se divide. À esquerda, a visão **Relacional** (normalização e 
 ---
 
 #### **C. Perspectiva Física (Implementação)**
+
 A última etapa: o modelo se torna "vivo". O SQL define a persistência no banco de dados, enquanto o Java (Spring Boot) define o comportamento em memória.
 
 <div style="display: flex; gap: 16px; justify-content: center;">
@@ -113,6 +116,7 @@ A última etapa: o modelo se torna "vivo". O SQL define a persistência no banco
 ---
 
 #### **Comparativo de Paradigmas**
+
 A modelagem conceitual serve como ponte para ambos os paradigmas abaixo, sendo essencial para a integridade do sistema.
 
 <div style="display: flex; gap: 16px; justify-content: center;">
@@ -123,4 +127,5 @@ A modelagem conceitual serve como ponte para ambos os paradigmas abaixo, sendo e
 ---
 
 ### **Conclusão**
+
 - A transição progressiva entre abstração e implementação garante que a solução final preserve a essência do negócio, reduza retrabalho e minimize falhas conceituais, promovendo sistemas mais robustos, compreensíveis e sustentáveis ao longo do tempo.
