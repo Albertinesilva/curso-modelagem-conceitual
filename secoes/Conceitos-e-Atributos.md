@@ -144,7 +144,7 @@ A identificação de conceitos é uma atividade de extração analítica. As fon
 Exemplo de estruturação de um conceito com diferentes tipos de atributos:
 
 <p align="center">
-  <img src="/secoes/assets/img/conceitos-atributos/exemplo-classe-pedido.png" alt="Exemplo UML: Conceito Pedido" width="40%">
+  <img src="/secoes/assets/img/modelo-conceitual/1exemplo-visao-geral.png" alt="Exemplo 1 Especificação Estilo Visão Geral do Sistema width="40%">
 </p>
 
 * **Identificador:** `<<oid>> codPedido: Integer`
@@ -156,6 +156,7 @@ Exemplo de estruturação de um conceito com diferentes tipos de atributos:
 
 > [!IMPORTANT]
 > **Regra de Ouro da Modelagem Conceitual:** > Evite "poluir" o modelo com chaves estrangeiras (FKs) como atributos. As ligações entre conceitos devem ser representadas exclusivamente por **Associações** (linhas), que serão tratadas na próxima seção.
+
 
 
 
