@@ -23,10 +23,13 @@ O Modelo Conceitual (MC) é uma visão do Modelo de Domínio em nível de **Aná
 </div>
 
 ---
-
 ### **2. Conceitos (Entidades de Domínio)**
 
 Um conceito representa uma unidade coesa do mundo real que possui significado para o negócio e necessidade de armazenamento de dados.
+
+<div style="display: flex; gap: 16px; justify-content: center;">
+  <img src="/secoes/assets/img/modelo-conceitual/conceitos.png" alt="Conceitos" width="100%">
+</div>
 
 * **Identificação:** Geralmente extraídos de substantivos em documentos de requisitos, casos de uso ou entrevistas.
 * **Representação UML:** Um retângulo dividido em seções. No nível conceitual, foca-se nas duas primeiras:
@@ -109,4 +112,5 @@ Exemplo de estruturação de um conceito com diferentes tipos de atributos:
 
 > [!IMPORTANT]
 > **Regra de Ouro da Modelagem Conceitual:** > Evite "poluir" o modelo com chaves estrangeiras (FKs) como atributos. As ligações entre conceitos devem ser representadas exclusivamente por **Associações** (linhas), que serão tratadas na próxima seção.
+
 
