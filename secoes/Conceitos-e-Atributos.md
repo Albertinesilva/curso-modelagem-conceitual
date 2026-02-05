@@ -126,7 +126,8 @@ A identificação de conceitos é uma atividade de extração analítica. As fon
 2.  **Conhecimento Tácito:** Informações obtidas via entrevistas com especialistas de domínio (*Stakeholders*).
 3.  **Artefatos de Negócio:** Formulários, Notas Fiscais, Relatórios e Normas vigentes.
 
-- Atenção Procure por:
+> [!IMPORTANT]
+> **Analista de Sistemas pesquisar sobre o negócio + requisitos do sistema: procuar por substantivos, expressões que denotem substantivos e verbos que indiquem um possivel conceito.**
 
 <div style="display: flex; gap: 16px; justify-content: center;">
   <img src="/secoes/assets/img/modelo-conceitual/2orientacoes-para-identificacao-conceitos.png" alt="Atenção procure por: Substantivos, Expreções que denotem substantivo Verbos." width="100%">
@@ -143,21 +144,34 @@ A identificação de conceitos é uma atividade de extração analítica. As fon
 
 Exemplo de estruturação de um conceito com diferentes tipos de atributos:
 
-<p align="center">
-  <img src="/secoes/assets/img/modelo-conceitual/1exemplo-visao-geral.png" alt="Exemplo 1 Especificação Estilo Visão Geral do Sistema width="40%">
-</p>
+<div align="center">
+  <img src="/secoes/assets/img/modelo-conceitual/1exemplo-visao-geral.png" alt="Exemplo 1 Especificação Estilo Visão Geral do Sistema" width="100%">
+</div>
 
 * **Identificador:** `<<oid>> codPedido: Integer`
 * **Atributo Simples:** `data: Date`
 * **Valor Default:** `desconto: Double = 0`
 * **Atributo Derivado:** `/valorLiquido: Double`
 
+#### Exemplo: Caso de Uso
+
+<div align="center">
+  <img src="/secoes/assets/img/modelo-conceitual/2exemplo-caso-de-uso.png" alt="Exemplo 2 Caso de Uso: Comprar Livros" width="100%">
+</div>
+
+#### Exemplo: Caso de Uso, conceitos grifados
+
+<div align="center">
+  <img src="/secoes/assets/img/modelo-conceitual/3exemplo-caso-de-uso-conceitos-grifados.png" alt="Exemplo 3 Caso de Uso: Comprar Livros Conceitos grifados" width="100%">
+</div>
+
+#### Requer refinamento, Somente o caso de uso é insuficiente para se descobrir todo modelo conceitual.
+
+<div align="center">
+  <img src="/secoes/assets/img/modelo-conceitual/4exemplo-entidades-requer-refinamento.png" alt="Exemplo 4 Entidades requer refinamento" width="100%">
+</div>
+
 ---
 
 > [!IMPORTANT]
 > **Regra de Ouro da Modelagem Conceitual:** > Evite "poluir" o modelo com chaves estrangeiras (FKs) como atributos. As ligações entre conceitos devem ser representadas exclusivamente por **Associações** (linhas), que serão tratadas na próxima seção.
-
-
-
-
-
