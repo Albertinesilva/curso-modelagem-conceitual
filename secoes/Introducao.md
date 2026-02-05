@@ -14,7 +14,7 @@ A modelagem de domínio é o alicerce de qualquer software robusto. Ela permite 
 - **Modelo de Domínio:** É a representação abstrata e visual desse ecossistema. Ele descreve as **entidades** (objetos de interesse) e as **inter-relações** (como elas colaboram) para atender aos requisitos.
 
 <p align="center">
-  <img src="/secoes/assets/img/introducao/dominio-e-modelo-de-dominio.png" alt="Abstração do Modelo de Domínio" width="75%">
+  <img src="/secoes/assets/img/introducao/dominio-e-modelo-de-dominio.png" alt="Abstração do Modelo de Domínio" width="100%">
 </p>
 
 ---
@@ -87,8 +87,8 @@ Abaixo, observamos a metamorfose de um artefato de negócio (**Nota Fiscal**) at
 Foco nas entidades e na semântica. Identificamos que uma nota possui itens e produtos, sem nos preocuparmos com tabelas ou classes de acesso.
 
 <div style="display: flex; gap: 16px; justify-content: center;">
-  <img src="/secoes/assets/img/introducao/conceitual-analise-sistema.png" alt="Diagrama Conceitual de Sistema" width="45%">
-  <img src="/secoes/assets/img/introducao/conceitual-analise-negocio.png" alt="Fluxo de Negócio" width="45%">
+  <img src="/secoes/assets/img/introducao/conceitual-analise-sistema.png" alt="Diagrama Conceitual de Sistema" width="100%">
+  <img src="/secoes/assets/img/introducao/conceitual-analise-negocio.png" alt="Fluxo de Negócio" width="100%">
 </div>
 
 ---
@@ -98,8 +98,8 @@ Foco nas entidades e na semântica. Identificamos que uma nota possui itens e pr
 Aqui o modelo se divide. À esquerda, a visão **Relacional** (normalização e chaves); à direita, a visão **Orientada a Objetos** (associações e métodos).
 
 <div style="display: flex; gap: 16px; justify-content: center;">
-  <img src="/secoes/assets/img/introducao/1nivel-logico-ou-design.png" alt="Esquema Relacional" width="45%">
-  <img src="/secoes/assets/img/introducao/2nivel-logico-ou-design.png" alt="Diagrama de Classes Lógico" width="45%">
+  <img src="/secoes/assets/img/introducao/1nivel-logico-ou-design.png" alt="Esquema Relacional" width="100%">
+  <img src="/secoes/assets/img/introducao/2nivel-logico-ou-design.png" alt="Diagrama de Classes Lógico" width="100%">
 </div>
 
 ---
@@ -109,8 +109,8 @@ Aqui o modelo se divide. À esquerda, a visão **Relacional** (normalização e 
 A última etapa: o modelo se torna "vivo". O SQL define a persistência no banco de dados, enquanto o Java (Spring Boot) define o comportamento em memória.
 
 <div style="display: flex; gap: 16px; justify-content: center;">
-  <img src="/secoes/assets/img/introducao/1nivel-fisico-ou-implementacao.png" alt="Script DDL SQL" width="45%">
-  <img src="/secoes/assets/img/introducao/2nivel-fisico-ou-implementacao.png" alt="Entidade Java JPA" width="45%">
+  <img src="/secoes/assets/img/introducao/1nivel-fisico-ou-implementacao.png" alt="Script DDL SQL" width="100%">
+  <img src="/secoes/assets/img/introducao/2nivel-fisico-ou-implementacao.png" alt="Entidade Java JPA" width="100%">
 </div>
 
 ---
@@ -120,8 +120,8 @@ A última etapa: o modelo se torna "vivo". O SQL define a persistência no banco
 A modelagem conceitual serve como ponte para ambos os paradigmas abaixo, sendo essencial para a integridade do sistema.
 
 <div style="display: flex; gap: 16px; justify-content: center;">
-  <img src="/secoes/assets/img/introducao/paradigma-estruturado-relacional.png" alt="Modelo Relacional" width="45%">
-  <img src="/secoes/assets/img/introducao/paradigma-orientado-objetos.png" alt="Modelo de Objetos" width="45%">
+  <img src="/secoes/assets/img/introducao/paradigma-estruturado-relacional.png" alt="Modelo Relacional" width="100%">
+  <img src="/secoes/assets/img/introducao/paradigma-orientado-objetos.png" alt="Modelo de Objetos" width="100%">
 </div>
 
 ---
