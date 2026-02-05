@@ -141,5 +141,5 @@ Com a visão macro dos níveis de abstração consolidada, o próximo passo é m
 
 ---
 <p align="center">
-  <b>Próximo Nível: 📦 Seção 2 - Conceitos e Atributos</b>
+  <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Conceitos-e-Atributos.md">Seção 2 - Conceitos e Atributos</a>
 </p>
