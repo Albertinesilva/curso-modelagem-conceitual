@@ -32,7 +32,7 @@ Abaixo estão listados os módulos fundamentais da modelagem conceitual, organiz
     <tr>
       <td><b>02</b></td>
       <td><b>Conceitos e Atributos:</b> Identificação de entidades de domínio, sintaxe de atributos e tipagem conceitual.</td>
-      <td><a href="./secoes/conceitos-atributos.md">📄 Acessar Seção</a></td>
+      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Conceitos-e-Atributos.md">📄 Acessar Seção</a></td>
     </tr>
     <tr>
       <td><b>03</b></td>
