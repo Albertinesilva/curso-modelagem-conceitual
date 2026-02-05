@@ -1,23 +1,27 @@
-<h2 align="center">📊 Seção 1: Introdução à Modelagem de Domínio</h2>
+## 📊 Seção 1: Introdução à Modelagem de Domínio
 
-<br>
-
-Esta seção apresenta os fundamentos da modelagem, definindo o que é um domínio e como ele se transforma em diferentes níveis de abstração até chegar à implementação técnica.
-
----
-
-### **1. O que é Domínio e Modelo de Domínio?**
-
-- Domínio: É definido como a área de negócio que está sendo observada.
-- Modelo de Domínio: É um modelo que descreve as entidades presentes naquele domínio e as inter-relações existentes entre elas.
-
-<img src="/secoes/assets/img/introducao/dominio-e-modelo-de-dominio.png" alt="O que e modelo de dominio?" width="70%" height="70%">
+<p align="center">
+  <em>A fundamentação da modelagem: da abstração de negócios à implementação técnica.</em>
+</p>
 
 ---
 
-### **2. Níveis de Abstração do Modelo**
+### **1. Definições Fundamentais**
 
-A modelagem progride através de diferentes níveis, cada um com responsabilidades e objetivos distintos:
+A modelagem de domínio é o alicerce de qualquer software robusto. Ela permite que desenvolvedores e especialistas de negócio falem a mesma língua.
+
+* **Domínio:** Representa o ecossistema do problema — a área específica de negócio, suas regras, processos e restrições (Ex: Logística, Finanças, Saúde).
+* **Modelo de Domínio:** É a representação abstrata e visual desse ecossistema. Ele descreve as **entidades** (objetos de interesse) e as **inter-relações** (como elas colaboram) para atender aos requisitos.
+
+<p align="center">
+  <img src="/secoes/assets/img/introducao/dominio-e-modelo-de-dominio.png" alt="Abstração do Modelo de Domínio" width="75%">
+</p>
+
+---
+
+### **2. Ciclo de Abstração do Modelo**
+
+O desenvolvimento de software moderno exige a transição entre diferentes níveis de detalhamento. Cada nível atende a um stakeholder e a um propósito específico:
 
 <table border="2" align="center" style="border-collapse: collapse; text-align:center;">
   <thead>
@@ -62,33 +66,61 @@ A modelagem progride através de diferentes níveis, cada um com responsabilidad
 
 ---
 
-<img src="/secoes/assets/img/introducao/conceitual-analise-sistema.png" alt="Conceitual ou de análise de sistema" width="70%" height="70%">
-<img src="/secoes/assets/img/introducao/conceitual-analise-negocio.png" alt="Conceitual ou de análise de negocio" width="70%" height="70%">
+### **3. O Dualismo: Análise vs. Design**
 
-<img src="/secoes/assets/img/introducao/1nivel-logico-ou-design.png" alt="Nivel lógico ou de design" width="70%" height="70%">
-<img src="/secoes/assets/img/introducao/2nivel-logico-ou-design.png" alt="Nivel lógico ou de design" width="70%" height="70%">
+Na engenharia de software, dividimos o projeto em dois grandes momentos:
 
-<img src="/secoes/assets/img/introducao/1nivel-fisico-ou-implementacao.png" alt="Nivel fisico ou implementação" width="70%" height="70%">
-<img src="/secoes/assets/img/introducao/2nivel-fisico-ou-implementacao.png" alt="Nivel fisico ou implementação" width="70%" height="70%">
+* **Fase de Análise:** Foca na **compreensão do problema**. O objetivo é garantir que "estamos construindo a coisa certa". É puramente conceitual.
+* **Fase de Design (Projeto):** Foca na **construção da solução**. O objetivo é garantir que "estamos construindo a coisa da maneira certa", já considerando limitações técnicas.
 
-<img src="/secoes/assets/img/introducao/paradigma-estruturado-relacional.png" alt="Paradigma estruturado relacional" width="70%" height="70%">
-<img src="/secoes/assets/img/introducao/paradigma-orientado-objetos.png" alt="Paradigma orientado a objeto" width="70%" height="70%">
-
-### **3. Análise vs. Design**
-
-Existe uma distinção importante entre as fases de projeto:
-
-- **Análise:** Foca em descrever o problema, mantendo-se independente de paradigma ou tecnologia.
-- **Design:** Foca em descrever a solução, já estando atrelado a um paradigma específico (como o Orientado a Objetos).
-- **Nota do Curso:** No desenvolvimento orientado a objetos, a Análise e o Design tendem a ser muito próximos. Por isso, nesta modelagem conceitual, embora o foco seja o nível de Análise, serão incluídos alguns aspectos de Design, como tipos de dados e direção de associações.
+> [!TIP]
+> **Convergência no Mundo Orientado a Objetos (OO):** No paradigma OO, a barreira entre Análise e Design é tênue, pois o modelo conceitual frequentemente evolui diretamente para o modelo de implementação.
 
 ---
 
-### 4. Exemplo de Evolução: Nota Fiscal
+### **4. Estudo de Caso Evolutivo: O Ciclo da Nota Fiscal**
 
-O documento demonstra como um documento do mundo real (Nota Fiscal) é traduzido nos diferentes níveis:
+Abaixo, observamos a metamorfose de um artefato de negócio (**Nota Fiscal**) através dos níveis de abstração:
 
-- **Conceitual:** Diagramas com entidades como Pedido, Produto e Item de Pedido.
-- **Lógico (Relacional):** Estrutura de tabelas com chaves estrangeiras e normalização.
-- **Lógico (OO):** Diagrama de classes com métodos e associações entre objetos.
-- **Físico:** Código SQL (CREATE TABLE) ou classes Java com atributos e tipos específicos.
+#### **A. Perspectiva Conceitual (Análise)**
+Foco nas entidades e na semântica. Identificamos que uma nota possui itens e produtos, sem nos preocuparmos com tabelas ou classes de acesso.
+
+<div style="display: flex; gap: 16px; justify-content: center;">
+  <img src="/secoes/assets/img/introducao/conceitual-analise-sistema.png" alt="Diagrama Conceitual de Sistema" width="45%">
+  <img src="/secoes/assets/img/introducao/conceitual-analise-negocio.png" alt="Fluxo de Negócio" width="45%">
+</div>
+
+---
+
+#### **B. Perspectiva Lógica (Design de Solução)**
+Aqui o modelo se divide. À esquerda, a visão **Relacional** (normalização e chaves); à direita, a visão **Orientada a Objetos** (associações e métodos).
+
+<div style="display: flex; gap: 16px; justify-content: center;">
+  <img src="/secoes/assets/img/introducao/1nivel-logico-ou-design.png" alt="Esquema Relacional" width="45%">
+  <img src="/secoes/assets/img/introducao/2nivel-logico-ou-design.png" alt="Diagrama de Classes Lógico" width="45%">
+</div>
+
+---
+
+#### **C. Perspectiva Física (Implementação)**
+A última etapa: o modelo se torna "vivo". O SQL define a persistência no banco de dados, enquanto o Java (Spring Boot) define o comportamento em memória.
+
+<div style="display: flex; gap: 16px; justify-content: center;">
+  <img src="/secoes/assets/img/introducao/1nivel-fisico-ou-implementacao.png" alt="Script DDL SQL" width="45%">
+  <img src="/secoes/assets/img/introducao/2nivel-fisico-ou-implementacao.png" alt="Entidade Java JPA" width="45%">
+</div>
+
+---
+
+#### **Comparativo de Paradigmas**
+A modelagem conceitual serve como ponte para ambos os paradigmas abaixo, sendo essencial para a integridade do sistema.
+
+<div style="display: flex; gap: 16px; justify-content: center;">
+  <img src="/secoes/assets/img/introducao/paradigma-estruturado-relacional.png" alt="Modelo Relacional" width="45%">
+  <img src="/secoes/assets/img/introducao/paradigma-orientado-objetos.png" alt="Modelo de Objetos" width="45%">
+</div>
+
+---
+
+### **Conclusão**
+- A transição progressiva entre abstração e implementação garante que a solução final preserve a essência do negócio, reduza retrabalho e minimize falhas conceituais, promovendo sistemas mais robustos, compreensíveis e sustentáveis ao longo do tempo.
