@@ -37,11 +37,20 @@ Um conceito representa uma unidade coesa do mundo real que possui significado pa
     2. **Seção de Atributos:** Lista de propriedades do conceito.
     3. **Seção de Métodos:** *Não utilizada* no Modelo Conceitual (pertence ao nível de Design).
 
+<div style="display: flex; gap: 16px; justify-content: center;">
+  <img src="/secoes/assets/img/modelo-conceitual/diagrama-de-classes-uml.png" alt="diagrama de classes da UML para 
+representar conceitos e atributos" width="100%">
+</div>
+
 ---
 
 ### **3. Atributos e Tipagem**
 
 Atributos são informações alfanuméricas simples associadas a um conceito. Devem respeitar a **Primeira Forma Normal (1FN)**: não podem ser multivalorados nem compostos.
+
+<div style="display: flex; gap: 16px; justify-content: center;">
+  <img src="/secoes/assets/img/modelo-conceitual/atributos.png" alt="Atributos" width="100%">
+</div>
 
 #### **Sintaxe de Representação**
 A notação padrão UML para atributos é:  
@@ -78,6 +87,11 @@ A notação padrão UML para atributos é:
   </tbody>
 </table>
 
+<div style="display: flex; gap: 16px; justify-content: center;">
+  <img src="/secoes/assets/img/modelo-conceitual/classes-uml-representar-conceitos-e-atributos.png" alt=" diagrama de classes da UML para 
+representar conceitos e atributos" width="100%">
+</div>
+
 ---
 
 ### **4. Orientações para Identificação de Conceitos**
@@ -112,5 +126,6 @@ Exemplo de estruturação de um conceito com diferentes tipos de atributos:
 
 > [!IMPORTANT]
 > **Regra de Ouro da Modelagem Conceitual:** > Evite "poluir" o modelo com chaves estrangeiras (FKs) como atributos. As ligações entre conceitos devem ser representadas exclusivamente por **Associações** (linhas), que serão tratadas na próxima seção.
+
 
 
