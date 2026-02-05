@@ -66,6 +66,23 @@ Abaixo estão listados os módulos fundamentais da modelagem conceitual, organiz
 - Banco de Dados: H2 / PostgreSQL
 
 ---
+### 🎓 Reconhecimento e Créditos
+
+Gostaria de expressar meu agradecimento ao **Professor Nelio Alves** pelo excelente curso [**Modelagem de Dados UML (Análise & Projeto Orientado a Objetos)**](https://www.udemy.com/course/uml-diagrama-de-classes/).
+
+> [!IMPORTANT]
+> **Nota de Retificação:** As imagens e diagramas utilizados neste repositório foram retirados do material didático do curso mencionado acima. Este projeto tem fins de estudo e fixação de conteúdo, e recomendo fortemente a matrícula para quem deseja se aprofundar no tema.
+
+**Principais aprendizados consolidados:**
+
+* **Modelo de Domínio:** Compreensão do modelo conceitual como o alicerce para descrever as informações que o sistema gerencia, indo além do tradicional modelo Entidade-Relacionamento.
+* **Paradigma Orientado a Objetos vs. Estruturado:** Transição do paradigma estruturado para soluções mais elegantes e flexíveis utilizando a **UML (Unified Modeling Language)** e o Diagrama de Classes.
+* **Domínio Técnico em UML:** Modelagem de conceitos, atributos, associações, multiplicidades, agregação, composição, herança e classes de associação.
+* **Implementação Prática (Mundo Real):** Aplicação de **Mapeamento Objeto-Relacional (ORM)** com **Java, Spring Boot e JPA/Hibernate**, transformando abstrações conceituais em bancos de dados relacionais automáticos e APIs REST funcionais.
+
+Este curso elevou meu grau de compreensão sobre a disciplina de análise de sistemas, permitindo uma ponte sólida entre os requisitos de negócio e a codificação de alto nível.
+
+---
 | 🌎 LinkedIn                                                              | 👨‍💻 **Autor**                                                                 |
 | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
 | [LinkedIn](https://www.linkedin.com/in/albert-backend-java-spring-boot/) | [Albert Silva](https://www.linkedin.com/in/albert-backend-java-spring-boot/) |
