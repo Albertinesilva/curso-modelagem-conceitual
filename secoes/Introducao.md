@@ -86,10 +86,13 @@ Abaixo, observamos a metamorfose de um artefato de negócio (**Nota Fiscal**) at
 
 Foco nas entidades e na semântica. Identificamos que uma nota possui itens e produtos, sem nos preocuparmos com tabelas ou classes de acesso.
 
-<div style="display: flex; gap: 16px; justify-content: center;">
+  Esta imagem demonstra que o Modelo Conceitual pertence à fase de Análise, focando exclusivamente no escopo do problema e nas regras de negócio. Ele atua como uma representação agnóstica, servindo de base para as futuras decisões técnicas dos níveis Lógico e Físico.
   <img src="/secoes/assets/img/introducao/conceitual-analise-sistema.png" alt="Diagrama Conceitual de Sistema" width="100%">
+  
+  <br>
+  
+  Esta imagem ilustra o Modelo Conceitual de Negócio, que mapeia as regras e termos fundamentais do domínio sob a ótica do cliente. Ele funciona como um glossário visual agnóstico ao sistema, garantindo que os conceitos essenciais existam independentemente de sua futura implementação computacional.
   <img src="/secoes/assets/img/introducao/conceitual-analise-negocio.png" alt="Fluxo de Negócio" width="100%">
-</div>
 
 ---
 
@@ -97,10 +100,14 @@ Foco nas entidades e na semântica. Identificamos que uma nota possui itens e pr
 
 Aqui o modelo se divide. À esquerda, a visão **Relacional** (normalização e chaves); à direita, a visão **Orientada a Objetos** (associações e métodos).
 
-<div style="display: flex; gap: 16px; justify-content: center;">
+Esta imagem apresenta o Nível Lógico, onde o modelo deixa de ser apenas uma ideia de negócio e passa a ser estruturado sob um paradigma específico, como o Relacional. É nesta etapa que se define o design da solução, detalhando a organização em tabelas, chaves e integridade referencial, preparando o terreno para a implementação técnica no banco de dados.
   <img src="/secoes/assets/img/introducao/1nivel-logico-ou-design.png" alt="Esquema Relacional" width="100%">
+
+  <br>
+
+  Esta imagem apresenta o Nível Lógico, onde o modelo deixa de ser apenas uma ideia de negócio e passa a ser estruturado sob o paradigma Orientado a Objetos. É nesta etapa que se define o design da solução, detalhando métodos (comportamentos), tipos de dados precisos e a visibilidade de atributos, preparando o terreno para a implementação em linguagens como Java ou C#.
   <img src="/secoes/assets/img/introducao/2nivel-logico-ou-design.png" alt="Diagrama de Classes Lógico" width="100%">
-</div>
+Observe que, ao contrário do modelo relacional (que foca em tabelas), aqui o destaque são os métodos (operações), que mostram como o objeto irá processar as informações internamente.
 
 ---
 
@@ -108,21 +115,30 @@ Aqui o modelo se divide. À esquerda, a visão **Relacional** (normalização e 
 
 A última etapa: o modelo se torna "vivo". O SQL define a persistência no banco de dados, enquanto o Java (Spring Boot) define o comportamento em memória.
 
-<div style="display: flex; gap: 16px; justify-content: center;">
+Esta imagem representa o Nível Físico, onde o design é convertido em código executável para MySQL. Nesta etapa, utiliza-se a linguagem SQL (DDL) para criar tabelas reais, definir tipos de dados específicos do banco (como VARCHAR e DECIMAL) e estabelecer restrições físicas de chaves primárias e estrangeiras.
   <img src="/secoes/assets/img/introducao/1nivel-fisico-ou-implementacao.png" alt="Script DDL SQL" width="100%">
-  <img src="/secoes/assets/img/introducao/2nivel-fisico-ou-implementacao.png" alt="Entidade Java JPA" width="100%">
-</div>
+O nível físico é o ponto de "não retorno" da abstração; aqui, as regras de negócio tornam-se instruções técnicas que o servidor de banco de dados irá processar e armazenar.
 
+  <br>
+
+  Esta imagem representa o Nível Físico, onde o design é traduzido em código-fonte utilizando a linguagem Java. Nesta etapa, os conceitos tornam-se classes concretas, os atributos recebem modificadores de acesso reais (como private) e utilizam-se anotações (como as do JPA) para mapear como esses objetos serão instanciados e manipulados na memória do sistema.
+  <img src="/secoes/assets/img/introducao/2nivel-fisico-ou-implementacao.png" alt="Entidade Java JPA" width="100%">
+  No nível físico de programação, o foco sai da estrutura de tabelas e passa para a implementação do comportamento, definindo exatamente como o software irá processar as regras de negócio em tempo de execução.
+  
 ---
 
 #### **Comparativo de Paradigmas**
 
 A modelagem conceitual serve como ponte para ambos os paradigmas abaixo, sendo essencial para a integridade do sistema.
 
-<div style="display: flex; gap: 16px; justify-content: center;">
+Esta imagem detalha o Paradigma Relacional, onde o foco reside na estrutura de dados normalizada e na integridade referencial. Tecnicamente, a modelagem é centrada em tabelas (entidades), colunas (atributos) e chaves (PK e FK), priorizando a eliminação de redundâncias e o relacionamento entre registros por meio de vínculos lógicos em vez de ponteiros de memória.
   <img src="/secoes/assets/img/introducao/paradigma-estruturado-relacional.png" alt="Modelo Relacional" width="100%">
+No paradigma relacional, a lógica de negócios é frequentemente dissociada dos dados; o modelo "sabe" como os dados se conectam, mas não possui os comportamentos (métodos) que os manipulam, diferindo fundamentalmente da orientação a objetos.
+  <br>
+
+  Esta imagem detalha o Paradigma Orientado a Objetos (OO), onde o foco reside na coesão entre dados e comportamentos. Tecnicamente, a modelagem é centrada em objetos (instâncias) que encapsulam atributos e métodos, utilizando conceitos como herança, polimorfismo e associações por referência de memória para representar as interações complexas do domínio de forma modular.
   <img src="/secoes/assets/img/introducao/paradigma-orientado-objetos.png" alt="Modelo de Objetos" width="100%">
-</div>
+Diferente do Relacional, onde os dados são "passivos" em tabelas, no paradigma OO os objetos são "ativos"; eles possuem a lógica para manipular seus próprios dados, o que torna esse modelo ideal para sistemas com regras de negócio complexas e mutáveis.
 
 ---
 
