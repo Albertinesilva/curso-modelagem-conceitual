@@ -94,13 +94,43 @@ representar conceitos e atributos" width="100%">
 
 ---
 
+### **4. Onde Buscar Informações**
+
+<div style="display: flex; gap: 16px; justify-content: center;">
+  <img src="/secoes/assets/img/modelo-conceitual/onde-buscar-informacoes.png" alt="Onde Buscar Informações" width="100%">
+</div>
+
+### **5. Visão geral do Sistema**
+
+<div style="display: flex; gap: 16px; justify-content: center;">
+  <img src="/secoes/assets/img/modelo-conceitual/visao-geral-do-sistema.png" alt="documentode formato livre que especifica, em linhas
+gerais,os requisitos do sistema. Sistema de Controle Escolar" width="100%">
+</div>
+
+### **6. Caso de Uso**
+
+<div style="display: flex; gap: 16px; justify-content: center;">
+  <img src="/secoes/assets/img/modelo-conceitual/caso-de-uso.png" alt="Caso de uso:documento estruturado que especifica uma funcionalidade do sistema
+por meio da troca de informações entre usuários (atores de sistema)e o sistema." width="100%">
+</div>
+
 ### **4. Orientações para Identificação de Conceitos**
 
 A identificação de conceitos é uma atividade de extração analítica. As fontes de informação incluem:
 
+<div style="display: flex; gap: 16px; justify-content: center;">
+  <img src="/secoes/assets/img/modelo-conceitual/1orientacoes-para-identificacao-conceitos.png" alt="Orientações para Identificação de Conceitos." width="100%">
+</div>
+
 1.  **Documentação de Requisitos:** Visão Geral do Sistema e Descrições de Casos de Uso.
 2.  **Conhecimento Tácito:** Informações obtidas via entrevistas com especialistas de domínio (*Stakeholders*).
 3.  **Artefatos de Negócio:** Formulários, Notas Fiscais, Relatórios e Normas vigentes.
+
+- Atenção Procure por:
+
+<div style="display: flex; gap: 16px; justify-content: center;">
+  <img src="/secoes/assets/img/modelo-conceitual/2orientacoes-para-identificacao-conceitos.png" alt="Atenção procure por: Substantivos, Expreções que denotem substantivo Verbos." width="100%">
+</div>
 
 #### **Exemplo de Aplicação (Cenário Escolar)**
 > *"Deseja-se registrar os **Cursos** disponíveis... quando um curso vai ser oferecido, registra-se uma **Turma**... Uma **Matrícula** de um **Aluno**..."*
@@ -126,6 +156,7 @@ Exemplo de estruturação de um conceito com diferentes tipos de atributos:
 
 > [!IMPORTANT]
 > **Regra de Ouro da Modelagem Conceitual:** > Evite "poluir" o modelo com chaves estrangeiras (FKs) como atributos. As ligações entre conceitos devem ser representadas exclusivamente por **Associações** (linhas), que serão tratadas na próxima seção.
+
 
 
 
