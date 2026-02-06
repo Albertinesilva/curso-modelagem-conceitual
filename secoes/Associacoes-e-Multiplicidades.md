@@ -58,8 +58,9 @@ Um dos pontos mais importantes do material é a distinção entre **Modelagem de
 ---
 ### **5. Conclusão Parcial**
 
-⚠️ Diferença Crucial: Modelo Conceitual vs. Relacional
-
-Não confunda associações UML com o Modelo Relacional.
-- No Relacional, as relações são feitas via dados (chaves estrangeiras).
-- No Conceitual (UML), as relações são representadas por linhas de associação que indicam a conectividade lógica entre objetos.
+> [!CAUTION]
+> **Diferença Crucial: Modelo Conceitual vs. Relacional**
+> 
+> Não confunda associações UML com o Modelo Relacional.
+> - No Relacional, as relações são feitas via dados (chaves estrangeiras).
+> - No Conceitual (UML), as relações são representadas por linhas de associação que indicam a conectividade lógica entre objetos.
