@@ -72,9 +72,9 @@ Um dos pontos mais importantes do material é a distinção entre **Modelagem de
 
 ---
 
-### **6. Multiplicidades de Papéis**
+### **6. Engenharia de Multiplicidades de Papéis**
 
-Na Engenharia de Software, a **Multiplicidade** é um indicador crítico que define os limites inferiores (mínimos) e superiores (máximos) de instâncias que podem participar de um relacionamento em tempo de execução. Ela garante a integridade das regras de negócio no nível de design.
+Na Engenharia de Software, a **Multiplicidade** é um indicador crítico que define os limites inferiores (mínimos) e superiores (máximos) de instâncias que podem participar de um relacionamento em tempo de execução. Ela garante a integridade das regras de negócio diretamente no nível de design.
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/o-que-e-multiplicidade.png" alt="Definição de Multiplicidade e exemplo de donos de carros" width="100%">
 
@@ -82,72 +82,71 @@ Na Engenharia de Software, a **Multiplicidade** é um indicador crítico que def
 
 A multiplicidade responde à pergunta: _"Para um objeto de uma classe, quantos objetos da classe oposta podem estar associados a ele?"_.
 
-- **Mínimo:** Define se a participação é obrigatória (1) ou opcional (0).
-- **Máximo:** Define se a relação é singular (1) ou plural (\*).
+- **Mínimo:** Define se a participação é obrigatória (**1**) ou opcional (**0**).
+- **Máximo:** Define se a relação é singular (**1**) ou plural (**\***).
 
 ---
 
-#### **6.2. Notações Comuns na UML**
+#### **6.2. Especificações de Cardinalidade (Notações UML)**
 
-Abaixo, os símbolos utilizados para especificar restrições de cardinalidade:
+Abaixo, os símbolos utilizados para especificar as restrições de cardinalidade e suas respectivas implicações técnicas:
 
-| Notação           | Significado    | Descrição Técnica                            |
-| :---------------- | :------------- | :------------------------------------------- |
-| **1**             | Um e apenas um | Participação obrigatória e única.            |
-| **0..1**          | Zero ou um     | Relacionamento opcional e único.             |
-| **\* (ou 0..\*)** | Zero ou muitos | Relacionamento opcional sem limite superior. |
-| **1..\***         | Um ou muitos   | Participação obrigatória (pelo menos um).    |
-| **n..m**          | Intervalo fixo | Ex: `2..5` (mínimo dois, máximo cinco).      |
+| Notação | Semântica | Implicação no Sistema |
+| :--- | :--- | :--- |
+| **1** | Um e apenas um | Participação obrigatória (*Not Null*) e única. |
+| **0..1** | Zero ou um | Relacionamento opcional (permite valores nulos) e único. |
+| **\* (ou 0..\*)** | Zero ou muitos | Relacionamento opcional e plural. Implementado via coleções (*List, Set*). |
+| **1..\*** | Um ou muitos | Participação obrigatória e plural. Requer validação de coleção não vazia. |
+| **n..m** | Intervalo fixo | Ex: `2..5`. Exige validação de limites de negócio específicos. |
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/multiplicidade-possiveis.png" alt="Exemplos de intervalos de multiplicidade" width="100%">
 
 ---
 
-#### **6.3. Classificação das Associações**
+#### **6.3. Taxonomia de Associações**
 
-De acordo com o número máximo de instâncias permitidas em cada extremidade da associação, as classificamos em três tipos fundamentais:
+De acordo com o número máximo de instâncias permitidas em cada extremidade da associação, classificamos os relacionamentos em três tipos fundamentais:
 
 ##### **A. Um para Muitos (1..\*)**
+Representa a hierarquia de posse ou pertencimento, sendo a base da maioria das estruturas de dados transacionais. Em um dos lados, o limite máximo é **1** e, no outro, é **muitos (\*)**.
 
-É o tipo mais comum em sistemas de informação. Em um dos lados, o limite máximo é **1**, e no outro, é **muitos (\*)**.
-
-- _Exemplo_: Quem é o dono de cada carro? (Pessoa 1 <---> \* Carro).
+- *Exemplo*: Quem é o dono de cada carro? (Pessoa **1** <---> **\*** Carro).
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/associacoes-comuns-um-para-muitos.png" alt="Diagrama UML Um para Muitos" width="100%">
 
 ##### **B. Um para Um (1..1)**
+Indica forte acoplamento ou especialização de dados onde a exclusividade é mandatória, restringindo a associação a uma única instância em ambos os lados.
 
-Restringe a associação a uma única instância em ambos os lados.
-
-- _Exemplo_: Quem é o responsável por cada carro? (Pessoa 1 <---> 1 Carro). Geralmente indica uma regra de exclusividade.
+- *Exemplo*: Quem é o responsável por cada carro? (Pessoa **1** <---> **1** Carro). Geralmente indica uma regra de exclusividade.
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/associacoes-comuns-um-para-um.png" alt="Diagrama UML Um para Um" width="100%">
 
-##### **C. Muitos para Muitos (_.._)**
+##### **C. Muitos para Muitos (\*..\*)**
+Ambas as extremidades permitem múltiplas instâncias. **Atenção:** na fase de implementação (Nível Físico), este modelo geralmente exige uma tabela de associação intermediária para suportar atributos próprios do vínculo.
 
-Ambas as extremidades permitem múltiplas instâncias. Na fase de implementação (Nível Físico), este modelo geralmente exige uma tabela de associação intermediária.
-
-- _Exemplo_: Quem dirige cada carro? (Vários motoristas podem dirigir o mesmo carro, e uma pessoa pode dirigir vários carros).
+- *Exemplo*: Quem dirige cada carro? (Vários motoristas podem dirigir o mesmo carro, e uma pessoa pode dirigir vários carros).
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/associacoes-comuns-muitos-para-muitos.png" alt="Diagrama UML Muitos para Muitos" width="100%">
 
 ---
 
-#### **6.4. Metodologia para Identificar Multiplicidades**
+#### **6.4. Heurística de Análise (Metodologia Bidirecional)**
 
-Como analista de sistemas, você deve realizar perguntas bidirecionais para determinar os limites:
+Para determinar a multiplicidade correta, o analista deve aplicar a **Análise Bidirecional**, questionando ambos os sentidos da relação:
 
-1.  **Sentido de Ida:** "Um objeto de **A** está associado a quantos de **B**?"
-2.  **Sentido de Volta:** "Um objeto de **B** está associado a quantos de **A**?"
+1. **Sentido de Ida:** "Um objeto de **A** está associado a quantos de **B**?"
+2. **Sentido de Volta:** "Um objeto de **B** está associado a quantos de **A**?"
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/multiplicidade-pergunte-um-pode-ter.png" alt="Metodologia para Identificar Multiplicidades" width="100%">
 
 > [!TIP]
-> **Dica Acadêmica:** Sempre verifique primeiro o limite **máximo**. Se o máximo for 1 em ambos os lados, é 1:1. Se for "vários" em ambos, é N:N. O limite **mínimo** define a nulidade (opcionalidade) do campo no banco de dados.
+> **Dica Acadêmica:** Sempre verifique primeiro o limite **máximo**. Se o máximo for 1 em ambos os lados, é 1:1; se for "vários" em ambos, é N:N. O limite **mínimo** define a nulidade (opcionalidade) do campo no banco de dados.
+> 
+> **Insight de Engenharia:** O limite **mínimo** dita a estratégia de persistência (salvamento), enquanto o limite **máximo** dita a estrutura de dados (variável simples vs. coleção).
 
 ---
 
-### **7. Resumo de Diretrizes**
-
-- A multiplicidade é colocada na extremidade da linha de associação, junto ao papel.
-- Errar a multiplicidade no nível conceitual gera bugs graves na implementação (ex: impedir que um registro seja salvo sem um dependente quando ele deveria ser opcional).
+### **7. Diretrizes de Documentação**
+- Posicione as multiplicidades próximas às extremidades da associação.
+- Defina claramente os **Papéis** para evitar ambiguidade em associações reflexivas.
+- Erros nesta fase propagam-se como restrições incorretas de banco de dados ou exceções de ponteiro nulo (`NullPointerException`) no código.
