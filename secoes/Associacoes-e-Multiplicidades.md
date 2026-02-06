@@ -76,11 +76,11 @@ Um dos pontos mais importantes do material é a distinção entre **Modelagem de
 
 Na Engenharia de Software, a **Multiplicidade** é um indicador crítico que define os limites inferiores (mínimos) e superiores (máximos) de instâncias que podem participar de um relacionamento em tempo de execução. Ela garante a integridade das regras de negócio no nível de design.
 
+<img src="/secoes/assets/img/associacoes-e-multiplicidades/o-que-e-multiplicidade.png" alt="Definição de Multiplicidade e exemplo de donos de carros" width="100%">
+
 #### **6.1. Definição Técnica**
 
 A multiplicidade responde à pergunta: _"Para um objeto de uma classe, quantos objetos da classe oposta podem estar associados a ele?"_.
-
-<img src="/secoes/assets/img/associacoes-e-multiplicidades/o-que-e-multiplicidade.png" alt="Definição de Multiplicidade e exemplo de donos de carros" width="100%">
 
 - **Mínimo:** Define se a participação é obrigatória (1) ou opcional (0).
 - **Máximo:** Define se a relação é singular (1) ou plural (\*).
@@ -113,7 +113,7 @@ De acordo com o número máximo de instâncias permitidas em cada extremidade da
 
 - _Exemplo_: Quem é o dono de cada carro? (Pessoa 1 <---> \* Carro).
 
-<img src="/secoes/assets/img/associacoes-e-multiplicidades/associacoes-comuns-um-para-muitos.png" alt="Diagrama UML Um para Muitos" width="100%">
+<img src="/secoes/assets/img/associacoes-e-multiplicidades/associações-comuns-um-para-muitos.png" alt="Diagrama UML Um para Muitos" width="100%">
 
 ##### **B. Um para Um (1..1)**
 
@@ -151,3 +151,4 @@ Como analista de sistemas, você deve realizar perguntas bidirecionais para dete
 
 - A multiplicidade é colocada na extremidade da linha de associação, junto ao papel.
 - Errar a multiplicidade no nível conceitual gera bugs graves na implementação (ex: impedir que um registro seja salvo sem um dependente quando ele deveria ser opcional).
+
