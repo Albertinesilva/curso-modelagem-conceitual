@@ -113,7 +113,7 @@ De acordo com o número máximo de instâncias permitidas em cada extremidade da
 
 - _Exemplo_: Quem é o dono de cada carro? (Pessoa 1 <---> \* Carro).
 
-<img src="/secoes/assets/img/associacoes-e-multiplicidades/associações-comuns-um-para-muitos.png" alt="Diagrama UML Um para Muitos" width="100%">
+<img src="/secoes/assets/img/associacoes-e-multiplicidades/associacoes-comuns-um-para-muitos.png" alt="Diagrama UML Um para Muitos" width="100%">
 
 ##### **B. Um para Um (1..1)**
 
@@ -151,4 +151,3 @@ Como analista de sistemas, você deve realizar perguntas bidirecionais para dete
 
 - A multiplicidade é colocada na extremidade da linha de associação, junto ao papel.
 - Errar a multiplicidade no nível conceitual gera bugs graves na implementação (ex: impedir que um registro seja salvo sem um dependente quando ele deveria ser opcional).
-
