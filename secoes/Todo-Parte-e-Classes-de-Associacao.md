@@ -217,7 +217,7 @@ Ao projetar o sistema, a escolha entre Classe de Associação e Classe Comum dev
 
 ---
 
-### **9. Recapitulação Técnica: Tomada de Decisão em Associações**
+### 🎯 **9. Recapitulação Técnica: Tomada de Decisão em Associações**
 
 Ao modelar sistemas complexos, a escolha da estrutura de associação impacta diretamente a integridade referencial e a flexibilidade do software. Abaixo, consolidamos os critérios de design abordados nesta seção.
 
