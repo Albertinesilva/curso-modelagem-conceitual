@@ -42,17 +42,17 @@ Abaixo estão listados os módulos fundamentais da modelagem conceitual, organiz
     <tr>
       <td><b>04</b></td>
       <td><b>Todo-Parte e Classes de Associação:</b> Semântica de Agregação, Composição e resolução de relações N:N.</td>
-      <td><a href="./secoes/todo-parte-associacao.md">📄 Acessar Seção</a></td>
+      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Todo-Parte-e-Classes-de-Associacao.md">📄 Acessar Seção</a></td>
     </tr>
     <tr>
       <td><b>05</b></td>
       <td><b>Herança e Tipos:</b> Generalização/Especialização, Enumerações e tratamento de tipos primitivos em modelos OO.</td>
-      <td><a href="./secoes/heranca-tipos.md">📄 Acessar Seção</a></td>
+      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Heranca-e-Tipos-Generalizacao.md">📄 Acessar Seção</a></td>
     </tr>
     <tr>
       <td><b>06</b></td>
       <td><b>Estudo de Caso:</b> Transição do Modelo Conceitual para o Modelo Físico com Java, Spring Boot e JPA/Hibernate.</td>
-      <td><a href="./secoes/estudo-de-caso.md">📄 Acessar Seção</a></td>
+      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Estudo-de-Caso.md">📄 Acessar Seção</a></td>
     </tr>
   </tbody>
 </table>
@@ -66,6 +66,7 @@ Abaixo estão listados os módulos fundamentais da modelagem conceitual, organiz
 - Banco de Dados: H2 / PostgreSQL
 
 ---
+
 ### 🎓 Reconhecimento e Créditos
 
 Gostaria de expressar meu agradecimento ao **Professor Nelio Alves** pelo excelente curso [**Modelagem de Dados UML (Análise & Projeto Orientado a Objetos)**](https://www.udemy.com/course/uml-diagrama-de-classes/).
@@ -75,14 +76,15 @@ Gostaria de expressar meu agradecimento ao **Professor Nelio Alves** pelo excele
 
 **Principais aprendizados consolidados:**
 
-* **Modelo de Domínio:** Compreensão do modelo conceitual como o alicerce para descrever as informações que o sistema gerencia, indo além do tradicional modelo Entidade-Relacionamento.
-* **Paradigma Orientado a Objetos vs. Estruturado:** Transição do paradigma estruturado para soluções mais elegantes e flexíveis utilizando a **UML (Unified Modeling Language)** e o Diagrama de Classes.
-* **Domínio Técnico em UML:** Modelagem de conceitos, atributos, associações, multiplicidades, agregação, composição, herança e classes de associação.
-* **Implementação Prática (Mundo Real):** Aplicação de **Mapeamento Objeto-Relacional (ORM)** com **Java, Spring Boot e JPA/Hibernate**, transformando abstrações conceituais em bancos de dados relacionais automáticos e APIs REST funcionais.
+- **Modelo de Domínio:** Compreensão do modelo conceitual como o alicerce para descrever as informações que o sistema gerencia, indo além do tradicional modelo Entidade-Relacionamento.
+- **Paradigma Orientado a Objetos vs. Estruturado:** Transição do paradigma estruturado para soluções mais elegantes e flexíveis utilizando a **UML (Unified Modeling Language)** e o Diagrama de Classes.
+- **Domínio Técnico em UML:** Modelagem de conceitos, atributos, associações, multiplicidades, agregação, composição, herança e classes de associação.
+- **Implementação Prática (Mundo Real):** Aplicação de **Mapeamento Objeto-Relacional (ORM)** com **Java, Spring Boot e JPA/Hibernate**, transformando abstrações conceituais em bancos de dados relacionais automáticos e APIs REST funcionais.
 
 Este curso elevou meu grau de compreensão sobre a disciplina de análise de sistemas, permitindo uma ponte sólida entre os requisitos de negócio e a codificação de alto nível.
 
 ---
+
 | 🌎 LinkedIn                                                              | 👨‍💻 **Autor**                                                                 |
 | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
 | [LinkedIn](https://www.linkedin.com/in/albert-backend-java-spring-boot/) | [Albert Silva](https://www.linkedin.com/in/albert-backend-java-spring-boot/) |

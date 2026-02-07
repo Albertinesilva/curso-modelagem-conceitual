@@ -209,6 +209,7 @@ Uma **Autoassociação** ocorre quando um conceito se relaciona consigo mesmo. �
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/autoassociacao.png" alt="Exemplo de Autoassociação" width="100%">
 
 **Aplicações Típicas:**
+
 - **Estruturas Hierárquicas:** Um `Funcionario` que gerencia outros `Funcionarios`.
 - **Grafos Sociais:** Um `Usuario` que segue outros `Usuarios`.
 
@@ -218,17 +219,17 @@ Uma **Autoassociação** ocorre quando um conceito se relaciona consigo mesmo. �
 
 ### **11. Resumo da Unidade de Aprendizado**
 
-| Conceito | Resumo da Engenharia |
-| :--- | :--- |
-| **Associação Obrigatória** | Multiplicidade mínima > 0. Define restrição de integridade. |
-| **Conceito Dependente** | Objeto cuja vida útil depende de outro vínculo de associação. |
-| **Associações Múltiplas** | Diferentes semânticas de relacionamento entre as mesmas classes. |
-| **Autoassociação** | Relacionamento reflexivo para representação de estruturas recursivas. |
+| Conceito                   | Resumo da Engenharia                                                  |
+| :------------------------- | :-------------------------------------------------------------------- |
+| **Associação Obrigatória** | Multiplicidade mínima > 0. Define restrição de integridade.           |
+| **Conceito Dependente**    | Objeto cuja vida útil depende de outro vínculo de associação.         |
+| **Associações Múltiplas**  | Diferentes semânticas de relacionamento entre as mesmas classes.      |
+| **Autoassociação**         | Relacionamento reflexivo para representação de estruturas recursivas. |
 
 > [!TIP]
 > **Dica de Analista:** Ao identificar uma autoassociação `*..*` (N:N reflexiva), lembre-se que, na implementação física, isso resultará em uma tabela de junção cujas chaves estrangeiras apontam para a mesma tabela de origem.
 
 ---
 <p align="center">
-  <b>Próximo Nível: 🔗 Seção 4 - Seção 4: Todo-Parte (Agregação e Composição)</b>
+  <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Todo-Parte-e-Classes-de-Associacao.md">Seção 4: Todo-Parte (Agregação e Composição)</a>
 </p>

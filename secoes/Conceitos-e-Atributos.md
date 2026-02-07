@@ -14,15 +14,16 @@ O Modelo Conceitual (MC) é uma visão do Modelo de Domínio em nível de **Aná
   <img src="/secoes/assets/img/modelo-conceitual/modelo-conceitual.png" alt="Modelo Conceitual" width="100%">
 </div>
 
-* **Foco:** Mapeamento da estrutura de dados que o sistema deverá gerenciar.
-* **Abstração:** Independente de paradigma (OO ou Relacional) e de tecnologia (Linguagens ou SGBDs).
-* **Ferramenta:** Utiliza-se o **Diagrama de Classes da UML (Unified Modeling Language)** para a representação gráfica.
+- **Foco:** Mapeamento da estrutura de dados que o sistema deverá gerenciar.
+- **Abstração:** Independente de paradigma (OO ou Relacional) e de tecnologia (Linguagens ou SGBDs).
+- **Ferramenta:** Utiliza-se o **Diagrama de Classes da UML (Unified Modeling Language)** para a representação gráfica.
 
 <div style="display: flex; gap: 16px; justify-content: center;">
   <img src="/secoes/assets/img/modelo-conceitual/descreve.png" alt="Modelo Conceitual Descreve" width="100%">
 </div>
 
 ---
+
 ### **2. Abstração de Conceitos (Entidades de Domínio)**
 
 Um conceito é uma abstração de uma unidade coesa do mundo real que possui relevância para o negócio e exige persistência de dados.
@@ -31,11 +32,11 @@ Um conceito é uma abstração de uma unidade coesa do mundo real que possui rel
   <img src="/secoes/assets/img/modelo-conceitual/conceitos.png" alt="Conceitos" width="100%">
 </div>
 
-* **Identificação:** Geralmente extraídos de substantivos em documentos de requisitos, casos de uso ou entrevistas (Ex: `Pedido`, não `Pedidos`).
-* **Representação em Camadas:** Um retângulo dividido (diagrama UML) em seções. No nível conceitual, foca-se nas duas primeiras:
-    1. **Cabeçalho (Nome do Conceito):** Substantivo no singular, grafado em *UpperCamelCase*.
-    2. **Corpo (Seção de Atributos):** Lista de propriedades do conceito (Atributos e suas tipagens).
-    3. **Base (Seção de Métodos):** *Não utilizada* no Modelo Conceitual Operações/Métodos (pertence ao nível de Design).
+- **Identificação:** Geralmente extraídos de substantivos em documentos de requisitos, casos de uso ou entrevistas (Ex: `Pedido`, não `Pedidos`).
+- **Representação em Camadas:** Um retângulo dividido (diagrama UML) em seções. No nível conceitual, foca-se nas duas primeiras:
+  1. **Cabeçalho (Nome do Conceito):** Substantivo no singular, grafado em _UpperCamelCase_.
+  2. **Corpo (Seção de Atributos):** Lista de propriedades do conceito (Atributos e suas tipagens).
+  3. **Base (Seção de Métodos):** _Não utilizada_ no Modelo Conceitual Operações/Métodos (pertence ao nível de Design).
 
 <div style="display: flex; gap: 16px; justify-content: center;">
   <img src="/secoes/assets/img/modelo-conceitual/diagrama-de-classes-uml.png" alt="diagrama de classes da UML para 
@@ -53,6 +54,7 @@ Atributos descrevem as características intrínsecas de um conceito. Devem segui
 </div>
 
 #### **Sintaxe e Especificação UML**
+
 A declaração formal segue o padrão: `visibilidade nome: tipo = valor_inicial`.
 
 <table border="2" align="center" style="border-collapse: collapse; text-align:left; font-family: sans-serif;">
@@ -141,6 +143,7 @@ Para uma extração eficiente, o analista deve aplicar técnicas de análise lé
 Abaixo, observamos a aplicação prática das técnicas de extração em diferentes níveis de complexidade.
 
 #### **Cenário A: Tradução de Requisitos em Modelos Estáticos**
+
 Exemplo de como uma descrição textual da Visão Geral do Sistema é convertida em um esboço inicial de classes.
 
 <div align="center">
@@ -148,6 +151,7 @@ Exemplo de como uma descrição textual da Visão Geral do Sistema é convertida
 </div>
 
 #### **Cenário B: Identificação via Fluxo de Eventos**
+
 Análise de um caso de uso para compra de livros, onde o fluxo de interação revela as necessidades de dados do sistema.
 
 <div align="center">
@@ -155,6 +159,7 @@ Análise de um caso de uso para compra de livros, onde o fluxo de interação re
 </div>
 
 #### **Cenário C: Mapeamento Léxico Grifado**
+
 Técnica de destaque visual sobre o caso de uso para isolar substantivos que se tornarão classes no modelo final.
 
 <div align="center">
@@ -162,6 +167,7 @@ Técnica de destaque visual sobre o caso de uso para isolar substantivos que se 
 </div>
 
 #### **Cenário D: Refinamento e Decomposição**
+
 O primeiro esboço raramente é final. É necessário refinar as entidades para garantir coesão e eliminar redundâncias ou conceitos que pertencem apenas à interface.
 
 <div align="center">
@@ -174,21 +180,22 @@ O primeiro esboço raramente é final. É necessário refinar as entidades para 
 > **A Regra de Ouro da Pureza Conceitual:** > Jamais utilize atributos para representar chaves estrangeiras (FKs) no Modelo Conceitual. Relações entre conceitos são expressas unicamente por **Associações** (conectores visuais, ex: linhas), mantendo o modelo limpo e focado na semântica do negócio.
 
 ---
+
 ## 🎯 Conclusão do Módulo: A Arte de Isolar Conceitos
 
 A conclusão desta etapa de aprendizado consolida a habilidade de **abstração**. Identificar conceitos e atributos é o primeiro passo para transformar um problema de negócio subjetivo em uma solução de software **estruturada**.
 
 ### **Principais Insights Adquiridos:**
 
-* **Agnosticismo de Implementação:** Compreendi que, no nível conceitual, o foco é a **regra**, e não o código. Não importa se os dados serão salvos em um arquivo `.txt`, em um banco MySQL ou em memória; o que importa é a estrutura lógica da informação.
-* **Análise Léxica como Ferramenta:** A técnica de identificar substantivos e objetos de valor em requisitos (como Visão Geral e Casos de Uso) revelou-se fundamental para evitar que entidades importantes sejam omitidas ou que elementos irrelevantes (como detalhes de interface) poluam o modelo.
-* **A Rigidez da Notação UML:** O uso correto da sintaxe para atributos e a identificação do `<<oid>>` garantem que o modelo seja legível por qualquer profissional da área, servindo como uma "planta arquitetônica" universal.
-* **O Valor do Refinamento:** A modelagem é um processo iterativo. O primeiro diagrama serve para validar o entendimento inicial, mas é através do refinamento constante que eliminamos redundâncias e alcançamos a **Primeira Forma Normal (1FN)**.
+- **Agnosticismo de Implementação:** Compreendi que, no nível conceitual, o foco é a **regra**, e não o código. Não importa se os dados serão salvos em um arquivo `.txt`, em um banco MySQL ou em memória; o que importa é a estrutura lógica da informação.
+- **Análise Léxica como Ferramenta:** A técnica de identificar substantivos e objetos de valor em requisitos (como Visão Geral e Casos de Uso) revelou-se fundamental para evitar que entidades importantes sejam omitidas ou que elementos irrelevantes (como detalhes de interface) poluam o modelo.
+- **A Rigidez da Notação UML:** O uso correto da sintaxe para atributos e a identificação do `<<oid>>` garantem que o modelo seja legível por qualquer profissional da área, servindo como uma "planta arquitetônica" universal.
+- **O Valor do Refinamento:** A modelagem é um processo iterativo. O primeiro diagrama serve para validar o entendimento inicial, mas é através do refinamento constante que eliminamos redundâncias e alcançamos a **Primeira Forma Normal (1FN)**.
 
 Com esta base sólida em conceitos e propriedades atômicas, o próximo passo lógico é estabelecer como essas unidades de informação se comunicam e dependem umas das outras através das **Associações e Multiplicidades**.
 
 ---
-<p align="center">
-  <b>Próximo Nível: 🔗 Seção 3 - Associações e Multiplicidades</b>
-</p>
 
+<p align="center">
+  <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Associacoes-e-Multiplicidades.md">Seção 3 - Associações e Multiplicidades</a>
+</p>
