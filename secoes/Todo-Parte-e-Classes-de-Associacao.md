@@ -165,7 +165,7 @@ O nome do personagem é um dado que pertence exclusivamente à **associação**.
 Um erro comum de iniciantes é ignorar a restrição implícita da UML para esta estrutura.
 
 > [!CAUTION]
-> **A classe de associação indica associação ÚNICA!**
+> **A classe de associação indica associação ÚNICA!** <br>
 > Isso significa que, entre um mesmo artista e um mesmo filme, só pode haver **uma única instância** (um único objeto) de participação. Se um ator faz dois papéis no mesmo filme, esta modelagem impede o registro do segundo papel.
 
 <img src="/secoes/assets/img/todo-parte/atencao-associacao-unica.png" alt="Aviso sobre unicidade da classe de associação" width="100%">
