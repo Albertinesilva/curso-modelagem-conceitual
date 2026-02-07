@@ -150,3 +150,66 @@ Para determinar a multiplicidade correta, o analista deve aplicar a **Análise B
 - Posicione as multiplicidades próximas às extremidades da associação.
 - Defina claramente os **Papéis** para evitar ambiguidade em associações reflexivas.
 - Erros nesta fase propagam-se como restrições incorretas de banco de dados ou exceções de ponteiro nulo (`NullPointerException`) no código.
+
+---
+### **8. Associações Obrigatórias e Conceitos Dependentes**
+
+Na análise de sistemas, a existência de um objeto pode estar condicionada à existência de outro. Essa "regra de sobrevivência" é definida pela multiplicidade mínima.
+
+#### **8.1. Associação Obrigatória**
+
+Uma associação é tecnicamente classificada como **obrigatória** quando o conceito associado desempenha um papel cuja multiplicidade mínima é maior que zero (ex: `1` ou `1..*`).
+
+- **Regra de Negócio:** Se um objeto **A** exige um objeto **B** para ser válido, a associação é obrigatória para **A**.
+
+<img src="/secoes/assets/img/associacoes-e-multiplicidades/associacao-obrigatoria.png" alt="Exemplo de Associação Obrigatória" width="100%">
+
+#### **8.2. Conceito Dependente**
+
+Um **Conceito Dependente** é aquele que possui pelo menos uma associação obrigatória. Em termos de ciclo de vida, um objeto dependente só pode ser instanciado se houver um objeto "pai" ou "mestre" para dar suporte à sua existência.
+
+- **Exemplo Prático:** Um **Item de Pedido** é um conceito dependente; ele não faz sentido e não deve existir no sistema sem estar vinculado a um **Pedido**.
+
+<img src="/secoes/assets/img/associacoes-e-multiplicidades/conceito-dependente.png" alt="Exemplo de Conceito Dependente" width="100%">
+
+> [!CAUTION]
+> **Atenção à Temporalidade:** Nem todo objeto obrigatório no negócio é obrigatório no modelo instantâneo. Um **Pedido** eventualmente exige um **Pagamento**, mas pode existir temporariamente sem ele durante o processo de checkout. No modelo conceitual, isso é representado como `0..1` para evitar bloqueios lógicos prematuros.
+
+---
+
+### **9. Associações Múltiplas**
+
+Na modelagem de domínios complexos, é comum que dois conceitos possuam mais de um tipo de relacionamento simultâneo. Cada linha de associação representa uma semântica de negócio diferente.
+
+<img src="/secoes/assets/img/associacoes-e-multiplicidades/associacoes-multiplas.png" alt="Exemplo de múltiplas associações entre as mesmas classes" width="100%">
+
+- **Regra de Implementação:** Para que múltiplas associações entre as mesmas classes sejam válidas, os nomes dos papéis (*roles*) devem ser únicos e explícitos.
+- **Exemplo:** Uma `Pessoa` pode ser simultaneamente o **Dono** de um `Carro`, o **Condutor** e o **Responsável Legal**. No diagrama, seriam três linhas distintas com multiplicidades independentes.
+
+---
+
+### **10. Autoassociações (Associações Reflexivas)**
+
+Uma **Autoassociação** ocorre quando um conceito se relaciona consigo mesmo. É uma estrutura poderosa para representar hierarquias e redes sociais dentro do sistema.
+
+<img src="/secoes/assets/img/associacoes-e-multiplicidades/autoassociacao.png" alt="Exemplo de Autoassociação" width="100%">
+
+**Aplicações Comuns:**
+- **Hierarquia:** Um `Funcionario` que gerencia outros `Funcionarios`.
+- **Redes Sociais:** Um `Usuario` que segue outros `Usuarios`.
+
+**Análise Técnica:** Em uma autoassociação, as duas extremidades da mesma linha tocam a mesma classe, mas obrigatoriamente possuem papéis distintos (ex: "seguidor" e "seguido") para diferenciar a origem e o destino do vínculo.
+
+---
+
+### **11. Resumo da Unidade de Aprendizado**
+
+| Conceito | Resumo da Engenharia |
+| :--- | :--- |
+| **Associação Obrigatória** | Multiplicidade mínima > 0. Define restrição de integridade. |
+| **Conceito Dependente** | Objeto cuja vida útil depende de outro vínculo. |
+| **Associações Múltiplas** | Diversas semânticas entre os mesmos pares de classes. |
+| **Autoassociação** | Relacionamento reflexivo para estruturas recursivas. |
+
+> [!TIP]
+> **Dica de Analista:** Ao identificar uma autoassociação `*..*` (como Seguidores/Seguidos), esteja ciente de que, na implementação, isso resultará em uma tabela de junção apontando para a mesma chave primária.
