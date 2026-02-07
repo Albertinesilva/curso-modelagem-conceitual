@@ -91,13 +91,13 @@ A multiplicidade responde à pergunta: _"Para um objeto de uma classe, quantos o
 
 Abaixo, os símbolos utilizados para especificar as restrições de cardinalidade e suas respectivas implicações técnicas:
 
-| Notação | Semântica | Implicação no Sistema |
-| :--- | :--- | :--- |
-| **1** | Um e apenas um | Participação obrigatória (*Not Null*) e única. |
-| **0..1** | Zero ou um | Relacionamento opcional (permite valores nulos) e único. |
-| **\* (ou 0..\*)** | Zero ou muitos | Relacionamento opcional e plural. Implementado via coleções (*List, Set*). |
-| **1..\*** | Um ou muitos | Participação obrigatória e plural. Requer validação de coleção não vazia. |
-| **n..m** | Intervalo fixo | Ex: `2..5`. Exige validação de limites de negócio específicos. |
+| Notação           | Semântica      | Implicação no Sistema                                                      |
+| :---------------- | :------------- | :------------------------------------------------------------------------- |
+| **1**             | Um e apenas um | Participação obrigatória (_Not Null_) e única.                             |
+| **0..1**          | Zero ou um     | Relacionamento opcional (permite valores nulos) e único.                   |
+| **\* (ou 0..\*)** | Zero ou muitos | Relacionamento opcional e plural. Implementado via coleções (_List, Set_). |
+| **1..\***         | Um ou muitos   | Participação obrigatória e plural. Requer validação de coleção não vazia.  |
+| **n..m**          | Intervalo fixo | Ex: `2..5`. Exige validação de limites de negócio específicos.             |
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/multiplicidade-possiveis.png" alt="Exemplos de intervalos de multiplicidade" width="100%">
 
@@ -108,23 +108,26 @@ Abaixo, os símbolos utilizados para especificar as restrições de cardinalidad
 De acordo com o número máximo de instâncias permitidas em cada extremidade da associação, classificamos os relacionamentos em três tipos fundamentais:
 
 ##### **A. Um para Muitos (1..\*)**
+
 Representa a hierarquia de posse ou pertencimento, sendo a base da maioria das estruturas de dados transacionais. Em um dos lados, o limite máximo é **1** e, no outro, é **muitos (\*)**.
 
-- *Exemplo*: Quem é o dono de cada carro? (Pessoa **1** <---> **\*** Carro).
+- _Exemplo_: Quem é o dono de cada carro? (Pessoa **1** <---> **\*** Carro).
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/associacoes-comuns-um-para-muitos.png" alt="Diagrama UML Um para Muitos" width="100%">
 
 ##### **B. Um para Um (1..1)**
+
 Indica forte acoplamento ou especialização de dados onde a exclusividade é mandatória, restringindo a associação a uma única instância em ambos os lados.
 
-- *Exemplo*: Quem é o responsável por cada carro? (Pessoa **1** <---> **1** Carro). Geralmente indica uma regra de exclusividade.
+- _Exemplo_: Quem é o responsável por cada carro? (Pessoa **1** <---> **1** Carro). Geralmente indica uma regra de exclusividade.
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/associacoes-comuns-um-para-um.png" alt="Diagrama UML Um para Um" width="100%">
 
 ##### **C. Muitos para Muitos (\*..\*)**
+
 Ambas as extremidades permitem múltiplas instâncias. **Atenção:** na fase de implementação (Nível Físico), este modelo geralmente exige uma tabela de associação intermediária para suportar atributos próprios do vínculo.
 
-- *Exemplo*: Quem dirige cada carro? (Vários motoristas podem dirigir o mesmo carro, e uma pessoa pode dirigir vários carros).
+- _Exemplo_: Quem dirige cada carro? (Vários motoristas podem dirigir o mesmo carro, e uma pessoa pode dirigir vários carros).
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/associacoes-comuns-muitos-para-muitos.png" alt="Diagrama UML Muitos para Muitos" width="100%">
 
@@ -141,17 +144,19 @@ Para determinar a multiplicidade correta, o analista deve aplicar a **Análise B
 
 > [!TIP]
 > **Dica Acadêmica:** Sempre verifique primeiro o limite **máximo**. Se o máximo for 1 em ambos os lados, é 1:1; se for "vários" em ambos, é N:N. O limite **mínimo** define a nulidade (opcionalidade) do campo no banco de dados.
-> 
+>
 > **Insight de Engenharia:** O limite **mínimo** dita a estratégia de persistência (salvamento), enquanto o limite **máximo** dita a estrutura de dados (variável simples vs. coleção).
 
 ---
 
 ### **7. Diretrizes de Documentação**
+
 - Posicione as multiplicidades próximas às extremidades da associação.
 - Defina claramente os **Papéis** para evitar ambiguidade em associações reflexivas.
 - Erros nesta fase propagam-se como restrições incorretas de banco de dados ou exceções de ponteiro nulo (`NullPointerException`) no código.
 
 ---
+
 ### **8. Associações Obrigatórias e Conceitos Dependentes**
 
 Na análise de sistemas, a existência de um objeto pode estar condicionada à existência de outro. Essa "regra de sobrevivência" é definida pela multiplicidade mínima.
@@ -168,14 +173,19 @@ Uma associação é tecnicamente classificada como **obrigatória** quando o con
 
 Um **Conceito Dependente** é aquele que possui pelo menos uma associação obrigatória. Em termos de ciclo de vida, um objeto dependente só pode ser instanciado se houver um objeto "pai" ou "mestre" para dar suporte à sua existência.
 
-- **Exemplo Prático:** Um **Item de Pedido** é um conceito dependente; ele não faz sentido e não deve existir no sistema sem estar vinculado a um **Pedido**.
-
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/conceito-dependente.png" alt="Exemplo de Conceito Dependente" width="100%">
+
+- **Exemplo Prático:** Um **Item de Pedido** é um conceito dependente; ele não faz sentido e não deve existir no sistema sem estar vinculado a um **Pedido**.
 
 > [!CAUTION]
 > **Atenção à Temporalidade:** Nem todo objeto obrigatório no negócio é obrigatório no modelo instantâneo. Um **Pedido** eventualmente exige um **Pagamento**, mas pode existir temporariamente sem ele durante o processo de checkout. No modelo conceitual, isso é representado como `0..1` para evitar bloqueios lógicos prematuros.
 
----
+<img src="/secoes/assets/img/associacoes-e-multiplicidades/atencao-nao-confundir.png" alt="Atenção: Não confundir associação obrigatória com obrigatoriedade temporária" width="100%">
+
+> [!CAUTION]
+> Nota: A UML tem um símbolo que denota dependência de um modo geral (uma seta tracejada), mas ele não é utilizado para representar conceitos dependentes na modelagem de domínio. A dependência é expressa exclusivamente através das multiplicidades nas associações.
+
+## <img src="/secoes/assets/img/associacoes-e-multiplicidades/nota-simbolo-que-denota-dependencia-UML.png" alt="Símbolo de dependência na UML" width="100%">
 
 ### **9. Associações Múltiplas**
 
@@ -183,8 +193,10 @@ Na modelagem de domínios complexos, é comum que dois conceitos possuam mais de
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/associacoes-multiplas.png" alt="Exemplo de múltiplas associações entre as mesmas classes" width="100%">
 
-- **Regra de Implementação:** Para que múltiplas associações entre as mesmas classes sejam válidas, os nomes dos papéis (*roles*) devem ser únicos e explícitos.
+- **Regra de Implementação:** Para que múltiplas associações entre as mesmas classes sejam válidas, os nomes dos papéis (_roles_) devem ser únicos e explícitos.
 - **Exemplo:** Uma `Pessoa` pode ser simultaneamente o **Dono** de um `Carro`, o **Condutor** e o **Responsável Legal**. No diagrama, seriam três linhas distintas com multiplicidades independentes.
+
+<img src="/secoes/assets/img/associacoes-e-multiplicidades/nomes-de-papeis-devem-ser-unicos.png" alt="Nomes de papéis devem ser únicos" width="100%">
 
 ---
 
@@ -195,6 +207,7 @@ Uma **Autoassociação** ocorre quando um conceito se relaciona consigo mesmo. �
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/autoassociacao.png" alt="Exemplo de Autoassociação" width="100%">
 
 **Aplicações Comuns:**
+
 - **Hierarquia:** Um `Funcionario` que gerencia outros `Funcionarios`.
 - **Redes Sociais:** Um `Usuario` que segue outros `Usuarios`.
 
@@ -204,12 +217,12 @@ Uma **Autoassociação** ocorre quando um conceito se relaciona consigo mesmo. �
 
 ### **11. Resumo da Unidade de Aprendizado**
 
-| Conceito | Resumo da Engenharia |
-| :--- | :--- |
+| Conceito                   | Resumo da Engenharia                                        |
+| :------------------------- | :---------------------------------------------------------- |
 | **Associação Obrigatória** | Multiplicidade mínima > 0. Define restrição de integridade. |
-| **Conceito Dependente** | Objeto cuja vida útil depende de outro vínculo. |
-| **Associações Múltiplas** | Diversas semânticas entre os mesmos pares de classes. |
-| **Autoassociação** | Relacionamento reflexivo para estruturas recursivas. |
+| **Conceito Dependente**    | Objeto cuja vida útil depende de outro vínculo.             |
+| **Associações Múltiplas**  | Diversas semânticas entre os mesmos pares de classes.       |
+| **Autoassociação**         | Relacionamento reflexivo para estruturas recursivas.        |
 
 > [!TIP]
 > **Dica de Analista:** Ao identificar uma autoassociação `*..*` (como Seguidores/Seguidos), esteja ciente de que, na implementação, isso resultará em uma tabela de junção apontando para a mesma chave primária.
