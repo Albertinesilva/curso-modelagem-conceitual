@@ -37,7 +37,7 @@ Abaixo estão listados os módulos fundamentais da modelagem conceitual, organiz
     <tr>
       <td><b>03</b></td>
       <td><b>Associações e Multiplicidades:</b> Conectividade entre objetos, cardinalidades (1..*, 0..1, *) e papéis nas relações.</td>
-      <td><a href="./secoes/associacoes-multiplicidades.md">📄 Acessar Seção</a></td>
+      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Associacoes-e-Multiplicidades.md">📄 Acessar Seção</a></td>
     </tr>
     <tr>
       <td><b>04</b></td>
