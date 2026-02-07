@@ -1,6 +1,8 @@
 ## 🔗 Seção 3: Associações e Multiplicidades
 
-As associações definem a estrutura de interdependência entre os conceitos do domínio. Sem elas, teríamos apenas entidades isoladas sem capacidade de representar processos de negócio reais.
+<p align="center">
+  <em>As associações definem a estrutura de interdependência entre os conceitos do domínio. Sem elas, teríamos apenas entidades isoladas sem capacidade de representar processos de negócio reais.</em>
+</p>
 
 ---
 
@@ -232,4 +234,5 @@ Uma **Autoassociação** ocorre quando um conceito se relaciona consigo mesmo. �
 ---
 <p align="center">
   <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Todo-Parte-e-Classes-de-Associacao.md">Seção 4: Todo-Parte (Agregação e Composição)</a>
+
 </p>
