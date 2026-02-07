@@ -102,9 +102,9 @@ O diamante deve ser usado apenas em relações reais de **Todo-Parte**. Não con
 
 ### **7. Classe de Associação**
 
-Na Engenharia de Software e modelagem de domínios complexos, nem todos os atributos de um sistema pertencem nativamente a uma entidade isolada. Surgem cenários onde determinadas informações residem estritamente no **vínculo** estabelecido entre dois conceitos. 
+Na Engenharia de Software e modelagem de domínios complexos, nem todos os atributos de um sistema pertencem nativamente a uma entidade isolada. Surgem cenários onde determinadas informações residem estritamente no **vínculo** estabelecido entre dois conceitos.
 
-A **Classe de Associação** é o recurso da UML utilizado para modelar essa semântica, permitindo que uma associação possua propriedades, comportamentos e restrições próprias, sem ferir a coesão das classes conectadas. Ela é aplicada quando um atributo não descreve o "Todo" nem a "Parte", mas sim a natureza da interação entre eles em um contexto de multiplicidade muitos-para-muitos (*..*).
+A **Classe de Associação** é o recurso da UML utilizado para modelar essa semântica, permitindo que uma associação possua propriedades, comportamentos e restrições próprias, sem ferir a coesão das classes conectadas. Ela é aplicada quando um atributo não descreve o "Todo" nem a "Parte", mas sim a natureza da interação entre eles em um contexto de multiplicidade muitos-para-muitos (_.._).
 
 ---
 
@@ -165,7 +165,8 @@ O nome do personagem é um dado que pertence exclusivamente à **associação**.
 Um erro comum de iniciantes é ignorar a restrição implícita da UML para esta estrutura.
 
 > [!CAUTION]
-> **A classe de associação indica associação ÚNICA!** > Isso significa que, entre um mesmo artista e um mesmo filme, só pode haver **uma única instância** (um único objeto) de participação.
+> **A classe de associação indica associação ÚNICA!**
+> Isso significa que, entre um mesmo artista e um mesmo filme, só pode haver **uma única instância** (um único objeto) de participação. Se um ator faz dois papéis no mesmo filme, esta modelagem impede o registro do segundo papel.
 
 <img src="/secoes/assets/img/todo-parte/atencao-associacao-unica.png" alt="Aviso sobre unicidade da classe de associação" width="100%">
 
