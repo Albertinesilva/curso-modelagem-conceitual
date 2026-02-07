@@ -1,8 +1,10 @@
-# 🏗️ Seção 4: Associações Todo-Parte (Agregação e Composição)
+## 🏗️ Seção 4: Associações Todo-Parte (Agregação e Composição)
 
-Na análise de sistemas e modelagem orientada a objetos, as associações **Todo-Parte** são especializações da associação comum. Elas são utilizadas quando um conceito não é apenas relacionado a outro, mas sim constituído por ele ou o possui como um componente estrutural.
-
-Visualmente, essas associações são identificadas por um **diamante** posicionado na extremidade da classe que representa o **"Todo"**.
+<p align="center">
+  <em>Na análise de sistemas e modelagem orientada a objetos, as associações **Todo-Parte** são especializações da associação comum. Elas são utilizadas quando um conceito não é apenas relacionado a outro, mas sim constituído por ele ou o possui como um componente estrutural.
+      
+Visualmente, essas associações são identificadas por um **diamante** posicionado na extremidade da classe que representa o **"Todo"**.</em>
+</p>
 
 ---
 
