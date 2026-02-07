@@ -1,4 +1,4 @@
-## 📊 Seção 1: Introdução à Modelagem de Domínio
+## 🏛️ Seção 1: Introdução à Modelagem de Domínio
 
 <p align="center">
   <em>A fundamentação da modelagem: da abstração de negócios à implementação técnica.</em>

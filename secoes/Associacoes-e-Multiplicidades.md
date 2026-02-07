@@ -1,4 +1,4 @@
-## 🔗 Seção 3: Associações e Multiplicidades
+## 🔌 Seção 3: Associações e Multiplicidades
 
 <p align="center">
   <em>As associações definem a estrutura de interdependência entre os conceitos do domínio. Sem elas, teríamos apenas entidades isoladas sem capacidade de representar processos de negócio reais.</em>

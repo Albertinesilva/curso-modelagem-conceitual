@@ -1,4 +1,4 @@
-## 📊 Seção 2: Conceitos e Atributos
+## 📝 Seção 2: Conceitos e Atributos
 
 <p align="center">
   <em>Definição da estrutura estática do domínio: identificação de entidades coesas e suas propriedades alfanuméricas.</em>
