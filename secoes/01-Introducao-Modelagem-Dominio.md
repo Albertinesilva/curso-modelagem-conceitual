@@ -151,19 +151,19 @@ A conclusão desta etapa inicial estabelece que a modelagem não é uma tarefa d
 
 O desenvolvimento de software moderno exige o trânsito entre diferentes visões. Cada nível resolve um problema específico e atende a diferentes stakeholders:
 
-| Nível de Abstração | Responsável | Objetivo (O Quê) | Dependência e Vínculos |
-| :--- | :--- | :--- | :--- |
-| **Conceitual (Negócio)** | Analista de Negócio | Mapear regras e entidades fundamentais sob a ótica do cliente. | Independente de **Sistema**. |
-| **Conceitual (Sistema)** | Analista de Sistemas | Mapear as entidades do domínio que farão parte da solução. | Independente de **Paradigma e Tecnologia**. |
-| **Lógico (Design)** | Projetista | Definir a estrutura e o comportamento conforme um paradigma (Ex: OO). | Preso ao **Paradigma**; Independente de Tecnologia. |
-| **Físico (Implementação)** | Implementador | Codificar, instanciar e persistir o modelo em ambiente real. | Preso ao **Paradigma e à Tecnologia**. |
+| Nível de Abstração         | Responsável          | Objetivo (O Quê)                                                      | Dependência e Vínculos                              |
+| :------------------------- | :------------------- | :-------------------------------------------------------------------- | :-------------------------------------------------- |
+| **Conceitual (Negócio)**   | Analista de Negócio  | Mapear regras e entidades fundamentais sob a ótica do cliente.        | Independente de **Sistema**.                        |
+| **Conceitual (Sistema)**   | Analista de Sistemas | Mapear as entidades do domínio que farão parte da solução.            | Independente de **Paradigma e Tecnologia**.         |
+| **Lógico (Design)**        | Projetista           | Definir a estrutura e o comportamento conforme um paradigma (Ex: OO). | Preso ao **Paradigma**; Independente de Tecnologia. |
+| **Físico (Implementação)** | Implementador        | Codificar, instanciar e persistir o modelo em ambiente real.          | Preso ao **Paradigma e à Tecnologia**.              |
 
 #### **5.2. Insights de Engenharia e Prática Profissional**
 
-* **Hierarquia de Abstração e a Independência Tecnológica:** Compreendi que a eficácia da modelagem reside na distinção rigorosa entre a **Análise** (compreensão do problema) e o **Design** (proposição da solução). Ao navegar pelos níveis Conceitual, Lógico e Físico, garantimos que a **regra de negócio** permaneça agnóstica à tecnologia. Essa abordagem protege a essência do domínio contra decisões técnicas precoces, assegurando que o modelo conceitual foque na "verdade do negócio" antes de ser condicionado às restrições de **paradigmas** ou **ambientes de execução**.
-* **Gestão da Complexidade (Carga Cognitiva):** Através da hierarquia de níveis, aprendemos a não resolver a implementação física antes de validarmos a lógica. Primeiro resolvemos o **"Quê"** (Análise - Construir a coisa certa) para depois definir o **"Como"** (Design - Construir da maneira certa).
-* **A Modelagem como Linguagem Comum:** O Modelo de Domínio atua como o elo de comunicação (linguagem onipresente) entre stakeholders e desenvolvedores, eliminando ambiguidades e alinhando expectativas desde a concepção.
-* **Transição Progressiva (O Caso da Nota Fiscal):** Através de exemplos práticos, observamos como um artefato real é gradualmente decomposto e transformado até se tornar um script SQL ou uma entidade JPA (Java), mantendo sua essência original através do mapeamento entre paradigmas.
+- **Hierarquia de Abstração e a Independência Tecnológica:** Compreendi que a eficácia da modelagem reside na distinção rigorosa entre a **Análise** (compreensão do problema) e o **Design** (proposição da solução). Ao navegar pelos níveis Conceitual, Lógico e Físico, garantimos que a **regra de negócio** permaneça agnóstica à tecnologia. Essa abordagem protege a essência do domínio contra decisões técnicas precoces, assegurando que o modelo conceitual foque na "verdade do negócio" antes de ser condicionado às restrições de **paradigmas** ou **ambientes de execução**.
+- **Gestão da Complexidade (Carga Cognitiva):** Através da hierarquia de níveis, aprendemos a não resolver a implementação física antes de validarmos a lógica. Primeiro resolvemos o **"Quê"** (Análise - Construir a coisa certa) para depois definir o **"Como"** (Design - Construir da maneira certa).
+- **A Modelagem como Linguagem Comum:** O Modelo de Domínio atua como o elo de comunicação (linguagem onipresente) entre stakeholders e desenvolvedores, eliminando ambiguidades e alinhando expectativas desde a concepção.
+- **Transição Progressiva (O Caso da Nota Fiscal):** Através de exemplos práticos, observamos como um artefato real é gradualmente decomposto e transformado até se tornar um script SQL ou uma entidade JPA (Java), mantendo sua essência original através do mapeamento entre paradigmas.
 
 > [!IMPORTANT]
 > **Conclusão Técnica:** A modelagem é o diferencial entre um sistema frágil e uma arquitetura resiliente. Um domínio bem modelado permite que o software evolua sem perder sua integridade referencial e funcional.
@@ -171,5 +171,5 @@ O desenvolvimento de software moderno exige o trânsito entre diferentes visões
 <p>Consolidada a visão macro sobre os níveis de abstração, avançaremos agora para a identificação granular das entidades e suas propriedades fundamentais.</p>
 
 <p align="center">
-  <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Conceitos-e-Atributos.md">Seção 2 - Conceitos e Atributos</a>
+  <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/02-Conceitos-e-Atributos.md">Seção 2 - Conceitos e Atributos</a>
 </p>

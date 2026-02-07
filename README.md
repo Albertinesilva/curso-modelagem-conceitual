@@ -27,32 +27,32 @@ Abaixo estão listados os módulos fundamentais da modelagem conceitual, organiz
     <tr>
       <td><b>01</b></td>
       <td><b>Introdução:</b> Fundamentos da modelagem de domínio, níveis de abstração e distinção entre Análise e Design.</td>
-      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Introducao.md">📄 Acessar Seção</a></td>
+      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/01-Introducao-Modelagem-Dominio.md">📄 Acessar Seção</a></td>
     </tr>
     <tr>
       <td><b>02</b></td>
       <td><b>Conceitos e Atributos:</b> Identificação de entidades de domínio, sintaxe de atributos e tipagem conceitual.</td>
-      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Conceitos-e-Atributos.md">📄 Acessar Seção</a></td>
+      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/02-Conceitos-e-Atributos.md">📄 Acessar Seção</a></td>
     </tr>
     <tr>
       <td><b>03</b></td>
       <td><b>Associações e Multiplicidades:</b> Conectividade entre objetos, cardinalidades (1..*, 0..1, *) e papéis nas relações.</td>
-      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Associacoes-e-Multiplicidades.md">📄 Acessar Seção</a></td>
+      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/03-Associacoes-e-Multiplicidades.md">📄 Acessar Seção</a></td>
     </tr>
     <tr>
       <td><b>04</b></td>
       <td><b>Todo-Parte e Classes de Associação:</b> Semântica de Agregação, Composição e resolução de relações N:N.</td>
-      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Todo-Parte-e-Classes-de-Associacao.md">📄 Acessar Seção</a></td>
+      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/04-Todo-Parte-e-Classe-Associacao.md">📄 Acessar Seção</a></td>
     </tr>
     <tr>
       <td><b>05</b></td>
       <td><b>Herança e Tipos:</b> Generalização/Especialização, Enumerações e tratamento de tipos primitivos em modelos OO.</td>
-      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Heranca-e-Tipos-Generalizacao.md">📄 Acessar Seção</a></td>
+      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/05-Heranca-e-Generalizacao.md">📄 Acessar Seção</a></td>
     </tr>
     <tr>
       <td><b>06</b></td>
       <td><b>Estudo de Caso:</b> Transição do Modelo Conceitual para o Modelo Físico com Java, Spring Boot e JPA/Hibernate.</td>
-      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Estudo-de-Caso.md">📄 Acessar Seção</a></td>
+      <td><a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/06-Estudo-de-Caso.md">📄 Acessar Seção</a></td>
     </tr>
   </tbody>
 </table>
