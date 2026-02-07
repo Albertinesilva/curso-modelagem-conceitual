@@ -228,3 +228,7 @@ Uma **Autoassociação** ocorre quando um conceito se relaciona consigo mesmo. �
 > [!TIP]
 > **Dica de Analista:** Ao identificar uma autoassociação `*..*` (N:N reflexiva), lembre-se que, na implementação física, isso resultará em uma tabela de junção cujas chaves estrangeiras apontam para a mesma tabela de origem.
 
+---
+<p align="center">
+  <b>Próximo Nível: 🔗 Seção 4 - Seção 4: Todo-Parte (Agregação e Composição)</b>
+</p>
