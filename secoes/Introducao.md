@@ -143,20 +143,35 @@ Diferente do Relacional, onde os dados são "passivos" em tabelas, no paradigma 
 
 ---
 
-## 🎯 Conclusão do Módulo: A Fundamentação da Abstração
+### 🎯 **5. Recapitulação Técnica: Síntese do Aprendizado**
 
-A conclusão desta etapa inicial estabelece a compreensão de que a modelagem não é uma tarefa meramente documental, mas um processo de **tradução sistemática**. Compreender o domínio é garantir que a solução tecnológica construída seja, antes de tudo, fiel à realidade que ela se propõe a resolver.
+A conclusão desta etapa inicial estabelece que a modelagem não é uma tarefa documental, mas um processo de **tradução sistemática**. Compreender o domínio é garantir que a solução tecnológica construída seja, antes de tudo, fiel à realidade que se propõe a resolver.
 
-### **Principais Insights Adquiridos:**
+#### **5.1. Matriz de Transição e Níveis de Abstração**
 
-- **Hierarquia de Níveis de Abstração:** Compreendi que o desenvolvimento de software exige diferentes visões (Conceitual, Lógica e Física). Cada nível resolve um problema específico: o Conceitual foca na **regra**, o Lógico no **paradigma** e o Físico na **execução**.
-- **O Valor da Fase de Análise:** Ficou clara a importância de separar a "compreensão do problema" (Análise) da "construção da solução" (Design). Essa separação evita que decisões tecnológicas precoces limitem ou distorçam os requisitos de negócio.
-- **A Modelagem como Linguagem Comum:** O Modelo de Domínio atua como o elo de comunicação entre stakeholders (negócio) e desenvolvedores (técnico), eliminando ambiguidades e alinhando as expectativas desde a concepção do sistema.
-- **Transição Progressiva:** Através do exemplo da Nota Fiscal, observei como um artefato do mundo real é gradualmente decomposto e transformado até se tornar um script SQL ou uma entidade JPA, sem perder sua essência original.
+O desenvolvimento de software moderno exige o trânsito entre diferentes visões. Cada nível resolve um problema específico e atende a diferentes stakeholders:
 
-Com a visão macro dos níveis de abstração consolidada, o próximo passo é mergulhar na **Seção 2**, onde iniciaremos a identificação granular das entidades através de **Conceitos e Atributos**.
+| Nível de Abstração | Responsável | Objetivo (O Quê) | Dependência e Vínculos |
+| :--- | :--- | :--- | :--- |
+| **Conceitual (Negócio)** | Analista de Negócio | Mapear regras e entidades fundamentais sob a ótica do cliente. | Independente de **Sistema**. |
+| **Conceitual (Sistema)** | Analista de Sistemas | Mapear as entidades do domínio que farão parte da solução. | Independente de **Paradigma e Tecnologia**. |
+| **Lógico (Design)** | Projetista | Definir a estrutura e o comportamento conforme um paradigma (Ex: OO). | Preso ao **Paradigma**; Independente de Tecnologia. |
+| **Físico (Implementação)** | Implementador | Codificar, instanciar e persistir o modelo em ambiente real. | Preso ao **Paradigma e à Tecnologia**. |
+
+#### **5.2. Insights de Engenharia e Prática Profissional**
+
+* **Hierarquia de Níveis de Abstração:** Compreendi que o desenvolvimento de software exige diferentes visões (Conceitual, Lógica e Física). Cada nível resolve um problema específico: o Conceitual foca na **regra**, o Lógico no **paradigma** e o Físico na **execução**.
+* **Agnosticismo Tecnológico e Valor da Análise:** Ficou clara a importância de separar a "compreensão do problema" (**Análise**) da "construção da solução" (**Design**). O modelo conceitual deve ser neutro e sobreviver a trocas de tecnologia, pois foca na "verdade do negócio".
+* **Gestão da Complexidade (Carga Cognitiva):** Através da hierarquia de níveis, aprendemos a não resolver a implementação física antes de validarmos a lógica. Primeiro resolvemos o **"Quê"** (Análise - Construir a coisa certa) para depois definir o **"Como"** (Design - Construir da maneira certa).
+* **A Modelagem como Linguagem Comum:** O Modelo de Domínio atua como o elo de comunicação (linguagem onipresente) entre stakeholders e desenvolvedores, eliminando ambiguidades e alinhando expectativas desde a concepção.
+* **Transição Progressiva (O Caso da Nota Fiscal):** Através de exemplos práticos, observamos como um artefato real é gradualmente decomposto e transformado até se tornar um script SQL ou uma entidade JPA (Java), mantendo sua essência original através do mapeamento entre paradigmas.
+
+> [!IMPORTANT]
+> **Conclusão Técnica:** A modelagem é o diferencial entre um sistema frágil e uma arquitetura resiliente. Um domínio bem modelado permite que o software evolua sem perder sua integridade referencial e funcional.
 
 ---
+
+Com a visão macro dos níveis de abstração consolidada, o próximo passo é mergulhar na **Seção 2**, onde iniciaremos a identificação granular das entidades através de **Conceitos e Atributos**.
 
 <p align="center">
   <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Conceitos-e-Atributos.md">Seção 2 - Conceitos e Atributos</a>
