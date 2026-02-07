@@ -102,13 +102,11 @@ O diamante deve ser usado apenas em relações reais de **Todo-Parte**. Não con
 
 ### **7. Classe de Associação**
 
-Na modelagem de domínios, surgem situações onde uma associação entre dois conceitos possui atributos próprios que não pertencem logicamente a nenhuma das partes isoladamente, mas sim ao "vínculo" entre elas. Para esses casos, utilizamos a **Classe de Associação**.
+Na Engenharia de Software e modelagem de domínios complexos, nem todos os atributos de um sistema pertencem nativamente a uma entidade isolada. Surgem cenários onde determinadas informações residem estritamente no **vínculo** estabelecido entre dois conceitos. 
+
+A **Classe de Associação** é o recurso da UML utilizado para modelar essa semântica, permitindo que uma associação possua propriedades, comportamentos e restrições próprias, sem ferir a coesão das classes conectadas. Ela é aplicada quando um atributo não descreve o "Todo" nem a "Parte", mas sim a natureza da interação entre eles em um contexto de multiplicidade muitos-para-muitos (*..*).
 
 ---
-
-### **7. Classe de Associação**
-
-Em muitos cenários de modelagem, uma associação entre dois conceitos possui atributos que não pertencem exclusivamente a nenhum deles, mas sim ao fato de estarem relacionados. Para representar essa semântica, utilizamos a **Classe de Associação**.
 
 #### **7.1. Exemplo Motivador**
 
