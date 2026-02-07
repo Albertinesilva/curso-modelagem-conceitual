@@ -181,20 +181,34 @@ O primeiro esboço raramente é final. É necessário refinar as entidades para 
 
 ---
 
-## 🎯 Conclusão do Módulo: A Arte de Isolar Conceitos
+### 🎯 **5. Recapitulação Técnica: A Arte de Isolar e Estruturar Conceitos**
 
-A conclusão desta etapa de aprendizado consolida a habilidade de **abstração**. Identificar conceitos e atributos é o primeiro passo para transformar um problema de negócio subjetivo em uma solução de software **estruturada**.
+Nesta etapa, a modelagem deixa de ser uma visão panorâmica e passa a focar na granularidade das informações. A identificação precisa de **Conceitos** e **Atributos** é o que garante que o sistema seja uma representação fiel, coesa e eficiente do negócio.
 
-### **Principais Insights Adquiridos:**
+#### **5.1. Matriz de Componentes Estruturais**
 
-- **Agnosticismo de Implementação:** Compreendi que, no nível conceitual, o foco é a **regra**, e não o código. Não importa se os dados serão salvos em um arquivo `.txt`, em um banco MySQL ou em memória; o que importa é a estrutura lógica da informação.
-- **Análise Léxica como Ferramenta:** A técnica de identificar substantivos e objetos de valor em requisitos (como Visão Geral e Casos de Uso) revelou-se fundamental para evitar que entidades importantes sejam omitidas ou que elementos irrelevantes (como detalhes de interface) poluam o modelo.
-- **A Rigidez da Notação UML:** O uso correto da sintaxe para atributos e a identificação do `<<oid>>` garantem que o modelo seja legível por qualquer profissional da área, servindo como uma "planta arquitetônica" universal.
-- **O Valor do Refinamento:** A modelagem é um processo iterativo. O primeiro diagrama serve para validar o entendimento inicial, mas é através do refinamento constante que eliminamos redundâncias e alcançamos a **Primeira Forma Normal (1FN)**.
+| Componente | Definição Técnica | Critério de Inclusão |
+| :--- | :--- | :--- |
+| **Conceito (Classe)** | Unidade coesa que representa algo com significado real para o domínio. | Deve possuir necessidade de armazenamento e identidade própria (substantivos do negócio). |
+| **Atributo** | Dado alfanumérico simples que qualifica e descreve um conceito. | Deve ser **atômico** (cumprindo a regra de não ser composto nem multivalorado). |
+| **Identificador (OID)** | Atributo ou conjunto que garante a distinção única entre instâncias. | Essencial para garantir a identidade do objeto e a integridade referencial futura. |
 
-Com esta base sólida em conceitos e propriedades atômicas, o próximo passo lógico é estabelecer como essas unidades de informação se comunicam e dependem umas das outras através das **Associações e Multiplicidades**.
+
+
+#### **5.2. Insights de Engenharia e Prática Profissional**
+
+* **Agnosticismo de Implementação e Escopo do Problema:** Reforcei a compreensão de que o modelo conceitual pertence estritamente ao **escopo do problema**. O foco reside na estrutura lógica e na **regra**, e não no código. A estrutura deve ser válida independentemente de o dado ser persistido em SQL, NoSQL ou memória.
+* **Normalização Precoce (Conformidade com 1FN):** Na engenharia de software, aplicamos restrições da **Primeira Forma Normal (1FN)** já na modelagem. Atributos não podem ser listas ou objetos compostos; caso um atributo apresente essa complexidade, ele é "promovido" a um novo **Conceito**, garantindo a atomicidade dos dados.
+* **Análise Léxica como Heurística de Design:** Aprendi a extrair informações de documentos de requisitos (Visão Geral e Casos de Uso) através da identificação sistemática de substantivos. Essa técnica reduz a subjetividade, evitando que detalhes de interface poluam o modelo de domínio.
+* **Semântica, Tipagem e Derivação:** A utilização da sintaxe UML (`nome : tipo`) e a identificação de **atributos derivados** (valores calculados) funcionam como uma "planta arquitetônica" universal. Isso evita redundâncias desnecessárias e define claramente o que deve ser armazenado versus o que deve ser processado em tempo de execução.
+* **Processo Iterativo e Refinamento:** A modelagem não é estática. O primeiro diagrama valida o entendimento inicial, mas é através do refinamento constante que eliminamos redundâncias e alcançamos a elegância estrutural necessária para sistemas escaláveis.
+
+> [!IMPORTANT]
+> **Conclusão Técnica:** A qualidade de um sistema começa na precisão de seus dados. Um conceito mal isolado ou um atributo mal posicionado gera dívida técnica e inconsistência. Esta base sólida de propriedades atômicas é o alicerce indispensável para a próxima etapa: a conexão das entidades.
 
 ---
+
+Consolidada a anatomia das entidades, avançaremos agora para a exploração de como esses conceitos se comunicam e dependem uns dos outros através das **Associações e Multiplicidades**.
 
 <p align="center">
   <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/Associacoes-e-Multiplicidades.md">Seção 3 - Associações e Multiplicidades</a>
