@@ -159,13 +159,13 @@ Para determinar a multiplicidade correta, o analista deve aplicar a **Análise B
 
 ### **8. Associações Obrigatórias e Conceitos Dependentes**
 
-Na análise de sistemas, a existência de um objeto pode estar condicionada à existência de outro. Essa "regra de sobrevivência" é definida pela multiplicidade mínima.
+Na análise de sistemas, a existência de um objeto pode estar condicionada à existência de outro. Essa "regra de sobrevivência" é definida pela **multiplicidade mínima**.
 
 #### **8.1. Associação Obrigatória**
 
 Uma associação é tecnicamente classificada como **obrigatória** quando o conceito associado desempenha um papel cuja multiplicidade mínima é maior que zero (ex: `1` ou `1..*`).
 
-- **Regra de Negócio:** Se um objeto **A** exige um objeto **B** para ser válido, a associação é obrigatória para **A**.
+- **Regra de Negócio:** Se um objeto **A** exige um objeto **B** para ser válido e funcional, a associação é obrigatória para **A**.
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/associacao-obrigatoria.png" alt="Exemplo de Associação Obrigatória" width="100%">
 
@@ -175,26 +175,28 @@ Um **Conceito Dependente** é aquele que possui pelo menos uma associação obri
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/conceito-dependente.png" alt="Exemplo de Conceito Dependente" width="100%">
 
-- **Exemplo Prático:** Um **Item de Pedido** é um conceito dependente; ele não faz sentido e não deve existir no sistema sem estar vinculado a um **Pedido**.
+- **Exemplo Prático:** Um **Item de Pedido** é um conceito dependente; ele não possui semântica isolada e não deve existir no sistema sem estar vinculado a um **Pedido**.
 
 > [!CAUTION]
-> **Atenção à Temporalidade:** Nem todo objeto obrigatório no negócio é obrigatório no modelo instantâneo. Um **Pedido** eventualmente exige um **Pagamento**, mas pode existir temporariamente sem ele durante o processo de checkout. No modelo conceitual, isso é representado como `0..1` para evitar bloqueios lógicos prematuros.
+> **Atenção à Temporalidade:** Nem todo objeto obrigatório no negócio é obrigatório no modelo instantâneo. Um **Pedido** eventualmente exige um **Pagamento**, mas pode existir temporariamente sem ele durante o processo de checkout. No modelo conceitual, isso é representado como `0..1` para evitar bloqueios lógicos prematuros no software.
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/atencao-nao-confundir.png" alt="Atenção: Não confundir associação obrigatória com obrigatoriedade temporária" width="100%">
 
-> [!CAUTION]
-> Nota: A UML tem um símbolo que denota dependência de um modo geral (uma seta tracejada), mas ele não é utilizado para representar conceitos dependentes na modelagem de domínio. A dependência é expressa exclusivamente através das multiplicidades nas associações.
+> [!IMPORTANT]
+> **Nota sobre Notação:** Embora a UML possua um símbolo específico para dependência (seta tracejada), ele é um artefato de design de software geral. Na **Modelagem de Domínio**, a dependência de existência é expressa exclusivamente através das **multiplicidades** nas associações.
 
-## <img src="/secoes/assets/img/associacoes-e-multiplicidades/nota-simbolo-que-denota-dependencia-UML.png" alt="Símbolo de dependência na UML" width="100%">
+<img src="/secoes/assets/img/associacoes-e-multiplicidades/nota-simbolo-que-denota-dependencia-UML.png" alt="Símbolo de dependência na UML" width="100%">
+
+---
 
 ### **9. Associações Múltiplas**
 
-Na modelagem de domínios complexos, é comum que dois conceitos possuam mais de um tipo de relacionamento simultâneo. Cada linha de associação representa uma semântica de negócio diferente.
+Na modelagem de domínios complexos, é comum que dois conceitos possuam mais de um tipo de relacionamento simultâneo. Cada linha de associação representa uma semântica de negócio distinta.
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/associacoes-multiplas.png" alt="Exemplo de múltiplas associações entre as mesmas classes" width="100%">
 
-- **Regra de Implementação:** Para que múltiplas associações entre as mesmas classes sejam válidas, os nomes dos papéis (_roles_) devem ser únicos e explícitos.
-- **Exemplo:** Uma `Pessoa` pode ser simultaneamente o **Dono** de um `Carro`, o **Condutor** e o **Responsável Legal**. No diagrama, seriam três linhas distintas com multiplicidades independentes.
+- **Regra de Design:** Para que múltiplas associações entre as mesmas classes sejam válidas, os **nomes dos papéis (roles)** devem ser únicos e explícitos.
+- **Exemplo:** Uma `Pessoa` pode ser simultaneamente a **Dona** de um `Carro`, a **Condutora** e a **Responsável Legal**. No diagrama, cada papel é representado por uma linha distinta com multiplicidades independentes.
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/nomes-de-papeis-devem-ser-unicos.png" alt="Nomes de papéis devem ser únicos" width="100%">
 
@@ -202,27 +204,27 @@ Na modelagem de domínios complexos, é comum que dois conceitos possuam mais de
 
 ### **10. Autoassociações (Associações Reflexivas)**
 
-Uma **Autoassociação** ocorre quando um conceito se relaciona consigo mesmo. É uma estrutura poderosa para representar hierarquias e redes sociais dentro do sistema.
+Uma **Autoassociação** ocorre quando um conceito se relaciona consigo mesmo. É uma estrutura poderosa para representar hierarquias e redes de relacionamento dentro do domínio.
 
 <img src="/secoes/assets/img/associacoes-e-multiplicidades/autoassociacao.png" alt="Exemplo de Autoassociação" width="100%">
 
-**Aplicações Comuns:**
+**Aplicações Típicas:**
+- **Estruturas Hierárquicas:** Um `Funcionario` que gerencia outros `Funcionarios`.
+- **Grafos Sociais:** Um `Usuario` que segue outros `Usuarios`.
 
-- **Hierarquia:** Um `Funcionario` que gerencia outros `Funcionarios`.
-- **Redes Sociais:** Um `Usuario` que segue outros `Usuarios`.
-
-**Análise Técnica:** Em uma autoassociação, as duas extremidades da mesma linha tocam a mesma classe, mas obrigatoriamente possuem papéis distintos (ex: "seguidor" e "seguido") para diferenciar a origem e o destino do vínculo.
+**Análise Técnica:** Em uma autoassociação, as duas extremidades da mesma linha conectam-se à mesma classe. É mandatório o uso de papéis distintos (ex: "seguidor" e "seguido") para diferenciar a origem e o destino do vínculo lógico.
 
 ---
 
 ### **11. Resumo da Unidade de Aprendizado**
 
-| Conceito                   | Resumo da Engenharia                                        |
-| :------------------------- | :---------------------------------------------------------- |
+| Conceito | Resumo da Engenharia |
+| :--- | :--- |
 | **Associação Obrigatória** | Multiplicidade mínima > 0. Define restrição de integridade. |
-| **Conceito Dependente**    | Objeto cuja vida útil depende de outro vínculo.             |
-| **Associações Múltiplas**  | Diversas semânticas entre os mesmos pares de classes.       |
-| **Autoassociação**         | Relacionamento reflexivo para estruturas recursivas.        |
+| **Conceito Dependente** | Objeto cuja vida útil depende de outro vínculo de associação. |
+| **Associações Múltiplas** | Diferentes semânticas de relacionamento entre as mesmas classes. |
+| **Autoassociação** | Relacionamento reflexivo para representação de estruturas recursivas. |
 
 > [!TIP]
-> **Dica de Analista:** Ao identificar uma autoassociação `*..*` (como Seguidores/Seguidos), esteja ciente de que, na implementação, isso resultará em uma tabela de junção apontando para a mesma chave primária.
+> **Dica de Analista:** Ao identificar uma autoassociação `*..*` (N:N reflexiva), lembre-se que, na implementação física, isso resultará em uma tabela de junção cujas chaves estrangeiras apontam para a mesma tabela de origem.
+
