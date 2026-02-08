@@ -58,25 +58,34 @@ Abaixo estão listados os módulos fundamentais da modelagem conceitual, organiz
 </table>
 
 ---
+
 ### 🛣️ Roadmap de Evolução: Além da Modelagem
 
 A conclusão deste curso (Seção 07) marca o fim da teoria base, mas o início da jornada arquitetural. Abaixo estão os pilares recomendados para aprofundar os conhecimentos adquiridos neste repositório:
 
 #### **1. Design Patterns (Padrões de Projeto)**
+
 Agora que você domina classes e associações, o próximo passo é aprender soluções consagradas para problemas recorrentes.
-* **Foco:** Estudar padrões como *Strategy*, *Observer* e *Factory* para tornar seus modelos UML mais flexíveis e menos acoplados.
+
+- **Foco:** Estudar padrões como _Strategy_, _Observer_ e _Factory_ para tornar seus modelos UML mais flexíveis e menos acoplados.
 
 #### **2. Domain-Driven Design (DDD)**
+
 Aprenda a lidar com a complexidade de grandes sistemas dividindo o modelo conceitual em contextos delimitados.
-* **Foco:** Entender a distinção entre *Entities*, *Value Objects* e *Aggregates* dentro de um modelo de domínio real.
+
+- **Foco:** Entender a distinção entre _Entities_, _Value Objects_ e _Aggregates_ dentro de um modelo de domínio real.
 
 #### **3. Clean Architecture e Princípios SOLID**
+
 Aplique regras de design que garantem que sua implementação Java seja testável e fácil de manter.
-* **Foco:** Especial atenção ao **LSP (Liskov Substitution Principle)**, que valida tecnicamente se sua hierarquia de Herança (Seção 05) está correta.
+
+- **Foco:** Especial atenção ao **LSP (Liskov Substitution Principle)**, que valida tecnicamente se sua hierarquia de Herança (Seção 05) está correta.
 
 #### **4. Otimização de Persistência (JPA/Hibernate)**
+
 Traduzir o modelo para o banco é apenas o começo; o próximo nível é a performance.
-* **Foco:** Estudar estratégias de carregamento (*Lazy vs Eager*) e resolver problemas de performance em associações complexas.
+
+- **Foco:** Estudar estratégias de carregamento (_Lazy vs Eager_) e resolver problemas de performance em associações complexas.
 
 ---
 
