@@ -266,6 +266,7 @@ Exploraremos os critérios avançados de aplicabilidade, as restrições que mol
 Prepare-se para entender as nuances entre herança e composição, e como decidir o melhor caminho para o design de sistemas robustos.
 
 ---
+
 ### **3. Herança (Parte 2): Quando o uso é Impróprio?**
 
 Embora a herança seja uma ferramenta poderosa para o reuso, seu uso indevido pode gerar modelos rígidos e semanticamente incorretos. Esta etapa foca nos indicativos de que a herança está sendo aplicada de forma imprópria.
@@ -277,27 +278,29 @@ Existem dois questionamentos fundamentais que revelam se a herança é a escolha
 1.  **Dependência de Associação**: Para o conceito da subclasse fazer sentido, ele precisaria estar associado a outro conceito externo?
 2.  **Acúmulo de Papéis**: Uma mesma instância da Superclasse pode assumir os papéis de duas ou mais subclasses simultaneamente?
 
-<img src="/secoes/assets/img/heranca-e-generalizacao/image_e0d174.png" alt="Indicativos de uso impróprio de herança" width="100%" />
+<img src="/secoes/assets/img/heranca-e-generalizacao/heranca-parte-2-uso-improprio.png" alt="Indicativos de uso impróprio de herança" width="100%" />
 
 ---
 
 #### **O Problema dos "Papéis" vs. "Especializações"**
 
-Um erro comum é modelar **papéis temporários** como se fossem **especializações permanentes**. 
+Um erro comum é modelar **papéis temporários** como se fossem **especializações permanentes**.
 
 No exemplo de `Pessoa`, `Funcionario` e `Cliente`, a herança é considerada imprópria porque:
-* **Multifuncionalidade**: Uma mesma pessoa física pode ser, ao mesmo tempo, um funcionário da empresa e um cliente que realiza compras. Na herança clássica, um objeto não pode "trocar" de classe ou pertencer a duas subclasses irmãs ao mesmo tempo de forma flexível.
-* **Associações Externas**: O conceito de `Funcionario` só faz sentido se estiver ligado a um `Departamento`. O conceito de `Cliente` só faz sentido se estiver ligado a um `Pedido`.
 
-<img src="/secoes/assets/img/heranca-e-generalizacao/image_e0d518.png" alt="Transição de Herança para Classes de Associação" width="100%" />
+- **Multifuncionalidade**: Uma mesma pessoa física pode ser, ao mesmo tempo, um funcionário da empresa e um cliente que realiza compras. Na herança clássica, um objeto não pode "trocar" de classe ou pertencer a duas subclasses irmãs ao mesmo tempo de forma flexível.
+- **Associações Externas**: O conceito de `Funcionario` só faz sentido se estiver ligado a um `Departamento`. O conceito de `Cliente` só faz sentido se estiver ligado a um `Pedido`.
+
+<img src="/secoes/assets/img/heranca-e-generalizacao/heranca-parte-2-uso-correto.png" alt="Transição de Herança para Classes de Associação" width="100%" />
 
 #### **A Solução: Classes de Associação**
 
 Quando os conceitos representam papéis que uma entidade desempenha em relação a outras, a modelagem correta utiliza **Classes de Associação**.
-* **Flexibilidade**: Permite que uma `Pessoa` seja ligada a um `Departamento` (tornando-se funcionário) e a um `Pedido` (tornando-se cliente) sem restrições de hierarquia rígida.
-* **Atributos de Contexto**: Atributos como `salario` e `limiteDeCredito` passam a pertencer à relação entre os objetos, e não à essência da pessoa.
 
-<img src="/secoes/assets/img/heranca-e-generalizacao/image_e0d8dd.png" alt="Comparativo: Herança vs. Papéis em tempo de execução" width="100%" />
+- **Flexibilidade**: Permite que uma `Pessoa` seja ligada a um `Departamento` (tornando-se funcionário) e a um `Pedido` (tornando-se cliente) sem restrições de hierarquia rígida.
+- **Atributos de Contexto**: Atributos como `salario` e `limiteDeCredito` passam a pertencer à relação entre os objetos, e não à essência da pessoa.
+
+<img src="/secoes/assets/img/heranca-e-generalizacao/heranca-parte-2-uso-correto-com-instancia.png" alt="Comparativo: Herança vs. Papéis em tempo de execução" width="100%" />
 
 ---
 
@@ -308,7 +311,7 @@ Para garantir que sua modelagem seja robusta e fácil de manter, utilize este re
 ### **Indicativos de que o uso da herança é IMPRÓPRIO:**
 
 1.  **Sentido Contextual**: Se a subclasse só existe para "ligar" a superclasse a outro objeto (ex: Pessoa ao Departamento), você provavelmente tem uma **Associação**, não uma Herança.
-2.  **Sobreposição de Conceitos**: Se você puder dizer: *"Um mesmo **<Pessoa>** pode ser **<Funcionario>** e também **<Cliente>** ao mesmo tempo"*, a herança deve ser descartada.
+2.  **Sobreposição de Conceitos**: Se você puder dizer: _"Um mesmo **<Pessoa>** pode ser **<Funcionario>** e também **<Cliente>** ao mesmo tempo"_, a herança deve ser descartada.
 
 > [!CAUTION]
 > **Conclusão Crítica:** "Funcionário" e "Cliente" muitas vezes não são especializações biológicas ou fixas, mas sim **papéis** que uma pessoa assume. Modelar papéis como herança limita a evolução do sistema.
@@ -316,11 +319,6 @@ Para garantir que sua modelagem seja robusta e fácil de manter, utilize este re
 ---
 
 <p align="center">
-  <b>Finalizada a Seção 5! 🏁</b><br>
-  Próximo passo sugerido: aplicar estes conceitos no 
-  <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/06-Estudo-de-Caso.md">Estudo de Caso Prático</a>.
-</p>
-
-<p align="center">
-  <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/06-Estudo-de-Caso.md">Seção 6: Estudo de Caso</a>
+<b>Finalizada a Seção 5! 🏁</b><br>
+  <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/06-Estudo-de-Caso.md">Seção 6: Estudo de Caso Prático</a>
 </p>
