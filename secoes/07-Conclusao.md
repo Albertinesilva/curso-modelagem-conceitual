@@ -33,7 +33,8 @@ A modelagem é o alicerce para arquiteturas mais complexas. O aprendizado aqui e
 
 ---
 
-> "O objetivo geral deste estudo de caso foi mostrar na prática como um modelo conceitual pode ser implementado sobre o paradigma orientado a objetos, usando padrões de mercado e boas práticas."
+> [!IMPORTANT]
+> 🎓 **Objetivo Central:** "O objetivo geral deste estudo de caso foi mostrar na prática como um modelo conceitual pode ser implementado sobre o paradigma orientado a objetos, usando padrões de mercado e boas práticas."
 
 ---
 
