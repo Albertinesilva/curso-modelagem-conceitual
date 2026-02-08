@@ -232,6 +232,43 @@ A aplicação de herança deve considerar a necessidade de instanciar a classe b
 
 ---
 
+---
+
+## 🎯 Recapitulação Técnica: Herança (Parte 1)
+
+Nesta etapa, consolidamos os fundamentos do mecanismo de herança, focando-se na sua aplicação semântica e nas restrições de design que garantem a integridade do modelo conceitual.
+
+### **1. Critérios de Elegibilidade**
+
+A implementação de uma hierarquia de classes não deve ser baseada apenas na similaridade de atributos, mas sim em dois pilares fundamentais:
+
+- **Estrutura Comum:** Verificação técnica da existência de atributos e comportamentos redundantes entre dois ou mais conceitos.
+- **Validação Semântica (É-UM):** Confirmação de que a subclasse representa uma especialização lógica de uma superclasse mais genérica.
+
+### **2. Glossário de Conceitos Fundamentais**
+
+- **Generalização e Especialização:** O processo de abstrair características comuns (generalizar) ou detalhar comportamentos específicos (especializar).
+- **Superclasse vs. Subclasse:** A distinção entre o conceito "pai" (genérico) e o conceito "filho" (especializado).
+- **Herança como Extensão:** A compreensão de que uma subclasse amplia a superclasse, sendo permitido adicionar novos elementos, mas estritamente proibido remover elementos herdados.
+- **Natureza da Associação:** A herança é uma relação estática entre **classes**; no tempo de execução, existe apenas uma única instância que compreende toda a estrutura da hierarquia.
+
+### **3. Diretrizes de Design (Ressalvas)**
+
+- **Dados Exclusivos (Ressalva 1):** A herança é injustificada se as subclasses não possuírem dados ou comportamentos únicos. Nestes casos, a solução ideal é a utilização de **Enumerações**.
+- **Abstração e Herança Total (Ressalva 2):** Deve-se privilegiar a herança total, definindo a superclasse como **Abstrata** (nome em _itálico_ na UML). Isto impede a existência de instâncias genéricas e garante que apenas os tipos especializados sejam manipulados pelo sistema.
+
+---
+
+## 🚀 Próximo Passo: Critérios de Aplicabilidade e Restrições de Design
+
+Enquanto a primeira parte focou-se no "o que é" e "quando evitar", a **Herança (Parte 2)** aprofundará o "como refinar".
+
+Exploraremos os critérios avançados de aplicabilidade, as restrições que moldam hierarquias complexas e como garantir que a organização taxonômica do seu modelo suporte a evolução do software sem criar um acoplamento rígido ou desnecessário.
+
+Prepare-se para entender as nuances entre herança e composição, e como decidir o melhor caminho para o design de sistemas robustos.
+
+---
+
 <p align="center">
   <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/06-Estudo-de-Caso.md">Seção 6: Estudo de Caso</a>
 </p>
