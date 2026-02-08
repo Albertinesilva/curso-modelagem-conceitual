@@ -23,9 +23,7 @@ No design de software profissional, uma enumeração é estrategicamente conside
 
 #### **Representação Visual e Exemplos**
 
-<p align="center">
-  <img src="/secoes/assets/img/heranca-e-generalizacao/enumeracoes.png" alt="Enumeração UML" />
-</p>
+<img src="/secoes/assets/img/heranca-e-generalizacao/enumeracoes.png" alt="Enumeração UML" />
 
 Com base na modelagem apresentada acima, as enumerações permitem padronizar fluxos e calendários:
 
@@ -36,9 +34,7 @@ Com base na modelagem apresentada acima, as enumerações permitem padronizar fl
 
 Para simplificar o diagrama principal do sistema, recomenda-se incluir as enumerações em um diagrama separado. No diagrama do sistema, o nome da enumeração é representado diretamente como um tipo de atributo.
 
-<p align="center">
-  <img src="/secoes/assets/img/heranca-e-generalizacao/uso-da-enumeracao.png" alt="Uso da Enumeração no Pedido" />
-</p>
+<img src="/secoes/assets/img/heranca-e-generalizacao/uso-da-enumeracao.png" alt="Uso da Enumeração no Pedido" />
 
 Esta abordagem mantém o diagrama principal limpo e legível. Como demonstrado na classe `Pedido`, o atributo `estado` assume o tipo `EstadoDoPedido`, delegando a definição dos valores possíveis para a estrutura da enumeração externa.
 
@@ -66,9 +62,7 @@ Assim como as enumerações, os **Tipos Primitivos** são considerados um "meio-
 
 #### **Exemplos de Tipos Primitivos**
 
-<p align="center">
-  <img src="/secoes/assets/img/heranca-e-generalizacao/tipos-primitivos.png" alt="Exemplos de Tipos Primitivos UML" />
-</p>
+<img src="/secoes/assets/img/heranca-e-generalizacao/tipos-primitivos.png" alt="Exemplos de Tipos Primitivos UML" />
 
 A modelagem de tipos primitivos permite definir estruturas claras para atributos que, embora simples, possuem componentes internos:
 
@@ -87,9 +81,7 @@ Embora possamos modelar um tipo primitivo `Data` com campos inteiros (`dia`, `me
 
 No diagrama abaixo, observamos como os tipos primitivos (Data, Posicao, Telefone) são representados como estruturas de apoio, enquanto as classes principais (`Pessoa`, `Pedido`) os utilizam como tipos de atributos:
 
-<p align="center">
-  <img src="/secoes/assets/img/heranca-e-generalizacao/enumeracao-diagrama-exemplo.png" alt="Diagrama de Classes com Tipos Primitivos" />
-</p>
+<img src="/secoes/assets/img/heranca-e-generalizacao/enumeracao-diagrama-exemplo.png" alt="Diagrama de Classes com Tipos Primitivos" />
 
 - **Perspectiva de Implementação (Java):** Internamente, a data (ou data-hora) não é fragmentada em vários campos inteiros. O tipo `Date` armazena a informação como um único número inteiro longo (`long`), representando os milissegundos decorridos desde a _Unix Epoch_ (01/01/1970 00:00:00 GMT).
 
@@ -97,29 +89,27 @@ No diagrama abaixo, observamos como os tipos primitivos (Data, Posicao, Telefone
 
 A imagem a seguir detalha a "ressalva" técnica e fornece um exemplo de código para validar como o sistema interpreta o tempo de forma linear e atômica:
 
-<p align="center">
-  <img src="/secoes/assets/img/heranca-e-generalizacao/ressalva.png" alt="Ressalva Técnica sobre Datas" />
-</p>
+<img src="/secoes/assets/img/heranca-e-generalizacao/ressalva.png" alt="Ressalva Técnica sobre Datas" />
 
 - **Reflexo na Modelagem:** Ao modelar, seu foco deve ser a necessidade do negócio. Se a regra exige visualizar `dia`, `mes` e `ano`, a decomposição no diagrama é válida para clareza, mas o desenvolvedor deve estar ciente da abstração de implementação subjacente para garantir performance e precisão.
 
 ---
 
-## 🎯 Recapitulação Técnica: Enumerações e tipos primitivos.
+### 🎯 Recapitulação Técnica: Enumerações e tipos primitivos.
 
 Nesta etapa, consolidamos a organização do modelo conceitual através da padronização de domínios e tipos de dados, focando na precisão técnica e na limpeza visual dos diagramas.
 
-### **1. Enumerações (Enumerations)**
+#### **1. Enumerações (Enumerations)**
 
 - **Conceito Híbrido**: "Meio termo" entre conceito e atributo.
 - **Domínio Finito**: Conjunto fixo de valores constantes relevantes para o negócio.
 
-### **2. Tipos Primitivos Customizados**
+#### **2. Tipos Primitivos Customizados**
 
 - **Simplicidade Estrutural**: Conceitos que não exigem identidade própria (OID).
 - **Exemplos**: `ISBN`, `CEP`, `Posicao` e `Telefone`.
 
-### **3. Ressalva Técnica: A Abstração de Datas**
+#### **3. Ressalva Técnica: A Abstração de Datas**
 
 - **Modelagem vs. Implementação**: Enquanto modelamos campos separados (dia, mês, ano) para clareza, a implementação física costuma utilizar um valor atômico (milissegundos) para eficiência.
 
