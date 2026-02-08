@@ -258,5 +258,6 @@ Para manter o rigor técnico em projetos de Engenharia de Software, considere as
 ---
 
 <p align="center">
+<b>Finalizada a Seção 4! 🏁</b><br>
   <b>Próximo Tópico: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/05-Heranca-e-Generalizacao.md">Seção 5: Herança e Tipos (Generalização)</a>
 </p>

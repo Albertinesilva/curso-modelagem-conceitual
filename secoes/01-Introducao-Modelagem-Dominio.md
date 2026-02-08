@@ -171,5 +171,6 @@ O desenvolvimento de software moderno exige o trânsito entre diferentes visões
 <p>Consolidada a visão macro sobre os níveis de abstração, avançaremos agora para a identificação granular das entidades e suas propriedades fundamentais.</p>
 
 <p align="center">
+<b>Finalizada a Seção 1! 🏁</b><br>
   <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/02-Conceitos-e-Atributos.md">Seção 2 - Conceitos e Atributos</a>
 </p>
