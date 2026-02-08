@@ -121,6 +121,60 @@ Dominar **Enums** e **Tipos Primitivos** é o primeiro passo para o reuso de tip
 
 A seguir, avançaremos para o estudo da **Herança**, o mecanismo fundamental da Orientação a Objetos que permite definir relações de "é um" entre classes, promovendo o máximo reaproveitamento de código e a organização taxonômica do sistema.
 
+### **2. Herança (Parte 1): Fundamentos e Motivação**
+
+A herança é um mecanismo de abstração que permite que classes compartilhem atributos e comportamentos comuns, estabelecendo uma hierarquia organizacional no modelo de dados. Ela é utilizada para representar relações de especialização e generalização entre conceitos.
+
+#### **O Exemplo Motivador**
+Imagine um sistema de cadastro de clientes que diferencia **Pessoa Física** de **Pessoa Jurídica**. Ambas possuem `id`, `nome`, `telefone` e `email`. No entanto, apenas a Pessoa Física possui dados como `dataNascimento`, enquanto a Pessoa Jurídica possui `faturamentoAnual`.
+
+Sem a herança, seríamos forçados a repetir os campos comuns em ambas as classes, gerando redundância e dificultando a manutenção do modelo.
+
+#### **Questionamentos Básicos para Aplicar Herança**
+Antes de implementar uma hierarquia, deve-se responder a duas perguntas fundamentais:
+
+1.  **Há estrutura comum entre os conceitos?** (Ex: atributos idênticos como id, nome, telefone e email).
+2.  **Há uma relação "É-UM" entre os conceitos e um conceito mais genérico?** (Ex: Pessoa Física **é um** cliente; Pessoa Jurídica **é um** cliente).
+
+<p align="center">
+  <img src="/secoes/assets/img/heranca-e-generalizacao/exemplo-motivador-heranca.png" alt="Exemplo Motivador de Herança" />
+</p>
+
+#### **Definições Importantes**
+Para dominar a herança, é preciso compreender sua terminologia técnica:
+
+* **Relação É-UM:** Define que a subclasse é uma variação específica da superclasse.
+* **Superclasse (ou Classe Mãe):** O conceito mais genérico que agrupa os elementos comuns.
+* **Subclasse (ou Classe Filha):** O conceito especializado que herda os elementos da superclasse e adiciona seus próprios elementos exclusivos.
+* **Extensão:** A herança é vista como uma extensão, pois a subclasse amplia as capacidades da superclasse, podendo adicionar novos elementos, mas nunca remover o que foi herdado.
+
+> [!IMPORTANT]
+> **Nota de Arquitetura:** A herança é uma associação de **classes** e não de objetos. Isso significa que não existem duas instâncias ligadas no tempo de execução, mas sim uma única instância da subclasse que "carrega" toda a estrutura definida na hierarquia.
+
+---
+
+### **Ressalvas Iniciais: Quando a Herança é Imprópria?**
+
+O uso indiscriminado de herança pode complicar o modelo desnecessariamente. Existem critérios claros para evitar o uso indevido:
+
+#### **Ressalva 1: Dados Exclusivos**
+Não utilize herança se não houver atributos ou dados exclusivos em cada subclasse. Se a única diferença entre dois conceitos for uma categoria (como Gênero Masculino/Feminino), utilize uma **Enumeração** em vez de criar novas classes.
+
+<p align="center">
+  <img src="/secoes/assets/img/heranca-e-generalizacao/ressalva-heranca-1.png" alt="Ressalva 1 - Uso de Enumeração vs Herança" />
+</p>
+
+#### **Ressalva 2: Herança Total vs. Parcial**
+Recomenda-se cautela com a herança parcial, dando-se preferência à **herança total**. Na herança total, somente instâncias das subclasses são permitidas.
+
+* **Classe Abstrata:** Em casos de herança total, a superclasse deve ser definida como **Abstrata** (representada em UML com o nome em *itálico*). Isso impede a criação de instâncias genéricas da classe mãe (ex: não se pode criar um "Cliente" que não seja nem Físico nem Jurídico).
+
+<p align="center">
+  <img src="/secoes/assets/img/heranca-e-generalizacao/ressalva-heranca-2.png" alt="Ressalva 2 - Herança Total e Classes Abstratas" />
+</p>
+
+---
+
 <p align="center">
   <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/06-Estudo-de-Caso.md">Seção 6: Estudo de Caso</a>
 </p>
