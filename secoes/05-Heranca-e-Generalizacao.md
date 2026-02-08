@@ -20,30 +20,31 @@ No design de software profissional, uma enumeração é estrategicamente conside
 
 Para uma consulta técnica eficiente, deve-se entender que a enumeração cumpre papéis distintos em cada etapa do ciclo de vida do software:
 
-* **Na Modelagem (Padrão UML):** Funciona como um **contrato visual**. Define um domínio fixo para que todos os envolvidos entendam quais são as opções permitidas para aquele atributo, eliminando ambiguidades no diagrama de classes.
-* **No Desenvolvimento (Implementação):** Atua como uma **trava de segurança (*Type Safety*)**. Garante que o compilador impeça a atribuição de valores inválidos, evitando erros de digitação (ex: "Pendente" vs "PENDENTE") ou estados inexistentes em tempo de execução.
+- **Na Modelagem (Padrão UML):** Funciona como um **contrato visual**. Define um domínio fixo para que todos os envolvidos entendam quais são as opções permitidas para aquele atributo, eliminando ambiguidades no diagrama de classes.
+- **No Desenvolvimento (Implementação):** Atua como uma **trava de segurança (_Type Safety_)**. Garante que o compilador impeça a atribuição de valores inválidos, evitando erros de digitação (ex: "Pendente" vs "PENDENTE") ou estados inexistentes em tempo de execução.
 
 #### **Guia de Referência Técnica (UML & Código)**
 
-| Recurso UML | Significado Técnico | Impacto no Desenvolvimento |
-| :--- | :--- | :--- |
-| **Estereótipo `<<enumeration>>`** | Indica que a estrutura não é uma classe comum, mas um tipo de dado. | O compilador trata como um tipo especial de valor fixo (`enum`). |
-| **Domínio Finito** | Lista exaustiva e imutável de valores possíveis. | Impede a entrada de dados inconsistentes ou "sujos". |
-| **Constantes (`<<enum constant>>`)** | Identificadores únicos para cada valor (ex: `ENVIADO`). | Substitui "números mágicos" por nomes legíveis no código. |
-| **Tipo Primitivo (ex: `int`)** | Define a base de dados subjacente à constante. | Orienta como o Banco de Dados deve persistir o valor (índice). |
+| Recurso UML                          | Significado Técnico                                                 | Impacto no Desenvolvimento                                       |
+| :----------------------------------- | :------------------------------------------------------------------ | :--------------------------------------------------------------- |
+| **Estereótipo `<<enumeration>>`**    | Indica que a estrutura não é uma classe comum, mas um tipo de dado. | O compilador trata como um tipo especial de valor fixo (`enum`). |
+| **Domínio Finito**                   | Lista exaustiva e imutável de valores possíveis.                    | Impede a entrada de dados inconsistentes ou "sujos".             |
+| **Constantes (`<<enum constant>>`)** | Identificadores únicos para cada valor (ex: `ENVIADO`).             | Substitui "números mágicos" por nomes legíveis no código.        |
+| **Tipo Primitivo (ex: `int`)**       | Define a base de dados subjacente à constante.                      | Orienta como o Banco de Dados deve persistir o valor (índice).   |
 
 #### **Representação Visual e Aplicação**
 
 <img src="/secoes/assets/img/heranca-e-generalizacao/enumeracoes.png" alt="Enumeração UML" width="100%" />
 
 As enumerações permitem padronizar fluxos de estado e calendários:
-* **Estado do Pedido (`EstadoDoPedido`)**: Restringe o ciclo de vida aos estados `AGUARDANDO_PAGAMENTO`, `ENVIADO`, `ENTREGUE`, etc.
-* **Dias da Semana (`DiaDaSemana`)**: Define o domínio fechado de `Domingo` a `Sabado`.
+
+- **Estado do Pedido (`EstadoDoPedido`)**: Restringe o ciclo de vida aos estados `AGUARDANDO_PAGAMENTO`, `ENVIADO`, `ENTREGUE`, etc.
+- **Dias da Semana (`DiaDaSemana`)**: Define o domínio fechado de `Domingo` a `Sabado`.
 
 #### **Quando utilizar? (Critério de Design)**
 
 > [!TIP]
-> **Regra de Ouro:** Use **Enumeração** quando a lista de opções for **estática** (definida no tempo de design e que não muda pelo usuário final, como os estados de um processo). 
+> **Regra de Ouro:** Use **Enumeração** quando a lista de opções for **estática** (definida no tempo de design e que não muda pelo usuário final, como os estados de um processo).
 > Se a lista de opções precisa ser criada, editada ou excluída pelo usuário através do sistema em tempo de execução, utilize uma **Classe (Entidade)** vinculada por associação.
 
 ---
@@ -183,12 +184,12 @@ A herança não deve ser aplicada apenas pela similaridade de atributos. É impe
 
 Para dominar a aplicação da herança e suas discussões arquiteturais, é fundamental compreender com precisão a terminologia técnica e os conceitos que regem esse mecanismo:
 
-* **Relação de Generalização e Especialização:** Refere-se ao processo de design onde se identificam pontos comuns entre diferentes entidades para criar uma base compartilhada (**generalizar**) ou definem-se detalhes e comportamentos específicos para casos particulares (**especializar**).
-* **Relação "É-UM":** É a validação semântica da herança. Define que a subclasse é, conceitualmente, uma variação específica da superclasse (ex: um *Carro* **é um** *Veículo*).
-* **Superclasse (Classe Mãe ou Base):** Representa o conceito mais genérico da hierarquia. Ela centraliza a estrutura (atributos) e o comportamento (métodos) que são comuns a todas as suas derivações.
-* **Subclasse (Classe Filha ou Derivada):** É o conceito especializado que herda a estrutura da superclasse. Ela tem a capacidade de reutilizar o que foi definido na classe mãe e adicionar seus próprios elementos exclusivos.
-* **Herança como Extensão:** Tecnicamente, a herança é vista como uma extensão porque a subclasse amplia as capacidades da superclasse. É permitido **adicionar** novos elementos, mas é estritamente proibido **remover** elementos herdados, garantindo a integridade da hierarquia.
-* **Associação de Classes vs. Instâncias:** Um ponto crucial de arquitetura é que a herança é uma associação entre as **definições das classes** e não entre objetos individuais. No tempo de execução, não existem duas instâncias (objetos) ligadas; existe apenas uma única instância da subclasse que incorpora, em si mesma, toda a hierarquia herdada.
+- **Relação de Generalização e Especialização:** Refere-se ao processo de design onde se identificam pontos comuns entre diferentes entidades para criar uma base compartilhada (**generalizar**) ou definem-se detalhes e comportamentos específicos para casos particulares (**especializar**).
+- **Relação "É-UM":** É a validação semântica da herança. Define que a subclasse é, conceitualmente, uma variação específica da superclasse (ex: um _Carro_ **é um** _Veículo_).
+- **Superclasse (Classe Mãe ou Base):** Representa o conceito mais genérico da hierarquia. Ela centraliza a estrutura (atributos) e o comportamento (métodos) que são comuns a todas as suas derivações.
+- **Subclasse (Classe Filha ou Derivada):** É o conceito especializado que herda a estrutura da superclasse. Ela tem a capacidade de reutilizar o que foi definido na classe mãe e adicionar seus próprios elementos exclusivos.
+- **Herança como Extensão:** Tecnicamente, a herança é vista como uma extensão porque a subclasse amplia as capacidades da superclasse. É permitido **adicionar** novos elementos, mas é estritamente proibido **remover** elementos herdados, garantindo a integridade da hierarquia.
+- **Associação de Classes vs. Instâncias:** Um ponto crucial de arquitetura é que a herança é uma associação entre as **definições das classes** e não entre objetos individuais. No tempo de execução, não existem duas instâncias (objetos) ligadas; existe apenas uma única instância da subclasse que incorpora, em si mesma, toda a hierarquia herdada.
 
 <img src="/secoes/assets/img/heranca-e-generalizacao/heranca-definicoes-importantes.png" alt="Resumo de Definições Importantes de Herança" width="100%"/>
 
