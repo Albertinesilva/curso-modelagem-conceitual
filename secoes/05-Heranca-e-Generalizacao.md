@@ -89,7 +89,7 @@ No diagrama abaixo, observamos como os tipos primitivos (Data, Posicao, Telefone
 
 A imagem a seguir detalha a "ressalva" técnica e fornece um exemplo de código para validar como o sistema interpreta o tempo de forma linear e atômica:
 
-<img src="/secoes/assets/img/heranca-e-generalizacao/ressalva.png" alt="Ressalva Técnica sobre Datas" width="100%"/>
+<img src="/secoes/assets/img/heranca-e-generalizacao/datas-ressalva.png" alt="Ressalva Técnica sobre Datas" width="100%"/>
 
 - **Reflexo na Modelagem:** Ao modelar, seu foco deve ser a necessidade do negócio. Se a regra exige visualizar `dia`, `mes` e `ano`, a decomposição no diagrama é válida para clareza, mas o desenvolvedor deve estar ciente da abstração de implementação subjacente para garantir performance e precisão.
 
@@ -145,6 +145,7 @@ A decisão de implementar uma hierarquia de classes deve ser fundamentada em doi
 <img src="/secoes/assets/img/heranca-e-generalizacao/heranca-questionamentos-basicos.png" alt="Questionamentos Básicos e Transição para Herança" width="100%"/>
 
 #### **Importância da Relação Semântica "É-UM"**
+
 A herança não deve ser aplicada apenas pela similaridade de atributos. É imperativo que exista uma relação lógica de especialização. No exemplo abaixo, embora `Produto` e `Cliente` compartilhem `id` e `nome`, eles não possuem uma relação "É-UM" (um Produto não é um Cliente), tornando o uso de herança tecnicamente **errado** neste cenário.
 
 <p align="center">
@@ -152,13 +153,14 @@ A herança não deve ser aplicada apenas pela similaridade de atributos. É impe
 </p>
 
 #### **Definições e Terminologia Técnica**
+
 Para a correta aplicação e discussão da herança, utilizam-se os seguintes conceitos:
 
-* **Relação de Generalização/Especialização:** O processo de identificar pontos comuns (generalizar) ou detalhes específicos (especializar).
-* **Superclasse (Classe Mãe):** O conceito generalista que centraliza a estrutura comum.
-* **Subclasse (Classe Filha):** A especialização que estende a superclasse.
-* **Herança como Extensão:** A subclasse pode adicionar novos elementos à sua estrutura, mas **nunca pode remover** elementos herdados da superclasse.
-* **Associação de Classes:** A herança é uma associação entre as **definições das classes** e não entre objetos individuais. Não há duas instâncias ligadas; existe apenas uma única instância da subclasse que incorpora toda a hierarquia herdada.
+- **Relação de Generalização/Especialização:** O processo de identificar pontos comuns (generalizar) ou detalhes específicos (especializar).
+- **Superclasse (Classe Mãe):** O conceito generalista que centraliza a estrutura comum.
+- **Subclasse (Classe Filha):** A especialização que estende a superclasse.
+- **Herança como Extensão:** A subclasse pode adicionar novos elementos à sua estrutura, mas **nunca pode remover** elementos herdados da superclasse.
+- **Associação de Classes:** A herança é uma associação entre as **definições das classes** e não entre objetos individuais. Não há duas instâncias ligadas; existe apenas uma única instância da subclasse que incorpora toda a hierarquia herdada.
 
 <p align="center">
   <img src="/secoes/assets/img/heranca-e-generalizacao/heranca-definicoes-importantes.png" alt="Resumo de Definições Importantes de Herança" width="100%"/>
@@ -196,26 +198,36 @@ Para dominar a herança, é preciso compreender sua terminologia técnica:
 
 ---
 
-### **Ressalvas Iniciais: Quando a Herança é Imprópria?**
+### **Ressalvas Técnicas de Design**
 
-O uso indiscriminado de herança pode complicar o modelo desnecessariamente. Existem critérios claros para evitar o uso indevido:
+A aplicação da herança deve ser criteriosa para evitar o aumento desnecessário da complexidade do modelo.
 
-#### **Ressalva 1: Dados Exclusivos**
+#### **Ressalva 1: Ausência de Dados Exclusivos**
 
-Não utilize herança se não houver atributos ou dados exclusivos em cada subclasse. Se a única diferença entre dois conceitos for uma categoria (como Gênero Masculino/Feminino), utilize uma **Enumeração** em vez de criar novas classes.
+Não se deve utilizar herança se não houver atributos ou comportamentos exclusivos em cada subclasse. Quando a única distinção entre conceitos é uma classificação categórica, o uso de herança é considerado um erro de design ("Overengineering").
 
-<p align="center">
-  <img src="/secoes/assets/img/heranca-e-generalizacao/ressalva-heranca-1.png" alt="Ressalva 1 - Uso de Enumeração vs Herança" />
-</p>
+**Cenário A: Especialização por Gênero**
+Se as classes `Homem` e `Mulher` não possuem atributos diferentes entre si, a modelagem correta utiliza uma **Enumeração** na classe base `Pessoa`.
+
+<img src="/secoes/assets/img/heranca-e-generalizacao/heranca-ressalva-1.png" alt="Ressalva 1 - Gênero como Enumeração" width="100%"/>
+
+**Cenário B: Especialização por Tipo de Cliente**
+Da mesma forma, se a distinção entre `PessoaJuridica` e `PessoaFisica` se resume apenas ao formato do documento (CPF ou CNPJ), sem outros dados exclusivos, deve-se simplificar o modelo utilizando um atributo de classificação e uma enumeração.
+
+<img src="/secoes/assets/img/heranca-e-generalizacao/heranca-ressalva-1-continuacao.png" alt="Ressalva 1 - Tipo de Cliente como Enumeração" width="100%" />
+
+---
 
 #### **Ressalva 2: Herança Total vs. Parcial**
 
-Recomenda-se cautela com a herança parcial, dando-se preferência à **herança total**. Na herança total, somente instâncias das subclasses são permitidas.
+A aplicação de herança deve considerar a necessidade de instanciar a classe base. Recomenda-se cautela com a herança parcial, priorizando, sempre que possível, a herança total.
 
-- **Classe Abstrata:** Em casos de herança total, a superclasse deve ser definida como **Abstrata** (representada em UML com o nome em _itálico_). Isso impede a criação de instâncias genéricas da classe mãe (ex: não se pode criar um "Cliente" que não seja nem Físico nem Jurídico).
+- **Definição de Herança Total:** Configura-se quando apenas as instâncias das subclasses (ex: `PessoaFisica` e `PessoaJuridica`) são permitidas no sistema.
+- **Restrição da Superclasse:** Sob este modelo, não são permitidas instâncias diretas da classe genérica `Cliente`.
+- **Implementação Técnica (Classe Abstrata):** Para garantir essa regra, a superclasse deve ser definida como **Abstrata**. Na notação UML, isso é representado com o nome da classe em _itálico_. Isso impede a criação de instâncias genéricas da classe mãe (ex: não se pode criar um "Cliente" que não seja obrigatoriamente Físico ou Jurídico).
 
 <p align="center">
-  <img src="/secoes/assets/img/heranca-e-generalizacao/ressalva-heranca-2.png" alt="Ressalva 2 - Herança Total e Classes Abstratas" />
+  <img src="/secoes/assets/img/heranca-e-generalizacao/heranca-ressalva-2.png" alt="Ressalva 2 - Herança Total e Classes Abstratas" />
 </p>
 
 ---
