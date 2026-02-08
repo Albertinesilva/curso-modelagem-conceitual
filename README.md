@@ -57,6 +57,9 @@ Abaixo estão listados os módulos fundamentais da modelagem conceitual, organiz
   </tbody>
 </table>
 
+> [!CHECKLIST]
+> **Finalizou os estudos?** Confira as [**📄 Considerações Finais e Próximos Passos**](https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/07-Consideracoes-Finais.md) para consolidar seu aprendizado.
+
 ---
 
 ### 🛠 Ferramentas Utilizadas:
