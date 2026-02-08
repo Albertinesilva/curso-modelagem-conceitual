@@ -23,7 +23,7 @@ No design de software profissional, uma enumeração é estrategicamente conside
 
 #### **Representação Visual e Exemplos**
 
-<img src="/secoes/assets/img/heranca-e-generalizacao/enumeracoes.png" alt="Enumeração UML" />
+<img src="/secoes/assets/img/heranca-e-generalizacao/enumeracoes.png" alt="Enumeração UML" width="100%" />
 
 Com base na modelagem apresentada acima, as enumerações permitem padronizar fluxos e calendários:
 
@@ -34,7 +34,7 @@ Com base na modelagem apresentada acima, as enumerações permitem padronizar fl
 
 Para simplificar o diagrama principal do sistema, recomenda-se incluir as enumerações em um diagrama separado. No diagrama do sistema, o nome da enumeração é representado diretamente como um tipo de atributo.
 
-<img src="/secoes/assets/img/heranca-e-generalizacao/uso-da-enumeracao.png" alt="Uso da Enumeração no Pedido" />
+<img src="/secoes/assets/img/heranca-e-generalizacao/uso-da-enumeracao.png" alt="Uso da Enumeração no Pedido" width="100%"/>
 
 Esta abordagem mantém o diagrama principal limpo e legível. Como demonstrado na classe `Pedido`, o atributo `estado` assume o tipo `EstadoDoPedido`, delegando a definição dos valores possíveis para a estrutura da enumeração externa.
 
@@ -62,7 +62,7 @@ Assim como as enumerações, os **Tipos Primitivos** são considerados um "meio-
 
 #### **Exemplos de Tipos Primitivos**
 
-<img src="/secoes/assets/img/heranca-e-generalizacao/tipos-primitivos.png" alt="Exemplos de Tipos Primitivos UML" />
+<img src="/secoes/assets/img/heranca-e-generalizacao/tipos-primitivos.png" alt="Exemplos de Tipos Primitivos UML" width="100%"/>
 
 A modelagem de tipos primitivos permite definir estruturas claras para atributos que, embora simples, possuem componentes internos:
 
@@ -81,7 +81,7 @@ Embora possamos modelar um tipo primitivo `Data` com campos inteiros (`dia`, `me
 
 No diagrama abaixo, observamos como os tipos primitivos (Data, Posicao, Telefone) são representados como estruturas de apoio, enquanto as classes principais (`Pessoa`, `Pedido`) os utilizam como tipos de atributos:
 
-<img src="/secoes/assets/img/heranca-e-generalizacao/enumeracao-diagrama-exemplo.png" alt="Diagrama de Classes com Tipos Primitivos" />
+<img src="/secoes/assets/img/heranca-e-generalizacao/enumeracao-diagrama-exemplo.png" alt="Diagrama de Classes com Tipos Primitivos" width="100%"/>
 
 - **Perspectiva de Implementação (Java):** Internamente, a data (ou data-hora) não é fragmentada em vários campos inteiros. O tipo `Date` armazena a informação como um único número inteiro longo (`long`), representando os milissegundos decorridos desde a _Unix Epoch_ (01/01/1970 00:00:00 GMT).
 
@@ -89,7 +89,7 @@ No diagrama abaixo, observamos como os tipos primitivos (Data, Posicao, Telefone
 
 A imagem a seguir detalha a "ressalva" técnica e fornece um exemplo de código para validar como o sistema interpreta o tempo de forma linear e atômica:
 
-<img src="/secoes/assets/img/heranca-e-generalizacao/ressalva.png" alt="Ressalva Técnica sobre Datas" />
+<img src="/secoes/assets/img/heranca-e-generalizacao/ressalva.png" alt="Ressalva Técnica sobre Datas" width="100%"/>
 
 - **Reflexo na Modelagem:** Ao modelar, seu foco deve ser a necessidade do negócio. Se a regra exige visualizar `dia`, `mes` e `ano`, a decomposição no diagrama é válida para clareza, mas o desenvolvedor deve estar ciente da abstração de implementação subjacente para garantir performance e precisão.
 
@@ -131,9 +131,7 @@ A herança, ou relação de generalização/especialização, é um mecanismo de
 
 Em cenários corporativos, é comum encontrarmos entidades que compartilham uma base de dados idêntica, mas divergem em detalhes específicos. Considere a necessidade de manter um cadastro de clientes composto por dois tipos distintos: **Pessoa Física** e **Pessoa Jurídica**.
 
-<p align="center">
-  <img src="/secoes/assets/img/heranca-e-generalizacao/heranca-exemplo-motivador.png" alt="Exemplo Motivador de Herança" />
-</p>
+<img src="/secoes/assets/img/heranca-e-generalizacao/heranca-exemplo-motivador.png" alt="Exemplo Motivador de Herança" width="100%"/>
 
 Neste modelo inicial, observa-se que atributos como `id`, `nome`, `telefone` e `email` estão presentes em ambas as classes, gerando uma repetição desnecessária que dificulta a manutenção e a integridade do sistema.
 
@@ -144,17 +142,27 @@ A decisão de implementar uma hierarquia de classes deve ser fundamentada em doi
 1.  **Há estrutura comum entre os conceitos?** Verificação da existência de atributos e métodos idênticos (ex: a base comum de dados de contato).
 2.  **Há relação "É-UM" entre os conceitos e um elemento genérico?** Validação semântica de que o subtipo é, de fato, uma variação do tipo base (ex: uma Pessoa Física **é um** cliente; uma Pessoa Jurídica **é um** cliente).
 
+<img src="/secoes/assets/img/heranca-e-generalizacao/heranca-questionamentos-basicos.png" alt="Questionamentos Básicos e Transição para Herança" width="100%"/>
+
+#### **Importância da Relação Semântica "É-UM"**
+A herança não deve ser aplicada apenas pela similaridade de atributos. É imperativo que exista uma relação lógica de especialização. No exemplo abaixo, embora `Produto` e `Cliente` compartilhem `id` e `nome`, eles não possuem uma relação "É-UM" (um Produto não é um Cliente), tornando o uso de herança tecnicamente **errado** neste cenário.
+
 <p align="center">
-  <img src="/secoes/assets/img/heranca-e-generalizacao/heranca-questionamentos-basicos.png" alt="Questionamentos Básicos e Transição para Herança" />
+  <img src="/secoes/assets/img/heranca-e-generalizacao/heranca-exemplo-nao-ha-relacao.png" alt="Exemplo de erro no uso de Herança" width="100%"/>
 </p>
 
 #### **Definições e Terminologia Técnica**
+Para a correta aplicação e discussão da herança, utilizam-se os seguintes conceitos:
 
-Para a correta aplicação da herança, definem-se os seguintes conceitos essenciais:
+* **Relação de Generalização/Especialização:** O processo de identificar pontos comuns (generalizar) ou detalhes específicos (especializar).
+* **Superclasse (Classe Mãe):** O conceito generalista que centraliza a estrutura comum.
+* **Subclasse (Classe Filha):** A especialização que estende a superclasse.
+* **Herança como Extensão:** A subclasse pode adicionar novos elementos à sua estrutura, mas **nunca pode remover** elementos herdados da superclasse.
+* **Associação de Classes:** A herança é uma associação entre as **definições das classes** e não entre objetos individuais. Não há duas instâncias ligadas; existe apenas uma única instância da subclasse que incorpora toda a hierarquia herdada.
 
-- **Superclasse (Classe Mãe):** O conceito generalista que centraliza a estrutura comum.
-- **Subclasse (Classe Filha):** A especialização que estende a superclasse, podendo adicionar novos atributos (extensão), mas nunca remover elementos herdados.
-- **Associação de Classes:** É fundamental destacar que a herança é uma associação entre as **definições das classes** e não entre objetos individuais; não existem duas instâncias ligadas, mas sim uma única instância da subclasse que incorpora toda a hierarquia herdada.
+<p align="center">
+  <img src="/secoes/assets/img/heranca-e-generalizacao/heranca-definicoes-importantes.png" alt="Resumo de Definições Importantes de Herança" width="100%"/>
+</p>
 
 ---
 
