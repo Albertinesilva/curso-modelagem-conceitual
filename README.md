@@ -57,6 +57,29 @@ Abaixo estão listados os módulos fundamentais da modelagem conceitual, organiz
   </tbody>
 </table>
 
+---
+### 🛣️ Roadmap de Evolução: Além da Modelagem
+
+A conclusão deste curso (Seção 07) marca o fim da teoria base, mas o início da jornada arquitetural. Abaixo estão os pilares recomendados para aprofundar os conhecimentos adquiridos neste repositório:
+
+#### **1. Design Patterns (Padrões de Projeto)**
+Agora que você domina classes e associações, o próximo passo é aprender soluções consagradas para problemas recorrentes.
+* **Foco:** Estudar padrões como *Strategy*, *Observer* e *Factory* para tornar seus modelos UML mais flexíveis e menos acoplados.
+
+#### **2. Domain-Driven Design (DDD)**
+Aprenda a lidar com a complexidade de grandes sistemas dividindo o modelo conceitual em contextos delimitados.
+* **Foco:** Entender a distinção entre *Entities*, *Value Objects* e *Aggregates* dentro de um modelo de domínio real.
+
+#### **3. Clean Architecture e Princípios SOLID**
+Aplique regras de design que garantem que sua implementação Java seja testável e fácil de manter.
+* **Foco:** Especial atenção ao **LSP (Liskov Substitution Principle)**, que valida tecnicamente se sua hierarquia de Herança (Seção 05) está correta.
+
+#### **4. Otimização de Persistência (JPA/Hibernate)**
+Traduzir o modelo para o banco é apenas o começo; o próximo nível é a performance.
+* **Foco:** Estudar estratégias de carregamento (*Lazy vs Eager*) e resolver problemas de performance em associações complexas.
+
+---
+
 > [!CHECKLIST]
 > **Finalizou os estudos?** Confira as [**📄 Considerações Finais e Próximos Passos**](https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/07-Conclusao.md) para consolidar seu aprendizado.
 
