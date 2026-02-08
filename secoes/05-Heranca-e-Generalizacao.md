@@ -14,12 +14,39 @@ A seção está dividida em três atos fundamentais:
 
 ### **1. Enumerações (Enumerations)**
 
-No design de software profissional, uma enumeração é estrategicamente considerada um **"meio termo"** entre um conceito (classe) e um atributo simples. Ela é utilizada para elevar o nível de semântica e segurança do modelo de dados.
+No design de software profissional, uma enumeração é estrategicamente considerada um **"meio-termo"** entre um conceito (classe) e um atributo simples. Ela eleva o nível de semântica do modelo e a segurança da implementação.
 
-- **Definição**: Representa um conceito que possui um número finito de valores possíveis.
-- **Valor para o Negócio**: É aplicada quando esses valores específicos são relevantes o suficiente para serem descritos e padronizados, garantindo a consistência das regras de negócio.
-- **Representação UML**: No diagrama de classes, uma enumeração é identificada pelo uso do estereótipo `<<enumeration>>` no topo da estrutura.
-- **Identificação de Constantes**: Cada valor possível é listado como uma constante, utilizando o estereótipo `<<enum constant>>` seguido de seu tipo (geralmente `int`).
+#### **A Dualidade da Enumeração: Modelagem vs. Desenvolvimento**
+
+Para uma consulta técnica eficiente, deve-se entender que a enumeração cumpre papéis distintos em cada etapa do ciclo de vida do software:
+
+* **Na Modelagem (Padrão UML):** Funciona como um **contrato visual**. Define um domínio fixo para que todos os envolvidos entendam quais são as opções permitidas para aquele atributo, eliminando ambiguidades no diagrama de classes.
+* **No Desenvolvimento (Implementação):** Atua como uma **trava de segurança (*Type Safety*)**. Garante que o compilador impeça a atribuição de valores inválidos, evitando erros de digitação (ex: "Pendente" vs "PENDENTE") ou estados inexistentes em tempo de execução.
+
+#### **Guia de Referência Técnica (UML & Código)**
+
+| Recurso UML | Significado Técnico | Impacto no Desenvolvimento |
+| :--- | :--- | :--- |
+| **Estereótipo `<<enumeration>>`** | Indica que a estrutura não é uma classe comum, mas um tipo de dado. | O compilador trata como um tipo especial de valor fixo (`enum`). |
+| **Domínio Finito** | Lista exaustiva e imutável de valores possíveis. | Impede a entrada de dados inconsistentes ou "sujos". |
+| **Constantes (`<<enum constant>>`)** | Identificadores únicos para cada valor (ex: `ENVIADO`). | Substitui "números mágicos" por nomes legíveis no código. |
+| **Tipo Primitivo (ex: `int`)** | Define a base de dados subjacente à constante. | Orienta como o Banco de Dados deve persistir o valor (índice). |
+
+#### **Representação Visual e Aplicação**
+
+<img src="/secoes/assets/img/heranca-e-generalizacao/enumeracoes.png" alt="Enumeração UML" width="100%" />
+
+As enumerações permitem padronizar fluxos de estado e calendários:
+* **Estado do Pedido (`EstadoDoPedido`)**: Restringe o ciclo de vida aos estados `AGUARDANDO_PAGAMENTO`, `ENVIADO`, `ENTREGUE`, etc.
+* **Dias da Semana (`DiaDaSemana`)**: Define o domínio fechado de `Domingo` a `Sabado`.
+
+#### **Quando utilizar? (Critério de Design)**
+
+> [!TIP]
+> **Regra de Ouro:** Use **Enumeração** quando a lista de opções for **estática** (definida no tempo de design e que não muda pelo usuário final, como os estados de um processo). 
+> Se a lista de opções precisa ser criada, editada ou excluída pelo usuário através do sistema em tempo de execução, utilize uma **Classe (Entidade)** vinculada por associação.
+
+---
 
 #### **Representação Visual e Exemplos**
 
@@ -174,21 +201,11 @@ Para dominar a aplicação da herança e suas discussões arquiteturais, é fund
 
 ### **Ressalvas Técnicas de Design**
 
-A aplicação da herança deve ser criteriosa para evitar o aumento desnecessário da complexidade do modelo.
-
-#### **1. Especialização por Dados Exclusivos**
-
-A herança só é justificada quando há atributos ou comportamentos exclusivos em cada subclasse. Caso a distinção seja baseada apenas em uma categoria sem diferenciação estrutural (como o gênero de uma pessoa), a recomendação técnica é o uso de uma **Enumeração** para classificar o objeto, evitando a criação desnecessária de novas classes.
-
-#### **2. Herança Total e Classes Abstratas**
-
-Recomenda-se cautela com a herança parcial, dando-se preferência à **herança total**, onde somente instâncias das subclasses são permitidas.
-
-- **Implementação:** Define-se a superclasse como **Abstrata** (representada em UML com o nome em _itálico_). Isso garante que o sistema não crie instâncias genéricas da classe mãe (ex: um "Cliente" que não seja Físico nem Jurídico), forçando o uso dos tipos especializados.
+A aplicação da herança deve ser criteriosa para evitar o aumento desnecessário da complexidade do modelo. Seguem as diretrizes para evitar erros comuns de design ("Overengineering"):
 
 #### **Ressalva 1: Ausência de Dados Exclusivos**
 
-Não se deve utilizar herança se não houver atributos ou comportamentos exclusivos em cada subclasse. Quando a única distinção entre conceitos é uma classificação categórica, o uso de herança é considerado um erro de design ("Overengineering").
+Não utilize herança se não houver atributos ou comportamentos exclusivos em cada subclasse. Caso a distinção seja baseada apenas em uma categoria sem diferenciação estrutural, a recomendação técnica é o uso de uma **Enumeração**.
 
 **Cenário A: Especialização por Gênero**
 Se as classes `Homem` e `Mulher` não possuem atributos diferentes entre si, a modelagem correta utiliza uma **Enumeração** na classe base `Pessoa`.
