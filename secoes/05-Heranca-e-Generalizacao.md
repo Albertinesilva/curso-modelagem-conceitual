@@ -21,9 +21,7 @@ No design de software profissional, uma enumeração é estrategicamente conside
 
 #### **Representação Visual e Exemplos**
 
-<p align="center">
-  <img src="/secoes/assets/img/heranca-e-generalizacao/enumeracoes.png" alt="Enumeração UML" />
-</p>
+<img src="/secoes/assets/img/heranca-e-generalizacao/enumeracoes.png" alt="Enumeração UML" />
 
 Com base na modelagem apresentada acima, as enumerações permitem padronizar fluxos e calendários:
 
@@ -35,20 +33,21 @@ Com base na modelagem apresentada acima, as enumerações permitem padronizar fl
 
 #### **Aplicação no Diagrama do Sistema**
 
-<p align="center">
-  <img src="/secoes/assets/img/heranca-e-generalizacao/uso-da-enumeracao.png" alt="Uso da Enumeração no Pedido" />
-</p>
+Para simplificar o diagrama principal do sistema, recomenda-se incluir as enumerações em um diagrama separado. No diagrama do sistema, o nome da enumeração é representado diretamente como um tipo de atributo.
 
-Esta abordagem mantém o diagrama principal limpo e legível. Como demonstrado na classe `Pedido`, o atributo `estado` assume o tipo `EstadoDoPedido`, delegando a definição dos valores possíveis para a estrutura da enumeração externa.
+<img src="/secoes/assets/img/heranca-e-generalizacao/uso-da-enumeracao.png" alt="Uso da Enumeração no Pedido" />
+
+Esta abordagem mantém o diagrama principal limpo e legível. [cite_start]Como demonstrado na classe `Pedido`, o atributo `estado` assume o tipo `EstadoDoPedido`, delegando a definição dos valores possíveis para a estrutura da enumeração externa.
 
 #### **Exemplo Prático: Ciclo de Vida de um Pedido**
 
 Um pedido não pode assumir qualquer estado; ele está restrito a valores pré-definidos que orientam o fluxo do sistema:
 
-- `AGUARDANDO_PAGAMENTO`
-- `ENVIADO`
-- `ENTREGUE`
-- `CANCELADO`
+* `AGUARDANDO_PAGAMENTO`
+* `ENVIADO`
+* `ENTREGUE`
+* `DEVOLVIDO`
+* `CANCELADO`
 
 > [!TIP]
 > **Dica de Design:** Para manter a clareza do diagrama principal, recomenda-se modelar as enumerações em um diagrama separado, referenciando o nome da enumeração diretamente como o tipo do atributo no diagrama do sistema.
@@ -56,19 +55,24 @@ Um pedido não pode assumir qualquer estado; ele está restrito a valores pré-d
 ---
 
 ### **2. Tipos Primitivos Customizados**
- Assim como as enumerações, os **Tipos Primitivos** são considerados um "meio-termo" na modelagem. Eles representam conceitos cuja simplicidade estrutural não justifica a criação de uma entidade comum com identificador próprio.
 
-- **Regra de Formação:** É meramente sintática e independente dos dados dinâmicos do sistema.
-- **Uso Comum:** Utilizados para encapsular dados que possuem uma estrutura interna fixa (compostos), mas que funcionam como uma unidade de valor.
+Assim como as enumerações, os **Tipos Primitivos** são considerados um "meio-termo" na modelagem. Eles representam conceitos cuja simplicidade estrutural não justifica a criação de uma entidade comum com identificador próprio no diagrama do modelo conceitual.
 
-#### **Exemplos de Tipos Primitivos:**
+* **Regra de Formação:** É meramente sintática e independente dos dados dinâmicos do sistema.
+* **Uso Comum:** Utilizados para encapsular dados que possuem uma estrutura interna fixa (compostos), mas que funcionam como uma unidade de valor.
 
-- **Telefone:** Composto por `codigoDoPais`, `ddd` e `numero`, mas tratado como um único atributo de contato.
-- **Endereçamento/Posição:** Como `Posicao3D` (x, y, z) ou `CEP`.
-- **Documentação:** Como o `ISBN` para livros.
+#### **Exemplos de Tipos Primitivos**
+
+<img src="/secoes/assets/img/heranca-e-generalizacao/tipos-primitivos.png" alt="Exemplos de Tipos Primitivos UML" />
+
+A modelagem de tipos primitivos permite definir estruturas claras para atributos que, embora simples, possuem componentes internos:
+
+* **Telefone:** Composto por `codigoDoPais`, `ddd` e `numero`, mas tratado como um único atributo de contato.
+* **Endereçamento/Posição:** Como `Posicao` (x, y) ou `CEP`.
+* **Data:** Composta por `dia`, `mes` e `ano`.
+* **Documentação:** Como o `ISBN` para livros.
 
 ---
-
 ### **3. Ressalvas Técnicas sobre Tipagem de Datas**
  Embora possamos modelar um tipo primitivo `Data` com campos inteiros (`dia`, `mes`, `ano`), a engenharia de software moderna trata esses dados de forma otimizada.
 
