@@ -154,23 +154,27 @@ A herança não deve ser aplicada apenas pela similaridade de atributos. É impe
 
 #### **Definições e Terminologia Técnica**
 
-Para a correta aplicação e discussão da herança, utilizam-se os seguintes conceitos:
+Para dominar a aplicação da herança e suas discussões arquiteturais, é fundamental compreender com precisão a terminologia técnica e os conceitos que regem esse mecanismo:
 
-- **Relação de Generalização/Especialização:** O processo de identificar pontos comuns (generalizar) ou detalhes específicos (especializar).
-- **Superclasse (Classe Mãe):** O conceito generalista que centraliza a estrutura comum.
-- **Subclasse (Classe Filha):** A especialização que estende a superclasse.
-- **Herança como Extensão:** A subclasse pode adicionar novos elementos à sua estrutura, mas **nunca pode remover** elementos herdados da superclasse.
-- **Associação de Classes:** A herança é uma associação entre as **definições das classes** e não entre objetos individuais. Não há duas instâncias ligadas; existe apenas uma única instância da subclasse que incorpora toda a hierarquia herdada.
+* **Relação de Generalização e Especialização:** Refere-se ao processo de design onde se identificam pontos comuns entre diferentes entidades para criar uma base compartilhada (**generalizar**) ou definem-se detalhes e comportamentos específicos para casos particulares (**especializar**).
+* **Relação "É-UM":** É a validação semântica da herança. Define que a subclasse é, conceitualmente, uma variação específica da superclasse (ex: um *Carro* **é um** *Veículo*).
+* **Superclasse (Classe Mãe ou Base):** Representa o conceito mais genérico da hierarquia. Ela centraliza a estrutura (atributos) e o comportamento (métodos) que são comuns a todas as suas derivações.
+* **Subclasse (Classe Filha ou Derivada):** É o conceito especializado que herda a estrutura da superclasse. Ela tem a capacidade de reutilizar o que foi definido na classe mãe e adicionar seus próprios elementos exclusivos.
+* **Herança como Extensão:** Tecnicamente, a herança é vista como uma extensão porque a subclasse amplia as capacidades da superclasse. É permitido **adicionar** novos elementos, mas é estritamente proibido **remover** elementos herdados, garantindo a integridade da hierarquia.
+* **Associação de Classes vs. Instâncias:** Um ponto crucial de arquitetura é que a herança é uma associação entre as **definições das classes** e não entre objetos individuais. No tempo de execução, não existem duas instâncias (objetos) ligadas; existe apenas uma única instância da subclasse que incorpora, em si mesma, toda a hierarquia herdada.
 
-<p align="center">
-  <img src="/secoes/assets/img/heranca-e-generalizacao/heranca-definicoes-importantes.png" alt="Resumo de Definições Importantes de Herança" width="100%"/>
-</p>
+<img src="/secoes/assets/img/heranca-e-generalizacao/heranca-definicoes-importantes.png" alt="Resumo de Definições Importantes de Herança" width="100%"/>
+
+---
+
+> [!IMPORTANT]
+> **Nota de Arquitetura:** A herança é uma associação de **classes** e não de objetos. Isso significa que não existem duas instâncias ligadas no tempo de execução, mas sim uma única instância da subclasse que "carrega" toda a estrutura definida na hierarquia.
 
 ---
 
 ### **Ressalvas Técnicas de Design**
 
-A aplicação da herança deve ser criteriosa para não comprometer a flexibilidade do sistema. O material destaca pontos de atenção vitais:
+A aplicação da herança deve ser criteriosa para evitar o aumento desnecessário da complexidade do modelo.
 
 #### **1. Especialização por Dados Exclusivos**
 
@@ -181,26 +185,6 @@ A herança só é justificada quando há atributos ou comportamentos exclusivos 
 Recomenda-se cautela com a herança parcial, dando-se preferência à **herança total**, onde somente instâncias das subclasses são permitidas.
 
 - **Implementação:** Define-se a superclasse como **Abstrata** (representada em UML com o nome em _itálico_). Isso garante que o sistema não crie instâncias genéricas da classe mãe (ex: um "Cliente" que não seja Físico nem Jurídico), forçando o uso dos tipos especializados.
-
----
-
-#### **Definições Importantes**
-
-Para dominar a herança, é preciso compreender sua terminologia técnica:
-
-- **Relação É-UM:** Define que a subclasse é uma variação específica da superclasse.
-- **Superclasse (ou Classe Mãe):** O conceito mais genérico que agrupa os elementos comuns.
-- **Subclasse (ou Classe Filha):** O conceito especializado que herda os elementos da superclasse e adiciona seus próprios elementos exclusivos.
-- **Extensão:** A herança é vista como uma extensão, pois a subclasse amplia as capacidades da superclasse, podendo adicionar novos elementos, mas nunca remover o que foi herdado.
-
-> [!IMPORTANT]
-> **Nota de Arquitetura:** A herança é uma associação de **classes** e não de objetos. Isso significa que não existem duas instâncias ligadas no tempo de execução, mas sim uma única instância da subclasse que "carrega" toda a estrutura definida na hierarquia.
-
----
-
-### **Ressalvas Técnicas de Design**
-
-A aplicação da herança deve ser criteriosa para evitar o aumento desnecessário da complexidade do modelo.
 
 #### **Ressalva 1: Ausência de Dados Exclusivos**
 
@@ -226,11 +210,7 @@ A aplicação de herança deve considerar a necessidade de instanciar a classe b
 - **Restrição da Superclasse:** Sob este modelo, não são permitidas instâncias diretas da classe genérica `Cliente`.
 - **Implementação Técnica (Classe Abstrata):** Para garantir essa regra, a superclasse deve ser definida como **Abstrata**. Na notação UML, isso é representado com o nome da classe em _itálico_. Isso impede a criação de instâncias genéricas da classe mãe (ex: não se pode criar um "Cliente" que não seja obrigatoriamente Físico ou Jurídico).
 
-<p align="center">
-  <img src="/secoes/assets/img/heranca-e-generalizacao/heranca-ressalva-2.png" alt="Ressalva 2 - Herança Total e Classes Abstratas" />
-</p>
-
----
+<img src="/secoes/assets/img/heranca-e-generalizacao/heranca-ressalva-2.png" alt="Ressalva 2 - Herança Total e Classes Abstratas" width="100%" />
 
 ---
 
