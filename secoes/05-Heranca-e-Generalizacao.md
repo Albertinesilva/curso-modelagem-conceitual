@@ -1,7 +1,5 @@
 ## 🌳 Seção 5: Herança e Tipos de Generalização
 
-# ## 🌳 Seção 5: Herança e Tipos de Generalização
-
 Esta seção explora os mecanismos de especialização e organização taxonômica de dados. O estudo está estruturado em uma progressão lógica que se inicia pela padronização de domínios finitos e estruturas atômicas, evoluindo para a complexidade das hierarquias de classes.
 
 A seção está dividida em três atos fundamentais:
@@ -24,7 +22,7 @@ No design de software profissional, uma enumeração é estrategicamente conside
 #### **Representação Visual e Exemplos**
 
 <p align="center">
-  <img src="/secoes/assets/img/heranca-e-generalizacao/enumerações.png" alt="Enumeração UML" />
+  <img src="/secoes/assets/img/heranca-e-generalizacao/enumeracoes.png" alt="Enumeração UML" />
 </p>
 
 Com base na modelagem apresentada acima, as enumerações permitem padronizar fluxos e calendários:
@@ -45,37 +43,37 @@ Esta abordagem mantém o diagrama principal limpo e legível. Como demonstrado n
 
 #### **Exemplo Prático: Ciclo de Vida de um Pedido**
 
-[cite_start]Um pedido não pode assumir qualquer estado; ele está restrito a valores pré-definidos que orientam o fluxo do sistema[cite: 6, 8]:
+Um pedido não pode assumir qualquer estado; ele está restrito a valores pré-definidos que orientam o fluxo do sistema:
 
-- `AGUARDANDO_PAGAMENTO` [cite: 9]
-- `ENVIADO` [cite: 10]
-- `ENTREGUE` [cite: 11]
-- `CANCELADO` [cite: 13]
+- `AGUARDANDO_PAGAMENTO`
+- `ENVIADO`
+- `ENTREGUE`
+- `CANCELADO`
 
 > [!TIP]
-> **Dica de Design:** Para manter a clareza do diagrama principal, recomenda-se modelar as enumerações em um diagrama separado, referenciando o nome da enumeração diretamente como o tipo do atributo no diagrama do sistema[cite: 23, 26, 36].
+> **Dica de Design:** Para manter a clareza do diagrama principal, recomenda-se modelar as enumerações em um diagrama separado, referenciando o nome da enumeração diretamente como o tipo do atributo no diagrama do sistema.
 
 ---
 
 ### **2. Tipos Primitivos Customizados**
- Assim como as enumerações, os **Tipos Primitivos** são considerados um "meio-termo" na modelagem[cite: 49]. Eles representam conceitos cuja simplicidade estrutural não justifica a criação de uma entidade comum com identificador próprio[cite: 50, 52].
+ Assim como as enumerações, os **Tipos Primitivos** são considerados um "meio-termo" na modelagem. Eles representam conceitos cuja simplicidade estrutural não justifica a criação de uma entidade comum com identificador próprio.
 
-- **Regra de Formação:** É meramente sintática e independente dos dados dinâmicos do sistema[cite: 51].
-- **Uso Comum:** Utilizados para encapsular dados que possuem uma estrutura interna fixa (compostos), mas que funcionam como uma unidade de valor[cite: 53].
+- **Regra de Formação:** É meramente sintática e independente dos dados dinâmicos do sistema.
+- **Uso Comum:** Utilizados para encapsular dados que possuem uma estrutura interna fixa (compostos), mas que funcionam como uma unidade de valor.
 
 #### **Exemplos de Tipos Primitivos:**
 
-- **Telefone:** Composto por `codigoDoPais`, `ddd` e `numero`, mas tratado como um único atributo de contato[cite: 58, 83].
-- **Endereçamento/Posição:** Como `Posicao3D` (x, y, z) ou `CEP`[cite: 53, 56, 78].
-- **Documentação:** Como o `ISBN` para livros[cite: 53].
+- **Telefone:** Composto por `codigoDoPais`, `ddd` e `numero`, mas tratado como um único atributo de contato.
+- **Endereçamento/Posição:** Como `Posicao3D` (x, y, z) ou `CEP`.
+- **Documentação:** Como o `ISBN` para livros.
 
 ---
 
 ### **3. Ressalvas Técnicas sobre Tipagem de Datas**
- Embora possamos modelar um tipo primitivo `Data` com campos inteiros (`dia`, `mes`, `ano`), a engenharia de software moderna trata esses dados de forma otimizada[cite: 54, 88].
+ Embora possamos modelar um tipo primitivo `Data` com campos inteiros (`dia`, `mes`, `ano`), a engenharia de software moderna trata esses dados de forma otimizada.
 
-- **Perspectiva de Implementação (Java):** O tipo `Date` armazena a informação como um número inteiro longo (`long`), representando os milissegundos decorridos desde a _Unix Epoch_ (01/01/1970)[cite: 90].
-- **Reflexo na Modelagem:** Ao modelar, foque na necessidade do negócio. Se a data requer cálculos complexos ou fusos horários, trate-a como um tipo primitivo robusto, mas ciente da abstração de implementação subjacente[cite: 88, 90].
+- **Perspectiva de Implementação (Java):** O tipo `Date` armazena a informação como um número inteiro longo (`long`), representando os milissegundos decorridos desde a _Unix Epoch_ (01/01/1970).
+- **Reflexo na Modelagem:** Ao modelar, foque na necessidade do negócio. Se a data requer cálculos complexos ou fusos horários, trate-a como um tipo primitivo robusto, mas ciente da abstração de implementação subjacente.
 
 ---
 
