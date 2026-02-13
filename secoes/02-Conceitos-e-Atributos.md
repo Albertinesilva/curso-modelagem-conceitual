@@ -212,7 +212,7 @@ Consolidada a anatomia das entidades, avançaremos agora para a exploração de 
 
 <p align="center">
   <b>Seção 2 concluída ✔</b><br>
-  <a href="01-Introducao.md">⬅ Seção 1 - Introdução</a> |
+  <a href="01-Introducao-Modelagem-Dominio.md">⬅ Seção 1 - Introdução</a> |
   <a href="../README.md">🏠 Início</a> |
   <a href="03-Associacoes-e-Multiplicidades.md">Seção 3 - Associações e Multiplicidades ➡</a>
 </p>
