@@ -211,7 +211,8 @@ Consolidada a anatomia das entidades, avançaremos agora para a exploração de 
 ---
 
 <p align="center">
-  <b>Introdução concluída ✔</b><br>
+  <b>Seção 2 concluída ✔</b><br>
+  <a href="01-Introducao.md">⬅ Seção 1 - Introdução</a> |
   <a href="../README.md">🏠 Início</a> |
-  <a href="../secoes/02-Conceitos-e-Atributos.md">Seção 2 - Conceitos e Atributos ➡</a>
+  <a href="03-Associacoes-e-Multiplicidades.md">Seção 3 - Associações e Multiplicidades ➡</a>
 </p>
