@@ -213,5 +213,5 @@ Consolidada a anatomia das entidades, avançaremos agora para a exploração de 
 <p align="center">
   <b>Introdução concluída ✔</b><br>
   <a href="../README.md">🏠 Início</a> |
-  <a href="02-Conceitos-e-Atributos.md">Seção 2 - Conceitos e Atributos ➡</a>
+  <a href="../secoes/02-Conceitos-e-Atributos.md">Seção 2 - Conceitos e Atributos ➡</a>
 </p>
