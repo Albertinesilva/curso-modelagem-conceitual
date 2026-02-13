@@ -208,7 +208,10 @@ Nesta etapa, a modelagem deixa de ser uma visão panorâmica e passa a focar na 
 
 Consolidada a anatomia das entidades, avançaremos agora para a exploração de como esses conceitos se comunicam e dependem uns dos outros através das **Associações e Multiplicidades**.
 
+---
+
 <p align="center">
-<b>Finalizada a Seção 2! 🏁</b><br>
-  <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/03-Associacoes-e-Multiplicidades.md">Seção 3 - Associações e Multiplicidades</a>
+  <b>Introdução concluída ✔</b><br>
+  <a href="../README.md">🏠 Início</a> |
+  <a href="02-Conceitos-e-Atributos.md">Seção 2 - Conceitos e Atributos ➡</a>
 </p>

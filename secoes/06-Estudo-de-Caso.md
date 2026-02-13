@@ -65,5 +65,8 @@ Este estudo de caso fecha o ciclo de aprendizado ao provar que **um bom código 
 ---
 
 <p align="center">
-  <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/07-Conclusao.md">Seção 7: Considerações Finais</a>
+  <b>Seção 6 concluída ✔</b><br>
+  <a href="05-Heranca-e-Generalizacao.md">⬅ Seção 5 - Herança e Tipos (Generalização)</a> |
+  <a href="../README.md">🏠 Início</a> |
+  <a href="07-Conclusao.md">Seção 7 - Considerações Finais ➡</a>
 </p>

@@ -42,7 +42,10 @@ A modelagem é o alicerce para arquiteturas mais complexas. O aprendizado aqui e
 
 Parabéns por concluir o percurso de modelagem conceitual. Você está agora capacitado a transformar problemas complexos em diagramas elegantes e prontos para a implementação profissional.
 
+---
+
 <p align="center">
-  <b>🏁 Fim do Guia de Modelagem</b><br>
-  <b>Próximo Nível: 🏠 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/README.md">Voltar ao Início do Repositório</a>
+  <b>🏁 Curso Finalizado</b><br>
+  <a href="06-Estudo-de-Caso.md">⬅ Seção 6 - Estudo de Caso Prático</a> |
+  <a href="../README.md">🏠 Voltar ao Início do Repositório</a>
 </p>

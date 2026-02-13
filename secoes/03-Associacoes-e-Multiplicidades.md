@@ -249,7 +249,11 @@ Nesta etapa, conectamos as entidades isoladas para formar a rede de colaboraçã
 
 Consolidada a lógica de comunicação entre as classes, avançaremos agora para a **Seção 4**, onde exploraremos os conceitos de Agregação e Composição e o poder das Classes de Associação.
 
+---
+
 <p align="center">
-<b>Finalizada a Seção 3! 🏁</b><br>
-  <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/04-Todo-Parte-e-Classe-Associacao.md">Seção 4 - Associações Todo-Parte e Classe de Associação</a>
+  <b>Seção 3 concluída ✔</b><br>
+  <a href="02-Conceitos-e-Atributos.md">⬅ Seção 2 - Conceitos e Atributos</a> |
+  <a href="../README.md">🏠 Início</a> |
+  <a href="04-Todo-Parte-e-Classe-Associacao.md">Seção 4 - Associações Todo-Parte e Classe de Associação ➡</a>
 </p>

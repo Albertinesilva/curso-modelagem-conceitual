@@ -319,6 +319,8 @@ Para garantir que sua modelagem seja robusta e fácil de manter, utilize este re
 ---
 
 <p align="center">
-<b>Finalizada a Seção 5! 🏁</b><br>
-  <b>Próximo Nível: 👉 </b> <a href="https://github.com/Albertinesilva/curso-modelagem-conceitual/blob/main/secoes/06-Estudo-de-Caso.md">Seção 6: Estudo de Caso Prático</a>
+  <b>Seção 5 concluída ✔</b><br>
+  <a href="04-Todo-Parte-e-Classe-Associacao.md">⬅ Seção 4 - Associações Todo-Parte e Classe de Associação</a> |
+  <a href="../README.md">🏠 Início</a> |
+  <a href="06-Estudo-de-Caso.md">Seção 6 - Estudo de Caso Prático ➡</a>
 </p>
