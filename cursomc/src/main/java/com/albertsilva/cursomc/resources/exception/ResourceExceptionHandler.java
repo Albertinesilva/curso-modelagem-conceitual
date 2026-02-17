@@ -1,5 +1,7 @@
 package com.albertsilva.cursomc.resources.exception;
 
+import java.time.LocalDateTime;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,8 +15,19 @@ import jakarta.servlet.http.HttpServletRequest;
 public class ResourceExceptionHandler {
 
   @ExceptionHandler(ObjectNotFoundException.class)
-  public ResponseEntity<StandarError> objectNotFound(ObjectNotFoundException e, HttpServletRequest request) {
-    StandarError err = new StandarError(HttpStatus.NOT_FOUND.value(), e.getMessage(), System.currentTimeMillis());
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+  public ResponseEntity<StandardError> objectNotFound(
+      ObjectNotFoundException e,
+      HttpServletRequest request) {
+
+    HttpStatus status = HttpStatus.NOT_FOUND;
+
+    StandardError err = new StandardError(
+        LocalDateTime.now(),
+        status.value(),
+        "Not Found",
+        e.getMessage(),
+        request.getRequestURI());
+
+    return ResponseEntity.status(status).body(err);
   }
 }

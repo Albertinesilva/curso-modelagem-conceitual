@@ -1,5 +1,9 @@
 package com.albertsilva.cursomc.domain.enums;
 
+import java.util.Arrays;
+
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum TipoCliente {
   PESSOAFISICA(1, "Pessoa Física"),
   PESSOAJURIDICA(2, "Pessoa Jurídica");
@@ -16,6 +20,7 @@ public enum TipoCliente {
     return cod;
   }
 
+  @JsonValue
   public String getDescricao() {
     return descricao;
   }
@@ -25,12 +30,16 @@ public enum TipoCliente {
       return null;
     }
 
-    for (TipoCliente x : TipoCliente.values()) {
-      if (cod.equals(x.getCod())) {
-        return x;
-      }
-    }
+    return Arrays.stream(TipoCliente.values())
+        .filter(x -> cod.equals(x.getCod()))
+        .findFirst()
+        .orElseThrow(() -> new IllegalArgumentException("Id inválido: " + cod));
 
-    throw new IllegalArgumentException("Id inválido: " + cod);
+    // for (TipoCliente x : TipoCliente.values()) {
+    // if (cod.equals(x.getCod())) {
+    // return x;
+    // }
+    // }
+    // throw new IllegalArgumentException("Id inválido: " + cod);
   }
 }
