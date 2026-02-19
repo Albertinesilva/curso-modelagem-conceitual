@@ -50,6 +50,13 @@ public class CategoriaService {
     return categoriaRepository.save(entity);
   }
 
+  public void delete(Integer id) {
+    Categoria obj = categoriaRepository.findById(id)
+        .orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id));
+
+    categoriaRepository.delete(obj);
+  }
+
   private void updateData(Categoria entity, Categoria obj) {
     entity.setNome(obj.getNome());
   }
