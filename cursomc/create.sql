@@ -39,6 +39,15 @@
         primary key (id)
     );
 
+    create table item_pedido (
+        desconto float(53),
+        pedido_id integer not null,
+        preco float(53),
+        produto_id integer not null,
+        quantidade integer,
+        primary key (pedido_id, produto_id)
+    );
+
     create table pagamento (
         estado integer,
         pedido_id integer not null,
@@ -97,6 +106,16 @@
        add constraint FK8s7ivtl4foyhrfam9xqom73n9 
        foreign key (cliente_id) 
        references cliente;
+
+    alter table if exists item_pedido 
+       add constraint FK60ym08cfoysa17wrn1swyiuda 
+       foreign key (pedido_id) 
+       references pedido;
+
+    alter table if exists item_pedido 
+       add constraint FKtk55mn6d6bvl5h0no5uagi3sf 
+       foreign key (produto_id) 
+       references produto;
 
     alter table if exists pagamento 
        add constraint FKthad9tkw4188hb3qo1lm5ueb0 
