@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.albertsilva.cursomc.domain.Categoria;
-import com.albertsilva.cursomc.dto.categoria.request.CategoriaRequestDTO;
-import com.albertsilva.cursomc.dto.categoria.response.CategoriaResponseDTO;
+import com.albertsilva.cursomc.dto.categoria.request.CategoriaRequest;
+import com.albertsilva.cursomc.dto.categoria.response.CategoriaResponse;
 import com.albertsilva.cursomc.repositories.CategoriaRepository;
 import com.albertsilva.cursomc.services.exceptions.ObjectNotFoundException;
 
@@ -27,7 +27,7 @@ public class CategoriaService {
   }
 
   @Transactional(readOnly = true)
-  public Page<CategoriaResponseDTO> findAllPaged(Pageable pageable) {
+  public Page<CategoriaResponse> findAllPaged(Pageable pageable) {
 
     Page<Categoria> page = categoriaRepository.findAll(pageable);
 
@@ -35,7 +35,7 @@ public class CategoriaService {
   }
 
   @Transactional(readOnly = true)
-  public CategoriaResponseDTO findById(Integer id) {
+  public CategoriaResponse findById(Integer id) {
     Categoria categoria = categoriaRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
         "Categoria não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
     return toResponseDTO(categoria);
@@ -61,14 +61,14 @@ public class CategoriaService {
     entity.setNome(obj.getNome());
   }
 
-  public Categoria fromRequestDTO(CategoriaRequestDTO dto) {
+  public Categoria fromRequestDTO(CategoriaRequest dto) {
     Categoria categoria = new Categoria();
     categoria.setNome(dto.nome());
     return categoria;
   }
 
-  public CategoriaResponseDTO toResponseDTO(Categoria categoria) {
-    return new CategoriaResponseDTO(
+  public CategoriaResponse toResponseDTO(Categoria categoria) {
+    return new CategoriaResponse(
         categoria.getId(),
         categoria.getNome());
   }

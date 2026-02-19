@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.albertsilva.cursomc.domain.Categoria;
-import com.albertsilva.cursomc.dto.categoria.request.CategoriaRequestDTO;
-import com.albertsilva.cursomc.dto.categoria.response.CategoriaResponseDTO;
+import com.albertsilva.cursomc.dto.categoria.request.CategoriaRequest;
+import com.albertsilva.cursomc.dto.categoria.response.CategoriaResponse;
 import com.albertsilva.cursomc.services.CategoriaService;
 
 import jakarta.validation.Valid;
@@ -33,7 +33,7 @@ public class CategoriaResource {
   }
 
   @PostMapping
-  public ResponseEntity<CategoriaResponseDTO> insert(@Valid @RequestBody CategoriaRequestDTO dto) {
+  public ResponseEntity<CategoriaResponse> insert(@Valid @RequestBody CategoriaRequest dto) {
 
     Categoria categoria = categoriaService.fromRequestDTO(dto);
     categoria = categoriaService.insert(categoria);
@@ -48,18 +48,18 @@ public class CategoriaResource {
   }
 
   @GetMapping
-  public ResponseEntity<Page<CategoriaResponseDTO>> findAllPaged(Pageable pageable) {
+  public ResponseEntity<Page<CategoriaResponse>> findAllPaged(Pageable pageable) {
     return ResponseEntity.ok(categoriaService.findAllPaged(pageable));
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<CategoriaResponseDTO> findById(@PathVariable Integer id) {
+  public ResponseEntity<CategoriaResponse> findById(@PathVariable Integer id) {
     return ResponseEntity.ok().body(categoriaService.findById(id));
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<CategoriaResponseDTO> update(@PathVariable Integer id,
-      @Valid @RequestBody CategoriaRequestDTO dto) {
+  public ResponseEntity<CategoriaResponse> update(@PathVariable Integer id,
+      @Valid @RequestBody CategoriaRequest dto) {
 
     Categoria categoria = categoriaService.fromRequestDTO(dto);
     categoria = categoriaService.update(id, categoria);
