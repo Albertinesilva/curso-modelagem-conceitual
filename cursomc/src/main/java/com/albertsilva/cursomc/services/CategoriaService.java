@@ -26,6 +26,7 @@ public class CategoriaService {
     return categoriaRepository.save(obj);
   }
 
+  @Transactional(readOnly = true)
   public Page<CategoriaResponseDTO> findAllPaged(Pageable pageable) {
 
     Page<Categoria> page = categoriaRepository.findAll(pageable);
@@ -33,9 +34,11 @@ public class CategoriaService {
     return page.map(this::toResponseDTO);
   }
 
-  public Categoria buscar(Integer id) {
-    return categoriaRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
+  @Transactional(readOnly = true)
+  public CategoriaResponseDTO findById(Integer id) {
+    Categoria categoria = categoriaRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
         "Categoria não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
+    return toResponseDTO(categoria);
   }
 
   public Categoria fromRequestDTO(CategoriaRequestDTO dto) {
