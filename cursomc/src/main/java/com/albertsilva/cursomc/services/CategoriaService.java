@@ -41,6 +41,19 @@ public class CategoriaService {
     return toResponseDTO(categoria);
   }
 
+  @Transactional
+  public Categoria update(Integer id, Categoria obj) {
+    Categoria entity = categoriaRepository.findById(id)
+        .orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id));
+
+    updateData(entity, obj);
+    return categoriaRepository.save(entity);
+  }
+
+  private void updateData(Categoria entity, Categoria obj) {
+    entity.setNome(obj.getNome());
+  }
+
   public Categoria fromRequestDTO(CategoriaRequestDTO dto) {
     Categoria categoria = new Categoria();
     categoria.setNome(dto.nome());
