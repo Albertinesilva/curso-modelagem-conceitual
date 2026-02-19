@@ -43,9 +43,8 @@ public class CategoriaService {
 
   @Transactional
   public Categoria update(Integer id, Categoria obj) {
-    Categoria entity = categoriaRepository.findById(id)
-        .orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id));
-
+    Categoria entity = categoriaRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
+        "Categoria não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
     updateData(entity, obj);
     return categoriaRepository.save(entity);
   }

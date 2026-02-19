@@ -56,16 +56,18 @@ public class ClienteService {
     return toResponse(cliente);
   }
 
-  public Cliente findById(Integer id) {
-    return clienteRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
+  @Transactional(readOnly = true)
+  public ClienteResponse findById(Integer id) {
+    Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
         "Cliente não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
+    return toResponse(cliente);
   }
 
   @Transactional
   public ClienteResponse update(Integer id, ClienteUpdateRequest dto) {
 
-    Cliente cliente = clienteRepository.findById(id)
-        .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado"));
+    Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
+        "Cliente não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
 
     cliente.setNome(dto.nome());
     cliente.setEmail(dto.email());
