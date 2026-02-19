@@ -9,5 +9,10 @@
 -- END
 -- $$;
 
-INSERT INTO estado (id, nome) VALUES (1, 'Minas Gerais'),(2, 'São Paulo');
+INSERT INTO estado (nome) VALUES
+('Minas Gerais'),
+('São Paulo'),
+('Rio de Janeiro'),
+('Paraná'),
+('Bahia');
 
