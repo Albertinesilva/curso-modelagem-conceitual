@@ -11,6 +11,7 @@ import com.albertsilva.cursomc.domain.Cliente;
 import com.albertsilva.cursomc.domain.Endereco;
 import com.albertsilva.cursomc.domain.enums.TipoCliente;
 import com.albertsilva.cursomc.dto.cliente.request.ClienteInsertRequest;
+import com.albertsilva.cursomc.dto.cliente.request.ClienteUpdateRequest;
 import com.albertsilva.cursomc.dto.cliente.response.ClienteResponse;
 import com.albertsilva.cursomc.dto.cliente.response.EnderecoResponse;
 import com.albertsilva.cursomc.repositories.CidadeRepository;
@@ -55,9 +56,23 @@ public class ClienteService {
     return toResponse(cliente);
   }
 
-  public Cliente buscar(Integer id) {
+  public Cliente findById(Integer id) {
     return clienteRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
         "Cliente não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
+  }
+
+  @Transactional
+  public ClienteResponse update(Integer id, ClienteUpdateRequest dto) {
+
+    Cliente cliente = clienteRepository.findById(id)
+        .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado"));
+
+    cliente.setNome(dto.nome());
+    cliente.setEmail(dto.email());
+
+    cliente = clienteRepository.save(cliente);
+
+    return toResponse(cliente);
   }
 
   private ClienteResponse toResponse(Cliente cliente) {

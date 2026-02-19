@@ -6,11 +6,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.albertsilva.cursomc.dto.cliente.request.ClienteInsertRequest;
+import com.albertsilva.cursomc.dto.cliente.request.ClienteUpdateRequest;
 import com.albertsilva.cursomc.dto.cliente.response.ClienteResponse;
 import com.albertsilva.cursomc.services.ClienteService;
 
@@ -33,7 +35,12 @@ public class ClienteResource {
 
   @GetMapping(value = "/{id}")
   public ResponseEntity<?> findById(@PathVariable Integer id) {
-    return ResponseEntity.ok().body(clienteService.buscar(id));
+    return ResponseEntity.ok().body(clienteService.findById(id));
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<ClienteResponse> update(@PathVariable Integer id, @RequestBody ClienteUpdateRequest dto) {
+    return ResponseEntity.ok(clienteService.update(id, dto));
   }
 
 }

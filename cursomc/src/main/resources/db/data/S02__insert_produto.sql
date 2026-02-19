@@ -10,5 +10,5 @@
 -- END
 -- $$;
 
-INSERT INTO produto (nome, preco) VALUES('Computador', 2000.00),(2, 'Impressora', 800.00),(3, 'Mouse', 80.00);
+INSERT INTO produto (nome, preco) VALUES('Computador', 2000.00),('Impressora', 800.00),('Mouse', 80.00);
 
