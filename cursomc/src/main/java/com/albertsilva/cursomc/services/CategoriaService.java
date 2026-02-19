@@ -31,14 +31,14 @@ public class CategoriaService {
 
     Page<Categoria> page = categoriaRepository.findAll(pageable);
 
-    return page.map(this::toResponseDTO);
+    return page.map(this::toResponse);
   }
 
   @Transactional(readOnly = true)
   public CategoriaResponse findById(Integer id) {
     Categoria categoria = categoriaRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
         "Categoria não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
-    return toResponseDTO(categoria);
+    return toResponse(categoria);
   }
 
   @Transactional
@@ -67,7 +67,7 @@ public class CategoriaService {
     return categoria;
   }
 
-  public CategoriaResponse toResponseDTO(Categoria categoria) {
+  public CategoriaResponse toResponse(Categoria categoria) {
     return new CategoriaResponse(
         categoria.getId(),
         categoria.getNome());

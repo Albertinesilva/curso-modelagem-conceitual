@@ -2,6 +2,8 @@ package com.albertsilva.cursomc.resources;
 
 import java.net.URI;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +33,11 @@ public class ClienteResource {
     ClienteResponse response = clienteService.insert(dto);
     URI uri = URI.create("/clientes/" + response.id());
     return ResponseEntity.created(uri).body(response);
+  }
+
+  @GetMapping
+  public ResponseEntity<Page<ClienteResponse>> findAllPaged(Pageable pageable) {
+    return ResponseEntity.ok(clienteService.findAllPaged(pageable));
   }
 
   @GetMapping(value = "/{id}")

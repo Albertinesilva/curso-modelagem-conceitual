@@ -44,7 +44,7 @@ public class CategoriaResource {
         .buildAndExpand(categoria.getId())
         .toUri();
 
-    return ResponseEntity.created(uri).body(categoriaService.toResponseDTO(categoria));
+    return ResponseEntity.created(uri).body(categoriaService.toResponse(categoria));
   }
 
   @GetMapping
@@ -64,7 +64,7 @@ public class CategoriaResource {
     Categoria categoria = categoriaService.fromRequestDTO(dto);
     categoria = categoriaService.update(id, categoria);
 
-    return ResponseEntity.ok().body(categoriaService.toResponseDTO(categoria));
+    return ResponseEntity.ok().body(categoriaService.toResponse(categoria));
   }
 
   @DeleteMapping("/{id}")

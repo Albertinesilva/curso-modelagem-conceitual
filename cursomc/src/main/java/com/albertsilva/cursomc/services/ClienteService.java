@@ -3,6 +3,8 @@ package com.albertsilva.cursomc.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -54,6 +56,14 @@ public class ClienteService {
     enderecoRepository.save(endereco);
 
     return toResponse(cliente);
+  }
+
+  @Transactional(readOnly = true)
+  public Page<ClienteResponse> findAllPaged(Pageable pageable) {
+
+    Page<Cliente> page = clienteRepository.findAll(pageable);
+
+    return page.map(this::toResponse);
   }
 
   @Transactional(readOnly = true)
