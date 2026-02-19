@@ -6,10 +6,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -30,7 +32,7 @@ public class CategoriaResource {
     this.categoriaService = categoriaService;
   }
 
-  @RequestMapping(method = RequestMethod.POST)
+  @PostMapping
   public ResponseEntity<CategoriaResponseDTO> insert(@Valid @RequestBody CategoriaRequestDTO dto) {
 
     Categoria categoria = categoriaService.fromRequestDTO(dto);
@@ -45,17 +47,17 @@ public class CategoriaResource {
     return ResponseEntity.created(uri).body(categoriaService.toResponseDTO(categoria));
   }
 
-  @RequestMapping(method = RequestMethod.GET)
+  @GetMapping
   public ResponseEntity<Page<CategoriaResponseDTO>> findAllPaged(Pageable pageable) {
     return ResponseEntity.ok(categoriaService.findAllPaged(pageable));
   }
 
-  @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+  @GetMapping("/{id}")
   public ResponseEntity<CategoriaResponseDTO> findById(@PathVariable Integer id) {
     return ResponseEntity.ok().body(categoriaService.findById(id));
   }
 
-  @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+  @PutMapping("/{id}")
   public ResponseEntity<CategoriaResponseDTO> update(@PathVariable Integer id,
       @Valid @RequestBody CategoriaRequestDTO dto) {
 
