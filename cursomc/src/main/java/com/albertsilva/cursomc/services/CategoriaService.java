@@ -50,6 +50,7 @@ public class CategoriaService {
     return categoriaRepository.save(entity);
   }
 
+  @Transactional
   public void delete(Integer id) {
     Categoria obj = categoriaRepository.findById(id)
         .orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id));
