@@ -1,14 +1,8 @@
 package com.albertsilva.cursomc.services.exceptions;
 
-public class ObjectNotFoundException extends RuntimeException {
-  private static final long serialVersionUID = 1L;
+public class ObjectNotFoundException extends BusinessException {
 
   public ObjectNotFoundException(String message) {
-    super(message);
+    super(message, 404);
   }
-
-  public ObjectNotFoundException(String message, Throwable cause) {
-    super(message, cause);
-  }
-
 }
