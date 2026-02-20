@@ -25,7 +25,7 @@ public class CategoriaService {
 
   @Transactional
   public CategoriaResponse insert(CategoriaInsertRequest dto) {
-    Categoria categoria = categoriaMapper.fromRequest(dto);
+    Categoria categoria = categoriaMapper.fromInsertRequest(dto);
     categoria = categoriaRepository.save(categoria);
     return categoriaMapper.toResponse(categoria);
   }

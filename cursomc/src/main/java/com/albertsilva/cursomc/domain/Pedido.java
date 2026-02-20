@@ -42,7 +42,7 @@ public class Pedido implements Serializable {
   @JoinColumn(name = "endereco_de_entrega_id")
   private Endereco enderecoDeEntrega;
 
-  @OneToMany(mappedBy = "id.pedido")
+  @OneToMany(mappedBy = "id.pedido", cascade = CascadeType.ALL, orphanRemoval = true)
   private Set<ItemPedido> itens = new HashSet<>();
 
   public Pedido() {
@@ -53,6 +53,10 @@ public class Pedido implements Serializable {
     this.instante = instante;
     this.cliente = cliente;
     this.enderecoDeEntrega = enderecoDeEntrega;
+  }
+
+  public double getTotal() {
+    return itens.stream().mapToDouble(ItemPedido::getSubTotal).sum();
   }
 
   public Integer getId() {

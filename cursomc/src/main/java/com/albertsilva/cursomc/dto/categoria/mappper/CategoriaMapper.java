@@ -9,7 +9,7 @@ import com.albertsilva.cursomc.dto.categoria.response.CategoriaResponse;
 @Component
 public class CategoriaMapper {
 
-  public Categoria fromRequest(CategoriaInsertRequest dto) {
+  public Categoria fromInsertRequest(CategoriaInsertRequest dto) {
     Categoria categoria = new Categoria();
     categoria.setNome(dto.nome());
     return categoria;
