@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.albertsilva.cursomc.domain.Categoria;
-import com.albertsilva.cursomc.dto.categoria.request.CategoriaRequest;
+import com.albertsilva.cursomc.dto.categoria.mappper.CategoriaMapper;
+import com.albertsilva.cursomc.dto.categoria.request.CategoriaInsertRequest;
 import com.albertsilva.cursomc.dto.categoria.response.CategoriaResponse;
 import com.albertsilva.cursomc.repositories.CategoriaRepository;
 import com.albertsilva.cursomc.services.exceptions.ObjectNotFoundException;
@@ -15,62 +16,47 @@ import com.albertsilva.cursomc.services.exceptions.ObjectNotFoundException;
 public class CategoriaService {
 
   private final CategoriaRepository categoriaRepository;
+  private final CategoriaMapper categoriaMapper;
 
-  public CategoriaService(CategoriaRepository categoriaRepository) {
+  public CategoriaService(CategoriaRepository categoriaRepository, CategoriaMapper categoriaMapper) {
     this.categoriaRepository = categoriaRepository;
+    this.categoriaMapper = categoriaMapper;
   }
 
   @Transactional
-  public Categoria insert(Categoria obj) {
-    obj.setId(null);
-    return categoriaRepository.save(obj);
+  public CategoriaResponse insert(CategoriaInsertRequest dto) {
+    Categoria categoria = categoriaMapper.fromRequest(dto);
+    categoria = categoriaRepository.save(categoria);
+    return categoriaMapper.toResponse(categoria);
   }
 
   @Transactional(readOnly = true)
   public Page<CategoriaResponse> findAllPaged(Pageable pageable) {
-
-    Page<Categoria> page = categoriaRepository.findAll(pageable);
-
-    return page.map(this::toResponse);
+    return categoriaRepository.findAll(pageable).map(categoriaMapper::toResponse);
   }
 
   @Transactional(readOnly = true)
   public CategoriaResponse findById(Integer id) {
-    Categoria categoria = categoriaRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
-        "Categoria não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
-    return toResponse(categoria);
+    Categoria categoria = findEntityById(id);
+    return categoriaMapper.toResponse(categoria);
   }
 
   @Transactional
-  public Categoria update(Integer id, Categoria obj) {
-    Categoria entity = categoriaRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
-        "Categoria não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
-    updateData(entity, obj);
-    return categoriaRepository.save(entity);
+  public CategoriaResponse update(Integer id, CategoriaInsertRequest dto) {
+    Categoria categoria = findEntityById(id);
+    categoriaMapper.updateEntityFromRequest(dto, categoria);
+    return categoriaMapper.toResponse(categoria);
   }
 
   @Transactional
   public void delete(Integer id) {
-    Categoria obj = categoriaRepository.findById(id)
-        .orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id));
-
+    Categoria obj = findEntityById(id);
     categoriaRepository.delete(obj);
   }
 
-  private void updateData(Categoria entity, Categoria obj) {
-    entity.setNome(obj.getNome());
-  }
-
-  public Categoria fromRequestDTO(CategoriaRequest dto) {
-    Categoria categoria = new Categoria();
-    categoria.setNome(dto.nome());
-    return categoria;
-  }
-
-  public CategoriaResponse toResponse(Categoria categoria) {
-    return new CategoriaResponse(
-        categoria.getId(),
-        categoria.getNome());
+  private Categoria findEntityById(Integer id) {
+    return categoriaRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
+        "Categoria não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
   }
 
 }

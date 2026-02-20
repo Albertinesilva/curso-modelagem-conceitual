@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.albertsilva.cursomc.domain.Categoria;
-import com.albertsilva.cursomc.dto.categoria.request.CategoriaRequest;
+import com.albertsilva.cursomc.dto.categoria.request.CategoriaInsertRequest;
 import com.albertsilva.cursomc.dto.categoria.response.CategoriaResponse;
 import com.albertsilva.cursomc.services.CategoriaService;
 
@@ -33,18 +32,10 @@ public class CategoriaResource {
   }
 
   @PostMapping
-  public ResponseEntity<CategoriaResponse> insert(@Valid @RequestBody CategoriaRequest dto) {
-
-    Categoria categoria = categoriaService.fromRequestDTO(dto);
-    categoria = categoriaService.insert(categoria);
-
-    URI uri = ServletUriComponentsBuilder
-        .fromCurrentRequest()
-        .path("/{id}")
-        .buildAndExpand(categoria.getId())
-        .toUri();
-
-    return ResponseEntity.created(uri).body(categoriaService.toResponse(categoria));
+  public ResponseEntity<CategoriaResponse> insert(@Valid @RequestBody CategoriaInsertRequest dto) {
+    CategoriaResponse response = categoriaService.insert(dto);
+    URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(response.id()).toUri();
+    return ResponseEntity.created(uri).body(response);
   }
 
   @GetMapping
@@ -58,13 +49,8 @@ public class CategoriaResource {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<CategoriaResponse> update(@PathVariable Integer id,
-      @Valid @RequestBody CategoriaRequest dto) {
-
-    Categoria categoria = categoriaService.fromRequestDTO(dto);
-    categoria = categoriaService.update(id, categoria);
-
-    return ResponseEntity.ok().body(categoriaService.toResponse(categoria));
+  public ResponseEntity<CategoriaResponse> update(@PathVariable Integer id, @Valid @RequestBody CategoriaInsertRequest dto) {
+    return ResponseEntity.ok().body(categoriaService.update(id, dto));
   }
 
   @DeleteMapping("/{id}")

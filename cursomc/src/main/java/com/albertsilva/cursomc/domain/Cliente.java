@@ -7,9 +7,11 @@ import java.util.List;
 import java.util.Set;
 
 import com.albertsilva.cursomc.domain.enums.TipoCliente;
+import com.albertsilva.cursomc.dto.cliente.request.ClienteUpdateRequest;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
@@ -31,7 +33,7 @@ public class Cliente implements Serializable {
   private Integer tipo;
 
   @JsonManagedReference
-  @OneToMany(mappedBy = "cliente")
+  @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Endereco> enderecos = new ArrayList<>();
 
   @ElementCollection
@@ -51,6 +53,24 @@ public class Cliente implements Serializable {
     this.email = email;
     this.cpfOuCnpj = cpfOuCnpj;
     this.tipo = (tipo == null) ? null : tipo.getCod();
+  }
+
+  public static Cliente create(String nome, String email, String cpfOuCnpj, TipoCliente tipo) {
+    return new Cliente(null, nome, email, cpfOuCnpj, tipo);
+  }
+
+  public void updateFrom(ClienteUpdateRequest dto) {
+    this.nome = dto.nome();
+    this.email = dto.email();
+  }
+
+  public void addEndereco(Endereco endereco) {
+    endereco.setCliente(this);
+    this.enderecos.add(endereco);
+  }
+
+  public void addTelefone(String telefone) {
+    this.telefones.add(telefone);
   }
 
   public Integer getId() {

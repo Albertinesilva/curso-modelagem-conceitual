@@ -1,8 +1,5 @@
 package com.albertsilva.cursomc.services;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -10,99 +7,68 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.albertsilva.cursomc.domain.Cidade;
 import com.albertsilva.cursomc.domain.Cliente;
-import com.albertsilva.cursomc.domain.Endereco;
-import com.albertsilva.cursomc.domain.enums.TipoCliente;
+import com.albertsilva.cursomc.dto.cliente.mapper.ClienteMapper;
 import com.albertsilva.cursomc.dto.cliente.request.ClienteInsertRequest;
 import com.albertsilva.cursomc.dto.cliente.request.ClienteUpdateRequest;
 import com.albertsilva.cursomc.dto.cliente.response.ClienteResponse;
-import com.albertsilva.cursomc.dto.cliente.response.EnderecoResponse;
 import com.albertsilva.cursomc.repositories.CidadeRepository;
 import com.albertsilva.cursomc.repositories.ClienteRepository;
-import com.albertsilva.cursomc.repositories.EnderecoRepository;
 import com.albertsilva.cursomc.services.exceptions.ObjectNotFoundException;
-
-import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ClienteService {
 
   private final ClienteRepository clienteRepository;
   private final CidadeRepository cidadeRepository;
-  private final EnderecoRepository enderecoRepository;
+  private final ClienteMapper clienteMapper;
 
   public ClienteService(ClienteRepository clienteRepository, CidadeRepository cidadeRepository,
-      EnderecoRepository enderecoRepository) {
+      ClienteMapper clienteMapper) {
     this.clienteRepository = clienteRepository;
     this.cidadeRepository = cidadeRepository;
-    this.enderecoRepository = enderecoRepository;
+    this.clienteMapper = clienteMapper;
   }
 
   @Transactional
   public ClienteResponse insert(ClienteInsertRequest dto) {
 
-    Cliente cliente = new Cliente(null, dto.nome(), dto.email(), dto.cpfOuCnpj(), TipoCliente.toEnum(dto.tipo()));
+    // Cidade cidade = cidadeRepository.findById(dto.cidadeId())
+    // .orElseThrow(() -> new EntityNotFoundException("Cidade não encontrada"));
+    Cidade cidade = cidadeRepository.getReferenceById(dto.cidadeId());
 
-    cliente.getTelefones().addAll(dto.telefones());
-
-    Cidade cidade = cidadeRepository.findById(dto.cidadeId())
-        .orElseThrow(() -> new EntityNotFoundException("Cidade não encontrada"));
-
-    Endereco endereco = new Endereco(null, dto.logradouro(), dto.numero(), dto.complemento(), dto.bairro(), dto.cep(),
-        cliente, cidade);
-
-    cliente.getEnderecos().add(endereco);
+    Cliente cliente = clienteMapper.fromInsertRequest(dto, cidade);
 
     cliente = clienteRepository.save(cliente);
-    enderecoRepository.save(endereco);
 
-    return toResponse(cliente);
+    return clienteMapper.toResponse(cliente);
   }
 
   @Transactional(readOnly = true)
   public Page<ClienteResponse> findAllPaged(Pageable pageable) {
-
-    Page<Cliente> page = clienteRepository.findAll(pageable);
-
-    return page.map(this::toResponse);
+    return clienteRepository.findAll(pageable).map(clienteMapper::toResponse);
   }
 
   @Transactional(readOnly = true)
   public ClienteResponse findById(Integer id) {
-    Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
-        "Cliente não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
-    return toResponse(cliente);
+    return clienteMapper.toResponse(findEntityById(id));
   }
 
   @Transactional
   public ClienteResponse update(Integer id, ClienteUpdateRequest dto) {
-
-    Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
-        "Cliente não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
-
-    cliente.setNome(dto.nome());
-    cliente.setEmail(dto.email());
-
-    cliente = clienteRepository.save(cliente);
-
-    return toResponse(cliente);
+    Cliente cliente = findEntityById(id);
+    cliente.updateFrom(dto);
+    return clienteMapper.toResponse(cliente);
   }
 
-  private ClienteResponse toResponse(Cliente cliente) {
-
-    List<EnderecoResponse> enderecos = cliente.getEnderecos().stream().map(e -> new EnderecoResponse(
-        e.getId(),
-        e.getLogradouro(),
-        e.getNumero(),
-        e.getComplemento(),
-        e.getBairro(),
-        e.getCep(),
-        e.getCidade().getId())).collect(Collectors.toList());
-
-    return new ClienteResponse(cliente.getId(), cliente.getNome(),
-        cliente.getEmail(),
-        cliente.getCpfOuCnpj(),
-        cliente.getTipo().getCod(),
-        cliente.getTelefones(),
-        enderecos);
+  @Transactional
+  public void delete(Integer id) {
+    Cliente cliente = findEntityById(id);
+    clienteRepository.delete(cliente);
   }
+
+  private Cliente findEntityById(Integer id) {
+    return clienteRepository.findById(id)
+        .orElseThrow(() -> new ObjectNotFoundException("Cliente não encontrado! Id: " + id));
+  }
+
 }

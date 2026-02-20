@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.albertsilva.cursomc.dto.categoria.request.CategoriaInsertRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -31,6 +32,10 @@ public class Categoria implements Serializable {
   public Categoria(Integer id, String nome) {
     this.id = id;
     this.nome = nome;
+  }
+
+  public void updateFrom(CategoriaInsertRequest dto) {
+    this.nome = dto.nome();
   }
 
   public Integer getId() {
