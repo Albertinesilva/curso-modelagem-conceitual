@@ -32,6 +32,28 @@ import com.albertsilva.cursomc.repositories.PedidoRepository;
 import com.albertsilva.cursomc.repositories.ProdutoRepository;
 import com.albertsilva.cursomc.services.exceptions.ObjectNotFoundException;
 
+/**
+ * Serviço responsável pela orquestração das regras de negócio relacionadas à
+ * entidade {@link Pedido}.
+ *
+ * <p>
+ * Atua como Application Service na arquitetura em camadas, coordenando:
+ * </p>
+ * <ul>
+ * <li>Recuperação de entidades via repositórios;</li>
+ * <li>Criação e associação de agregados (Pedido, Pagamento e Itens);</li>
+ * <li>Conversão entre DTOs e entidades de domínio através do
+ * {@link PedidoMapper};</li>
+ * <li>Controle transacional das operações de escrita.</li>
+ * </ul>
+ *
+ * <p>
+ * Esta classe garante consistência transacional ao manipular o agregado
+ * {@link Pedido}, que funciona como Aggregate Root no contexto de vendas.
+ * </p>
+ *
+ * @author
+ */
 @Service
 public class PedidoService {
 
@@ -41,6 +63,17 @@ public class PedidoService {
   private final ProdutoRepository produtoRepository;
   private final PedidoMapper pedidoMapper;
 
+  /**
+   * Construtor para injeção de dependências.
+   *
+   * @param pedidoRepository   repositório responsável pela persistência de
+   *                           {@link Pedido}
+   * @param clienteRepository  repositório para acesso a {@link Cliente}
+   * @param enderecoRepository repositório para acesso a {@link Endereco}
+   * @param produtoRepository  repositório para acesso a {@link Produto}
+   * @param pedidoMapper       componente responsável pelo mapeamento entre DTOs e
+   *                           entidade
+   */
   public PedidoService(
       PedidoRepository pedidoRepository,
       ClienteRepository clienteRepository,
@@ -55,6 +88,27 @@ public class PedidoService {
     this.pedidoMapper = pedidoMapper;
   }
 
+  /**
+   * Cria um novo pedido no sistema.
+   *
+   * <p>
+   * Fluxo da operação:
+   * </p>
+   * <ol>
+   * <li>Recupera cliente e endereço de entrega;</li>
+   * <li>Cria a instância concreta de {@link Pagamento} conforme o tipo
+   * informado;</li>
+   * <li>Instancia o agregado {@link Pedido};</li>
+   * <li>Cria e associa os {@link ItemPedido};</li>
+   * <li>Persiste o agregado completo;</li>
+   * <li>Retorna o DTO de resposta.</li>
+   * </ol>
+   *
+   * @param dto dados necessários para criação do pedido
+   * @return {@link PedidoResponse} representando o pedido criado
+   *
+   * @throws IllegalArgumentException se o tipo de pagamento for inválido
+   */
   @Transactional
   public PedidoResponse insert(PedidoInsertRequest dto) {
 
@@ -74,17 +128,51 @@ public class PedidoService {
     return pedidoMapper.toResponse(pedido);
   }
 
+  /**
+   * Retorna uma página de pedidos.
+   *
+   * @param pageable informações de paginação
+   * @return página contendo {@link PedidoResponse}
+   */
   @Transactional(readOnly = true)
   public Page<PedidoResponse> findAllPaged(Pageable pageable) {
     return pedidoRepository.findAll(pageable)
         .map(pedidoMapper::toResponse);
   }
 
+  /**
+   * Busca um pedido pelo seu identificador.
+   *
+   * @param id identificador do pedido
+   * @return {@link PedidoResponse} correspondente
+   *
+   * @throws ObjectNotFoundException caso o pedido não seja encontrado
+   */
   @Transactional(readOnly = true)
   public PedidoResponse findById(Integer id) {
     return pedidoMapper.toResponse(findEntityById(id));
   }
 
+  /**
+   * Atualiza informações estruturais de um pedido existente.
+   *
+   * <p>
+   * Permite alterar:
+   * </p>
+   * <ul>
+   * <li>Cliente associado;</li>
+   * <li>Endereço de entrega;</li>
+   * <li>Estado do pagamento;</li>
+   * <li>Itens do pedido.</li>
+   * </ul>
+   *
+   * @param id  identificador do pedido
+   * @param dto dados atualizados
+   * @return {@link PedidoResponse} atualizado
+   *
+   * @throws ObjectNotFoundException se o pedido não existir
+   * @throws IllegalStateException   se o pedido não possuir pagamento associado
+   */
   @Transactional
   public PedidoResponse update(Integer id, PedidoUpdateRequest dto) {
 
@@ -104,40 +192,70 @@ public class PedidoService {
     return pedidoMapper.toResponse(pedido);
   }
 
+  /**
+   * Remove um pedido do sistema.
+   *
+   * @param id identificador do pedido
+   *
+   * @throws ObjectNotFoundException se o pedido não existir
+   */
   @Transactional
   public void delete(Integer id) {
     Pedido pedido = findEntityById(id);
     pedidoRepository.delete(pedido);
   }
 
+  /**
+   * Recupera a entidade {@link Pedido} pelo id.
+   *
+   * @param id identificador
+   * @return entidade encontrada
+   * @throws ObjectNotFoundException se não encontrada
+   */
   private Pedido findEntityById(Integer id) {
     return pedidoRepository.findById(id)
         .orElseThrow(() -> new ObjectNotFoundException("Pedido não encontrado! Id: " + id));
   }
 
+  /**
+   * Recupera o cliente associado ao pedido.
+   */
   private Cliente searchCustomer(PedidoInsertRequest dto) {
     return clienteRepository.getReferenceById(dto.clienteId());
   }
 
+  /**
+   * Recupera o endereço de entrega associado ao pedido.
+   */
   private Endereco searchAddress(PedidoInsertRequest dto) {
     return enderecoRepository.getReferenceById(dto.enderecoEntregaId());
   }
 
+  /**
+   * Cria a instância concreta de {@link Pagamento} de acordo com o tipo
+   * informado.
+   *
+   * @param dto dados do pedido
+   * @return instância de {@link Pagamento}
+   *
+   * @throws IllegalArgumentException se o tipo for inválido
+   */
   private Pagamento createPayment(PedidoInsertRequest dto) {
 
     TipoPagamento tipo = TipoPagamento.toEnum(dto.tipoPagamento());
 
     Pagamento pagamento = switch (tipo) {
       case CARTAO -> new PagamentoComCartao(null, EstadoPagamento.PENDENTE, null, dto.numeroDeParcelas());
-
       case BOLETO -> new PagamentoComBoleto(null, EstadoPagamento.PENDENTE, null, null, null);
-
       default -> throw new IllegalArgumentException("Tipo inválido: " + tipo);
     };
 
     return pagamento;
   }
 
+  /**
+   * Cria o agregado {@link Pedido} associando cliente, endereço e pagamento.
+   */
   private Pedido createOrder(PedidoInsertRequest dto, Cliente cliente, Endereco endereco, Pagamento pagamento) {
 
     Pedido pedido = pedidoMapper.fromInsertRequest(dto, cliente, endereco, new HashSet<>(), pagamento);
@@ -147,6 +265,9 @@ public class PedidoService {
     return pedido;
   }
 
+  /**
+   * Cria os itens do pedido a partir do DTO.
+   */
   private Set<ItemPedido> createItems(PedidoInsertRequest dto, Pedido pedido) {
 
     Set<ItemPedido> itens = new HashSet<>();
@@ -163,6 +284,14 @@ public class PedidoService {
     return itens;
   }
 
+  /**
+   * Atualiza o estado do pagamento associado ao pedido.
+   *
+   * @param pedido pedido alvo
+   * @param estado código do novo estado
+   *
+   * @throws IllegalStateException se não houver pagamento vinculado
+   */
   private void atualizarPagamento(Pedido pedido, Integer estado) {
 
     EstadoPagamento estadoEnum = EstadoPagamento.toEnum(estado);
