@@ -25,8 +25,6 @@ import com.albertsilva.cursomc.repositories.CidadeRepository;
 import com.albertsilva.cursomc.repositories.ClienteRepository;
 import com.albertsilva.cursomc.repositories.EnderecoRepository;
 import com.albertsilva.cursomc.repositories.EstadoRepository;
-import com.albertsilva.cursomc.repositories.ItemPedidoRepository;
-import com.albertsilva.cursomc.repositories.PagamentoRepository;
 import com.albertsilva.cursomc.repositories.PedidoRepository;
 import com.albertsilva.cursomc.repositories.ProdutoRepository;
 

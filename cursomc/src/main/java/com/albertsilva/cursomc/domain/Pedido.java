@@ -56,10 +56,7 @@ public class Pedido implements Serializable {
     this.enderecoDeEntrega = enderecoDeEntrega;
   }
 
-  // ===============================
   // REGRAS DE DOMÍNIO
-  // ===============================
-
   public void adicionarItem(Produto produto, Integer quantidade) {
 
     validarQuantidade(quantidade);
@@ -97,10 +94,7 @@ public class Pedido implements Serializable {
   }
 
   private ItemPedido buscarItemPorProduto(Integer produtoId) {
-    return itens.stream()
-        .filter(i -> i.getProduto().getId().equals(produtoId))
-        .findFirst()
-        .orElse(null);
+    return itens.stream().filter(i -> i.getProduto().getId().equals(produtoId)).findFirst().orElse(null);
   }
 
   private void validarQuantidade(Integer quantidade) {
