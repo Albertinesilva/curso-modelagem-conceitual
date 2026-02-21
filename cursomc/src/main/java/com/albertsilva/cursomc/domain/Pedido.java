@@ -22,16 +22,57 @@ import jakarta.persistence.OneToOne;
 /**
  * Entidade que representa um Pedido no domínio do sistema.
  *
- * <p>
- * Um pedido é realizado por um {@link Cliente}, possui um instante de criação,
- * um {@link Pagamento} associado, um {@link Endereco} de entrega e um conjunto
- * de {@link ItemPedido}.
- * </p>
+ * ============================================================
+ * AGGREGATE ROOT (DDD)
+ * ============================================================
  *
  * <p>
- * Esta entidade também encapsula regras de domínio relacionadas à manipulação
- * de itens e ao cálculo do valor total do pedido, seguindo princípios de
- * modelagem orientada a domínio (DDD).
+ * {@code Pedido} é a raiz do agregado no contexto de vendas.
+ * Isso significa que:
+ * </p>
+ *
+ * <ul>
+ * <li>É o único ponto de entrada para modificação dos {@link ItemPedido};</li>
+ * <li>Controla o ciclo de vida do {@link Pagamento};</li>
+ * <li>Garante consistência interna do conjunto de itens;</li>
+ * <li>Protege invariantes de domínio contra manipulação externa;</li>
+ * <li>Deve ser persistido e carregado como unidade transacional.</li>
+ * </ul>
+ *
+ * <p>
+ * Nenhum {@link ItemPedido} deve ser criado, alterado ou removido fora
+ * desta raiz de agregado.
+ * </p>
+ *
+ * ============================================================
+ * COMPOSIÇÃO DO AGREGADO
+ * ============================================================
+ *
+ * <ul>
+ * <li>{@link Pagamento} (1–1, com cascade ALL)</li>
+ * <li>{@link ItemPedido} (1–N, com orphanRemoval = true)</li>
+ * </ul>
+ *
+ * <p>
+ * {@link Cliente} e {@link Endereco} são referências externas ao agregado.
+ * </p>
+ *
+ * ============================================================
+ * INVARIANTES DE DOMÍNIO
+ * ============================================================
+ *
+ * <ul>
+ * <li>Um item nunca pode ter quantidade ≤ 0;</li>
+ * <li>Um produto não pode existir duplicado no pedido;</li>
+ * <li>O total do pedido deve sempre refletir a soma dos subtotais;</li>
+ * <li>Remoções estruturais devem refletir no banco (orphanRemoval);</li>
+ * <li>A manipulação de itens deve ocorrer exclusivamente via métodos de
+ * domínio.</li>
+ * </ul>
+ *
+ * <p>
+ * A entidade segue o padrão <strong>Rich Domain Model</strong>,
+ * encapsulando comportamento e evitando modelo anêmico.
  * </p>
  */
 @Entity(name = "pedido")
@@ -41,6 +82,7 @@ public class Pedido implements Serializable {
 
   /**
    * Identificador único do pedido.
+   * Representa a identidade do Aggregate Root.
    */
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,14 +90,16 @@ public class Pedido implements Serializable {
 
   /**
    * Data e hora em que o pedido foi realizado.
-   * Serializado no padrão {@code dd/MM/yyyy HH:mm}.
    */
   @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
   private Date instante;
 
   /**
    * Pagamento associado ao pedido.
-   * Relacionamento bidirecional com cascata total.
+   *
+   * <p>
+   * Pertence ao agregado e tem seu ciclo de vida controlado pelo Pedido.
+   * </p>
    */
   @JsonManagedReference
   @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)
@@ -63,6 +107,10 @@ public class Pedido implements Serializable {
 
   /**
    * Cliente responsável pelo pedido.
+   *
+   * <p>
+   * Referência externa ao agregado.
+   * </p>
    */
   @JsonManagedReference
   @ManyToOne
@@ -70,18 +118,26 @@ public class Pedido implements Serializable {
   private Cliente cliente;
 
   /**
-   * Endereço onde o pedido deverá ser entregue.
+   * Endereço de entrega.
+   *
+   * <p>
+   * Referência externa ao agregado.
+   * </p>
    */
   @ManyToOne
   @JoinColumn(name = "endereco_de_entrega_id")
   private Endereco enderecoDeEntrega;
 
   /**
-   * Conjunto de itens que compõem o pedido.
+   * Conjunto de itens do pedido.
    *
    * <p>
-   * A configuração {@code orphanRemoval = true} garante que itens removidos
-   * do conjunto também sejam removidos do banco de dados.
+   * Esta coleção é parte interna do agregado.
+   * </p>
+   *
+   * <p>
+   * orphanRemoval = true garante consistência estrutural:
+   * itens removidos do agregado são removidos da persistência.
    * </p>
    */
   @OneToMany(mappedBy = "id.pedido", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -94,12 +150,7 @@ public class Pedido implements Serializable {
   }
 
   /**
-   * Construtor para criação de um pedido.
-   *
-   * @param id                identificador do pedido
-   * @param instante          data e hora da realização
-   * @param cliente           cliente responsável
-   * @param enderecoDeEntrega endereço de entrega
+   * Construtor para criação do agregado.
    */
   public Pedido(Integer id, Date instante, Cliente cliente, Endereco enderecoDeEntrega) {
     this.id = id;
@@ -109,17 +160,20 @@ public class Pedido implements Serializable {
   }
 
   /**
-   * Adiciona um produto ao pedido.
+   * Adiciona um produto ao agregado.
    *
    * <p>
-   * Caso o produto já exista no pedido, a quantidade é incrementada.
-   * Caso contrário, um novo {@link ItemPedido} é criado.
+   * Regras aplicadas:
    * </p>
    *
-   * @param produto    produto a ser adicionado
-   * @param quantidade quantidade desejada (deve ser maior que zero)
+   * <ul>
+   * <li>Quantidade deve ser maior que zero;</li>
+   * <li>Não pode haver duplicidade de produto;</li>
+   * <li>Se já existir, incrementa quantidade;</li>
+   * <li>Criação de ItemPedido é responsabilidade do Aggregate Root.</li>
+   * </ul>
    *
-   * @throws IllegalArgumentException caso a quantidade seja inválida
+   * @throws IllegalArgumentException se quantidade inválida
    */
   public void adicionarItem(Produto produto, Integer quantidade) {
 
@@ -136,17 +190,20 @@ public class Pedido implements Serializable {
   }
 
   /**
-   * Atualiza os itens do pedido com base em um novo conjunto de produtos e
-   * quantidades.
+   * Atualiza completamente o conjunto de itens do agregado.
    *
    * <p>
-   * Remove itens que não estejam presentes no novo mapa e atualiza ou adiciona
-   * os demais conforme necessário.
+   * Estratégia:
    * </p>
+   * <ol>
+   * <li>Remove itens ausentes no novo conjunto;</li>
+   * <li>Atualiza quantidades existentes;</li>
+   * <li>Adiciona novos itens;</li>
+   * </ol>
    *
-   * @param novosItens mapa contendo produtos e respectivas quantidades
-   *
-   * @throws IllegalArgumentException caso alguma quantidade seja inválida
+   * <p>
+   * Garante integridade estrutural do agregado.
+   * </p>
    */
   public void atualizarItens(Map<Produto, Integer> novosItens) {
 
@@ -171,10 +228,9 @@ public class Pedido implements Serializable {
   }
 
   /**
-   * Busca um item do pedido pelo identificador do produto.
+   * Busca item por produto.
    *
-   * @param produtoId identificador do produto
-   * @return item correspondente ou {@code null} se não encontrado
+   * Método interno ao agregado.
    */
   private ItemPedido buscarItemPorProduto(Integer produtoId) {
     return itens.stream()
@@ -184,11 +240,8 @@ public class Pedido implements Serializable {
   }
 
   /**
-   * Valida a quantidade informada.
-   *
-   * @param quantidade quantidade a ser validada
-   *
-   * @throws IllegalArgumentException caso seja nula ou menor/igual a zero
+   * Valida invariante de domínio:
+   * quantidade deve ser > 0.
    */
   private void validarQuantidade(Integer quantidade) {
     if (quantidade == null || quantidade <= 0) {
@@ -197,9 +250,12 @@ public class Pedido implements Serializable {
   }
 
   /**
-   * Calcula o valor total do pedido com base nos subtotais dos itens.
+   * Propriedade derivada.
    *
-   * @return valor total do pedido
+   * <p>
+   * O total não é armazenado, é calculado dinamicamente
+   * para evitar inconsistência.
+   * </p>
    */
   public double getTotal() {
     return itens.stream()
@@ -255,9 +311,6 @@ public class Pedido implements Serializable {
     this.itens = itens;
   }
 
-  /**
-   * Implementação baseada no identificador da entidade.
-   */
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -266,9 +319,6 @@ public class Pedido implements Serializable {
     return result;
   }
 
-  /**
-   * Comparação baseada exclusivamente no identificador.
-   */
   @Override
   public boolean equals(Object obj) {
     if (this == obj)
