@@ -1,32 +1,32 @@
 package com.albertsilva.cursomc;
 
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
+// import java.text.SimpleDateFormat;
+// import java.util.Arrays;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.albertsilva.cursomc.domain.Categoria;
-import com.albertsilva.cursomc.domain.Cidade;
-import com.albertsilva.cursomc.domain.Cliente;
-import com.albertsilva.cursomc.domain.Endereco;
-import com.albertsilva.cursomc.domain.Estado;
-import com.albertsilva.cursomc.domain.ItemPedido;
-import com.albertsilva.cursomc.domain.Pagamento;
-import com.albertsilva.cursomc.domain.PagamentoComBoleto;
-import com.albertsilva.cursomc.domain.PagamentoComCartao;
-import com.albertsilva.cursomc.domain.Pedido;
-import com.albertsilva.cursomc.domain.Produto;
-import com.albertsilva.cursomc.domain.enums.EstadoPagamento;
-import com.albertsilva.cursomc.domain.enums.TipoCliente;
-import com.albertsilva.cursomc.repositories.CategoriaRepository;
-import com.albertsilva.cursomc.repositories.CidadeRepository;
-import com.albertsilva.cursomc.repositories.ClienteRepository;
-import com.albertsilva.cursomc.repositories.EnderecoRepository;
-import com.albertsilva.cursomc.repositories.EstadoRepository;
-import com.albertsilva.cursomc.repositories.PedidoRepository;
-import com.albertsilva.cursomc.repositories.ProdutoRepository;
+// import com.albertsilva.cursomc.domain.Categoria;
+// import com.albertsilva.cursomc.domain.Cidade;
+// import com.albertsilva.cursomc.domain.Cliente;
+// import com.albertsilva.cursomc.domain.Endereco;
+// import com.albertsilva.cursomc.domain.Estado;
+// import com.albertsilva.cursomc.domain.ItemPedido;
+// import com.albertsilva.cursomc.domain.Pagamento;
+// import com.albertsilva.cursomc.domain.PagamentoComBoleto;
+// import com.albertsilva.cursomc.domain.PagamentoComCartao;
+// import com.albertsilva.cursomc.domain.Pedido;
+// import com.albertsilva.cursomc.domain.Produto;
+// import com.albertsilva.cursomc.domain.enums.EstadoPagamento;
+// import com.albertsilva.cursomc.domain.enums.TipoCliente;
+// import com.albertsilva.cursomc.repositories.CategoriaRepository;
+// import com.albertsilva.cursomc.repositories.CidadeRepository;
+// import com.albertsilva.cursomc.repositories.ClienteRepository;
+// import com.albertsilva.cursomc.repositories.EnderecoRepository;
+// import com.albertsilva.cursomc.repositories.EstadoRepository;
+// import com.albertsilva.cursomc.repositories.PedidoRepository;
+// import com.albertsilva.cursomc.repositories.ProdutoRepository;
 
 @SpringBootApplication
 public class CursomcApplication implements CommandLineRunner {
