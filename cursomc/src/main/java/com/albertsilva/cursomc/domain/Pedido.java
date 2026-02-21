@@ -3,6 +3,7 @@ package com.albertsilva.cursomc.domain;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -53,6 +54,59 @@ public class Pedido implements Serializable {
     this.instante = instante;
     this.cliente = cliente;
     this.enderecoDeEntrega = enderecoDeEntrega;
+  }
+
+  // ===============================
+  // REGRAS DE DOMÍNIO
+  // ===============================
+
+  public void adicionarItem(Produto produto, Integer quantidade) {
+
+    validarQuantidade(quantidade);
+
+    ItemPedido existente = buscarItemPorProduto(produto.getId());
+
+    if (existente != null) {
+      existente.setQuantidade(existente.getQuantidade() + quantidade);
+    } else {
+      ItemPedido novo = new ItemPedido(this, produto, 0.0, quantidade, produto.getPreco());
+      itens.add(novo);
+    }
+  }
+
+  public void atualizarItens(Map<Produto, Integer> novosItens) {
+
+    itens.removeIf(item -> novosItens.keySet().stream()
+        .noneMatch(prod -> prod.getId().equals(item.getProduto().getId())));
+
+    for (Map.Entry<Produto, Integer> entry : novosItens.entrySet()) {
+
+      Produto produto = entry.getKey();
+      Integer quantidade = entry.getValue();
+
+      validarQuantidade(quantidade);
+
+      ItemPedido existente = buscarItemPorProduto(produto.getId());
+
+      if (existente != null) {
+        existente.setQuantidade(quantidade);
+      } else {
+        adicionarItem(produto, quantidade);
+      }
+    }
+  }
+
+  private ItemPedido buscarItemPorProduto(Integer produtoId) {
+    return itens.stream()
+        .filter(i -> i.getProduto().getId().equals(produtoId))
+        .findFirst()
+        .orElse(null);
+  }
+
+  private void validarQuantidade(Integer quantidade) {
+    if (quantidade == null || quantidade <= 0) {
+      throw new IllegalArgumentException("Quantidade deve ser maior que zero.");
+    }
   }
 
   public double getTotal() {

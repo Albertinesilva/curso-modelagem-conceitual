@@ -3,7 +3,6 @@ package com.albertsilva.cursomc.services;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -32,7 +31,6 @@ import com.albertsilva.cursomc.repositories.EnderecoRepository;
 import com.albertsilva.cursomc.repositories.PedidoRepository;
 import com.albertsilva.cursomc.repositories.ProdutoRepository;
 import com.albertsilva.cursomc.services.exceptions.ObjectNotFoundException;
-import com.albertsilva.cursomc.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class PedidoService {
@@ -90,17 +88,18 @@ public class PedidoService {
   @Transactional
   public PedidoResponse update(Integer id, PedidoUpdateRequest dto) {
 
-    Pedido pedido = pedidoRepository.findById(id)
-        .orElseThrow(() -> new ResourceNotFoundException("Pedido não encontrado"));
+    Pedido pedido = findEntityById(id);
 
-    Cliente cliente = clienteRepository.getReferenceById(dto.clienteId());
-    Endereco endereco = enderecoRepository.getReferenceById(dto.enderecoId());
-
-    pedido.setCliente(cliente);
-    pedido.setEnderecoDeEntrega(endereco);
+    pedido.setCliente(clienteRepository.getReferenceById(dto.clienteId()));
+    pedido.setEnderecoDeEntrega(enderecoRepository.getReferenceById(dto.enderecoId()));
 
     atualizarPagamento(pedido, dto.estadoPagamento());
-    atualizarItens(pedido, dto.itens());
+
+    Map<Produto, Integer> novosItens = dto.itens().stream()
+        .collect(Collectors.toMap(item -> produtoRepository.getReferenceById(item.produtoId()),
+            ItemPedidoUpdateRequest::quantidade));
+
+    pedido.atualizarItens(novosItens);
 
     return pedidoMapper.toResponse(pedido);
   }
@@ -175,33 +174,6 @@ public class PedidoService {
     }
 
     pagamento.setEstado(estadoEnum);
-  }
-
-  private void atualizarItens(Pedido pedido, Set<ItemPedidoUpdateRequest> itensDto) {
-
-    Map<Integer, ItemPedido> itensExistentes = pedido.getItens().stream()
-        .collect(Collectors.toMap(item -> item.getProduto().getId(),
-            Function.identity()));
-
-    // Remover itens que não vieram mais no DTO
-    pedido.getItens()
-        .removeIf(item -> itensDto.stream().noneMatch(dto -> dto.produtoId().equals(item.getProduto().getId())));
-
-    // Atualizar ou inserir
-    for (ItemPedidoUpdateRequest dto : itensDto) {
-
-      ItemPedido existente = itensExistentes.get(dto.produtoId());
-
-      if (existente != null) {
-        existente.setQuantidade(dto.quantidade());
-      } else {
-        Produto produto = produtoRepository.getReferenceById(dto.produtoId());
-
-        ItemPedido novo = new ItemPedido(pedido, produto, 0.0, dto.quantidade(), produto.getPreco());
-
-        pedido.getItens().add(novo);
-      }
-    }
   }
 
 }
