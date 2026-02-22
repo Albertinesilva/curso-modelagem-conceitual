@@ -555,7 +555,8 @@ O projeto segue boas práticas de **API REST**, com:
 }
 ```
 
-> [!TIP] **Response 201 Created**
+> [!TIP]
+> **Response 201 Created**
 
 ```json
 {
