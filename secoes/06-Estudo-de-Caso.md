@@ -36,7 +36,7 @@ Para validar o modelo, utilizamos o diagrama de objetos para representar um cen�
 
 ---
 
-# 📌 Visão Geral do Projeto
+### 📌 Visão Geral do Projeto
 
 Este módulo representa a transição definitiva da **modelagem conceitual** para a **implementação orientada a objetos com persistência relacional**.
 
@@ -54,7 +54,7 @@ O projeto implementa um sistema de domínio completo contendo:
 
 ---
 
-# 🎯 Objetivos de Aprendizado
+### 🎯 Objetivos de Aprendizado
 
 Demonstrar na prática como um modelo conceitual abrangente é traduzido para o paradigma orientado a objetos, aplicando padrões de arquitetura e boas práticas de desenvolvimento. O estudo visa consolidar o entendimento sobre:
 
@@ -64,7 +64,7 @@ Demonstrar na prática como um modelo conceitual abrangente é traduzido para o 
 
 Ao concluir esta seção, o desenvolvedor consolida os seguintes conhecimentos:
 
-## 1️⃣ Tradução do Modelo Conceitual para Código
+### 1️⃣ Tradução do Modelo Conceitual para Código
 
 - Conversão de classes do diagrama em entidades JPA
 - Implementação correta das multiplicidades
@@ -73,7 +73,7 @@ Ao concluir esta seção, o desenvolvedor consolida os seguintes conhecimentos:
 
 ---
 
-## 2️⃣ Implementação de Associações
+### 2️⃣ Implementação de Associações
 
 A implementação prática explorará os seguintes pilares da modelagem moderna:
 
@@ -92,7 +92,7 @@ A implementação prática explorará os seguintes pilares da modelagem moderna:
 
 ---
 
-## 3️⃣ Herança no Banco Relacional
+### 3️⃣ Herança no Banco Relacional
 
 Aplicação de:
 
@@ -108,7 +108,7 @@ Permite:
 
 ---
 
-## 4️⃣ Enumerações Persistidas
+### 4️⃣ Enumerações Persistidas
 
 Enums convertidos para tipo inteiro usando:
 
@@ -120,7 +120,7 @@ Com métodos auxiliares para conversão segura.
 
 ---
 
-## 5️⃣ Entidades Fracas
+### 5️⃣ Entidades Fracas
 
 Uso de:
 
@@ -136,7 +136,7 @@ Para representar:
 
 ---
 
-## 6️⃣ Chaves Primárias Compostas
+### 6️⃣ Chaves Primárias Compostas
 
 Implementação via:
 
@@ -148,7 +148,7 @@ Exemplo: `ItemPedidoPK`
 
 ---
 
-# 🏛️ Arquitetura Aplicada
+### 🏛️ Arquitetura Aplicada
 
 O projeto segue uma arquitetura em camadas:
 
@@ -156,7 +156,7 @@ O projeto segue uma arquitetura em camadas:
 Controller → Service → Repository → Banco de Dados
 ```
 
-## 🔹 Camadas
+### 🔹 Camadas
 
 ### Controller
 
@@ -177,7 +177,7 @@ Controller → Service → Repository → Banco de Dados
 
 ---
 
-# 🛠️ Tecnologias Utilizadas
+### 🛠️ Tecnologias Utilizadas
 
 | Tecnologia      | Finalidade                    |
 | --------------- | ----------------------------- |
@@ -192,7 +192,7 @@ Controller → Service → Repository → Banco de Dados
 
 ---
 
-# 🗂️ Estrutura do Projeto
+### 🗂️ Estrutura do Projeto
 
 A estrutura foi organizada seguindo princípios de **arquitetura em camadas**, separação de responsabilidades e segmentação por **contexto de domínio**.
 
@@ -206,7 +206,7 @@ O projeto adota:
 
 ---
 
-## 📦 Estrutura de Diretórios
+### 📦 Estrutura de Diretórios
 
 ```
 src/main/java/com/albertsilva/cursomc
@@ -252,7 +252,7 @@ src/main/java/com/albertsilva/cursomc
 
 ---
 
-## 📂 resources (Configurações e Infraestrutura)
+### 📂 resources (Configurações e Infraestrutura)
 
 ```
 src/main/resources
@@ -269,9 +269,9 @@ src/main/resources
 
 ---
 
-# 🔎 Detalhamento das Camadas
+### 🔎 Detalhamento das Camadas
 
-## 🔹 `config`
+### 🔹 `config`
 
 Responsável por configurações globais da aplicação.
 
@@ -282,7 +282,7 @@ Exemplo:
 
 ---
 
-## 🔹 `domain`
+### 🔹 `domain`
 
 Contém o **modelo de domínio**:
 
@@ -296,7 +296,7 @@ Esta camada não deve depender de DTOs ou Controllers.
 
 ---
 
-## 🔹 `dto`
+### 🔹 `dto`
 
 Organizado por contexto (feature-based structure):
 
@@ -315,7 +315,7 @@ Essa abordagem:
 
 ---
 
-## 🔹 `repositories`
+### 🔹 `repositories`
 
 Interfaces que estendem `JpaRepository`.
 
@@ -325,7 +325,7 @@ Nenhuma regra de negócio deve existir aqui.
 
 ---
 
-## 🔹 `services`
+### 🔹 `services`
 
 Camada de aplicação responsável por:
 
@@ -340,7 +340,7 @@ Subpacote:
 
 ---
 
-## 🔹 `resources`
+### 🔹 `resources`
 
 Camada de entrada da aplicação (Controllers REST).
 
@@ -357,7 +357,7 @@ Subpacote:
 
 ---
 
-# 🧱 Organização Arquitetural Aplicada
+### 🧱 Organização Arquitetural Aplicada
 
 A estrutura combina dois padrões:
 
@@ -377,7 +377,7 @@ Cada agregado (Categoria, Cliente, Pedido) possui seus próprios:
 
 ---
 
-# 🎯 Benefícios da Estrutura
+### 🎯 Benefícios da Estrutura
 
 ✔ Separação clara de responsabilidades  
 ✔ Baixo acoplamento  
@@ -389,9 +389,9 @@ Cada agregado (Categoria, Cliente, Pedido) possui seus próprios:
 
 ---
 
-# 🌐 Endpoints da API
+### 🌐 Endpoints da API
 
-## 🔹 Categoria
+### 🔹 Categoria
 
 ### 🔸 Buscar todas
 
@@ -476,7 +476,7 @@ Sem corpo.
 
 # 🛒 Pedido (Exemplo com Classe de Associação)
 
-## Criar Pedido
+### Criar Pedido
 
 `POST /pedidos`
 
@@ -517,7 +517,7 @@ Sem corpo.
 
 ---
 
-# ⚠️ Tratamento Global de Exceções
+### ⚠️ Tratamento Global de Exceções
 
 Implementação com:
 
@@ -525,7 +525,7 @@ Implementação com:
 @RestControllerAdvice
 ```
 
-## Exceções Implementadas
+### Exceções Implementadas
 
 | Exceção                 | Status HTTP |
 | ----------------------- | ----------- |
@@ -534,7 +534,7 @@ Implementação com:
 
 ---
 
-## 🔹 Exemplo de Erro 404
+### 🔹 Exemplo de Erro 404
 
 ```json
 {
@@ -548,7 +548,7 @@ Implementação com:
 
 ---
 
-# 🔄 Fluxo Completo de Requisição
+### 🔄 Fluxo Completo de Requisição
 
 1. Cliente envia JSON via Postman
 2. Controller recebe via `@RequestBody`
@@ -562,24 +562,24 @@ Implementação com:
 
 # 🧪 Como Testar no Postman
 
-## 1️⃣ Criar nova requisição
+### 1️⃣ Criar nova requisição
 
 - Método: `POST`
 - URL: `http://localhost:8080/categorias`
 
-## 2️⃣ Headers
+### 2️⃣ Headers
 
 ```
 Content-Type: application/json
 ```
 
-## 3️⃣ Body → Raw → JSON
+### 3️⃣ Body → Raw → JSON
 
 Inserir o JSON correspondente.
 
 ---
 
-# 📚 Conceitos de Modelagem Aplicados
+### 📚 Conceitos de Modelagem Aplicados
 
 ✔ Associação bidirecional  
 ✔ Associação unidirecional  
@@ -592,7 +592,7 @@ Inserir o JSON correspondente.
 
 ---
 
-## 🎯 Recapitulação: O Ciclo da Modelagem
+### 🎯 Recapitulação: O Ciclo da Modelagem
 
 Este estudo de caso fecha o ciclo de aprendizado ao provar que **um bom código nasce de um bom modelo**. Ao dominar a leitura dos diagramas e a sua tradução para JPA, o desenvolvedor garante que o software seja:
 
@@ -602,7 +602,7 @@ Este estudo de caso fecha o ciclo de aprendizado ao provar que **um bom código 
 
 ---
 
-# 🏁 Conclusão Técnica
+### 🏁 Conclusão Técnica
 
 Este projeto consolida o ciclo completo:
 
@@ -626,7 +626,7 @@ Este estudo de caso representa a consolidação prática da modelagem conceitual
 
 ---
 
-# 🔗 Navegação
+### 🔗 Navegação
 
 <p align="center">
   <b>Seção 6 concluída ✔</b><br>
