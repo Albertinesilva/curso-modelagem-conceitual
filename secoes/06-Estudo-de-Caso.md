@@ -476,21 +476,35 @@ Cada agregado (Categoria, Cliente, Pedido) possui seus próprios:
 
 ### 🌐 Endpoints da API
 
-### 🔹 Categoria
+Esta seção detalha os endpoints de **Categoria, Cliente e Pedido**, incluindo exemplos de requisições, respostas e tratamento global de exceções.
+
+O projeto segue boas práticas de **API REST**, com:
+
+- Uso de **DTOs** para transferência de dados entre Controller e Service
+- **Status HTTP corretos** e respostas padronizadas
+- Tratamento global de erros com **RFC 7807 Problem Details**
+
+---
+
+### 🔹 Categorias
 
 ### 🔸 Buscar todas
 
-`GET /categorias`
+`GET /categorias?page=0&size=10&sort=nome,asc`
 
-**Response 200**
+**Response 200 OK**
 
 ```json
-[
-  {
-    "id": 1,
-    "nome": "Informática"
-  }
-]
+{
+  "content": [
+    { "id": 19, "nome": "Acessórios" },
+    { "id": 9, "nome": "Automotivo" },
+    { "id": 21, "nome": "Brinquedo" }
+  ],
+  "pageable": { "pageNumber": 0, "pageSize": 10 },
+  "totalElements": 21,
+  "totalPages": 3
+}
 ```
 
 ---
@@ -499,12 +513,27 @@ Cada agregado (Categoria, Cliente, Pedido) possui seus próprios:
 
 `GET /categorias/{id}`
 
-**Response 200**
+**Response 200 Ok**
 
 ```json
 {
   "id": 1,
   "nome": "Informática"
+}
+```
+
+**Response 404 Not Found (Exemplo)**
+
+```json
+{
+  "detail": "Categoria não encontrado! Id: 100, Tipo: com.albertsilva.cursomc.domain.Categoria",
+  "instance": "/categorias/100",
+  "status": 404,
+  "title": "Resource not found",
+  "timestamp": "2026-02-22T14:15:55.5775719-03:00",
+  "path": "/categorias/100",
+  "method": "GET",
+  "traceId": "2b898cf7-09fc-4a3c-a09a-d29f8b3c0a44"
 }
 ```
 
@@ -522,7 +551,7 @@ Cada agregado (Categoria, Cliente, Pedido) possui seus próprios:
 }
 ```
 
-**Response 201**
+**Response 201 Created**
 
 ```json
 {
@@ -530,6 +559,11 @@ Cada agregado (Categoria, Cliente, Pedido) possui seus próprios:
   "nome": "Eletrodomésticos"
 }
 ```
+
+Headers importantes
+
+Location: http://localhost:8080/categorias/21
+Content-Type: application/json
 
 ---
 
@@ -545,9 +579,14 @@ Cada agregado (Categoria, Cliente, Pedido) possui seus próprios:
 }
 ```
 
-**Response 204**
+**Response 200 OK**
 
-Sem corpo.
+```json
+{
+  "id": 1,
+  "nome": "Tecnologia"
+}
+```
 
 ---
 
@@ -555,11 +594,164 @@ Sem corpo.
 
 `DELETE /categorias/{id}`
 
-**Response 204**
+**Response 204 No Content**
 
 ---
 
+### 🔹 Clientes
+
+### 🔸 Buscar por ID
+
+`GET /clientes/{id}`
+
+**Response 200 OK**
+
+```json
+{
+  "id": 1,
+  "nome": "Maria Silva",
+  "email": "maria@gmail.com",
+  "cpfOuCnpj": "36378912377",
+  "tipo": 1,
+  "telefones": ["27363323", "93838393"],
+  "enderecos": [
+    {
+      "id": 1,
+      "logradouro": "Rua Flores",
+      "numero": "300",
+      "complemento": "Apto 303",
+      "bairro": "Jardim",
+      "cep": "38220834",
+      "cidadeId": 1
+    }
+  ]
+}
+```
+
+### 🔸 Criar
+
+`POST /clientes`
+
+**Request**
+
+```json
+{
+  "nome": "João Silva",
+  "email": "joao@email.com",
+  "cpfOuCnpj": "12345678901",
+  "tipo": 1,
+  "logradouro": "Rua das Flores",
+  "numero": "100",
+  "complemento": "Apto 202",
+  "bairro": "Centro",
+  "cep": "01001000",
+  "cidadeId": 4,
+  "telefones": ["11999999999", "11888888888"]
+}
+```
+
+**Response 201 Created**
+
+```json
+{
+  "id": 2,
+  "nome": "João Silva",
+  "email": "joao@email.com",
+  "cpfOuCnpj": "12345678901",
+  "tipo": 1,
+  "telefones": ["11888888888", "11999999999"],
+  "enderecos": [
+    {
+      "id": 3,
+      "logradouro": "Rua das Flores",
+      "numero": "100",
+      "complemento": "Apto 202",
+      "bairro": "Centro",
+      "cep": "01001000",
+      "cidadeId": 4
+    }
+  ]
+}
+```
+
+### 🔸 Atualizar cliente
+
+`PUT /clientes/{id}`
+
+**Request**
+
+```json
+{
+  "nome": "Albert da Silva",
+  "email": "albert@email.com"
+}
+```
+
+**Response 200 OK**
+
+```json
+{
+  "id": 1,
+  "nome": "Albert da Silva",
+  "email": "albert@email.com",
+  "cpfOuCnpj": "36378912377",
+  "telefones": ["27363323","93838393"],
+  "enderecos": [...]
+}
+```
+
+### 🔸 Deletar cliente
+
+`DELETE /clientes/{id}`
+
+**Response 409 Conflict (Exemplo de integridade de dados)**
+
+```json
+{
+  "detail": "Database constraint violation.",
+  "instance": "/clientes/1",
+  "status": 409,
+  "title": "Data integrity violation",
+  "timestamp": "2026-02-22T14:23:46.6492935-03:00",
+  "path": "/clientes/1",
+  "method": "DELETE",
+  "traceId": "ddb9367d-fb48-41c4-a403-0d4c9194c0aa"
+}
+```
+
 ### 🛒 Pedido (Exemplo com Classe de Associação)
+
+### 🔹 Pedidos
+
+### 🔸 Buscar por ID
+
+`GET /pedidos/{id}`
+
+**Response 200 OK**
+
+```json
+{
+  "id": 1,
+  "instante": "2017-09-30T07:30:00.000-03:00",
+  "clienteNome": "Albert da Silva",
+  "estadoPagamento": "QUITADO",
+  "itens": [
+    {
+      "produtoNome": "Computador",
+      "quantidade": 1,
+      "preco": 2000.0,
+      "subtotal": 2000.0
+    },
+    {
+      "produtoNome": "Mouse",
+      "quantidade": 2,
+      "preco": 80.0,
+      "subtotal": 160.0
+    }
+  ],
+  "total": 2160.0
+}
+```
 
 ### Criar Pedido
 
@@ -569,36 +761,79 @@ Sem corpo.
 
 ```json
 {
-  "cliente": { "id": 1 },
-  "enderecoDeEntrega": { "id": 1 },
-  "pagamento": {
-    "tipo": 1,
-    "estado": 1
-  },
+  "clienteId": 1,
+  "enderecoEntregaId": 2,
+  "tipoPagamento": 1,
+  "numeroDeParcelas": 3,
   "itens": [
-    {
-      "produto": { "id": 1 },
-      "quantidade": 2,
-      "desconto": 0.0,
-      "preco": 2000.0
-    }
+    { "produtoId": 2, "quantidade": 2 },
+    { "produtoId": 1, "quantidade": 1 }
   ]
 }
 ```
 
-**Response 201**
+**Response 201 Created**
 
 ```json
 {
-  "id": 1,
-  "instante": "2026-02-22T21:00:00Z",
-  "cliente": {
-    "id": 1,
-    "nome": "Maria Silva"
-  },
-  "valorTotal": 4000.0
+  "id": 3,
+  "instante": "2026-02-22T14:25:45.697-03:00",
+  "clienteNome": "Albert da Silva",
+  "estadoPagamento": "PENDENTE",
+  "itens": [
+    {
+      "produtoNome": "Impressora",
+      "quantidade": 2,
+      "preco": 800.0,
+      "subtotal": 1600.0
+    },
+    {
+      "produtoNome": "Computador",
+      "quantidade": 1,
+      "preco": 2000.0,
+      "subtotal": 2000.0
+    }
+  ],
+  "total": 3600.0
 }
 ```
+
+### 🔸 Atualizar pedido
+
+`PUT /pedidos/{id}`
+
+**Request**
+
+```json
+{
+  "clienteId": 1,
+  "enderecoId": 1,
+  "estadoPagamento": 3,
+  "itens": [
+    { "produtoId": 1, "quantidade": 3 },
+    { "produtoId": 2, "quantidade": 1 }
+  ]
+}
+```
+
+**Response 200 OK**
+
+```json
+{
+  "id": 3,
+  "instante": "...",
+  "clienteNome": "Albert da Silva",
+  "estadoPagamento": "CANCELADO",
+  "itens": [...],
+  "total": 6800.0
+}
+```
+
+### 🔸 Deletar pedido
+
+`DELETE /pedidos/{id}`
+
+**Response 204 No Content**
 
 ---
 
@@ -608,40 +843,33 @@ Implementação com:
 
 ```java
 @RestControllerAdvice
+public class GlobalExceptionHandler { ... }
 ```
 
-### Exceções Implementadas
+### 📌 Principais Exceções
 
-| Exceção                 | Status HTTP |
-| ----------------------- | ----------- |
-| ObjectNotFoundException | 404         |
-| DataIntegrityException  | 409         |
-
----
-
-### 🔹 Exemplo de Erro 404
-
-```json
-{
-  "timestamp": "2026-02-22T21:10:00Z",
-  "status": 404,
-  "error": "Objeto não encontrado",
-  "message": "Categoria não encontrada! Id: 100",
-  "path": "/categorias/100"
-}
-```
+| Exceção                           | Status HTTP | Descrição                         |
+| --------------------------------- | ----------- | --------------------------------- |
+| `ObjectNotFoundException`         | 404         | Recurso do domínio não encontrado |
+| `ResourceNotFoundException`       | 404         | Recurso externo não encontrado    |
+| `DataIntegrityException`          | 409         | Violação de integridade de dados  |
+| `BusinessException`               | Custom      | Regras de negócio violadas        |
+| `MethodArgumentNotValidException` | 422         | Validação de DTO inválida         |
+| `Exception`                       | 500         | Erros genéricos não tratados      |
 
 ---
 
 ### 🔄 Fluxo Completo de Requisição
 
-1. Cliente envia JSON via Postman
-2. Controller recebe via `@RequestBody`
-3. Service valida e executa regra
-4. Repository persiste
-5. JPA converte para SQL
-6. Banco executa
-7. Response é retornado como JSON
+1. Cliente envia `JSON` via `Postman` ou `frontend`
+2. `Controller` recebe via `@RequestBody`
+3. DTO é validado com `@Valid`
+4. `Service` aplica regras de negócio
+5. `Repository` persiste ou consulta dados
+6. `JPA` converte para `SQL`
+7. `Banco de dados` executa operação e retorna resultado
+8. Response é retornado como `JSON` ou `status HTTP` adequado
+9. Exceções são tratadas globalmente via `GlobalExceptionHandler`
 
 ---
 
