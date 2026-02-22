@@ -484,6 +484,8 @@ O projeto segue boas práticas de **API REST**, com:
 - **Status HTTP corretos** e respostas padronizadas
 - Tratamento global de erros com **RFC 7807 Problem Details**
 
+### 🧪 Como Testar no Postman:
+
 ---
 
 ### 🔹 Categorias
@@ -891,25 +893,6 @@ public class GlobalExceptionHandler { ... }
 7. `Banco de dados` executa operação e retorna resultado
 8. Response é retornado como `JSON` ou `status HTTP` adequado
 9. Exceções são tratadas globalmente via `GlobalExceptionHandler`
-
----
-
-### 🧪 Como Testar no Postman
-
-### 1️⃣ Criar nova requisição
-
-- Método: `POST`
-- URL: `http://localhost:8080/categorias`
-
-### 2️⃣ Headers
-
-```
-Content-Type: application/json
-```
-
-### 3️⃣ Body → Raw → JSON
-
-Inserir o JSON correspondente.
 
 ---
 
