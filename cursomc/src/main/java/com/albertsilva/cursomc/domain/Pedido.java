@@ -101,7 +101,6 @@ public class Pedido implements Serializable {
    * Pertence ao agregado e tem seu ciclo de vida controlado pelo Pedido.
    * </p>
    */
-  @JsonManagedReference
   @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)
   private Pagamento pagamento;
 
@@ -112,7 +111,6 @@ public class Pedido implements Serializable {
    * Referência externa ao agregado.
    * </p>
    */
-  @JsonManagedReference
   @ManyToOne
   @JoinColumn(name = "cliente_id")
   private Cliente cliente;

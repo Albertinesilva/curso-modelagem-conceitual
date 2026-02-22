@@ -8,8 +8,7 @@ import java.util.Set;
 
 import com.albertsilva.cursomc.domain.enums.TipoCliente;
 import com.albertsilva.cursomc.dto.cliente.request.ClienteUpdateRequest;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.CollectionTable;
@@ -101,7 +100,6 @@ public class Cliente implements Serializable {
    * indicando que o ciclo de vida do endereço depende do cliente.
    * </p>
    */
-  @JsonManagedReference
   @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Endereco> enderecos = new ArrayList<>();
 
@@ -125,7 +123,7 @@ public class Cliente implements Serializable {
    * pois o pedido possui ciclo de vida próprio.
    * </p>
    */
-  @JsonBackReference
+  @JsonIgnore
   @OneToMany(mappedBy = "cliente")
   private List<Pedido> pedidos = new ArrayList<>();
 

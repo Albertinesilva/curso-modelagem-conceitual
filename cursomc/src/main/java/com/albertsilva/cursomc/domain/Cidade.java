@@ -70,14 +70,7 @@ public class Cidade implements Serializable {
    * Relacionamento {@code ManyToOne} indicando que várias cidades
    * podem pertencer a um mesmo estado.
    * </p>
-   *
-   * <p>
-   * A anotação {@link JsonManagedReference} é utilizada para controle
-   * de serialização JSON em conjunto com {@code JsonBackReference}
-   * na entidade {@code Estado}, evitando recursividade infinita.
-   * </p>
    */
-  @JsonManagedReference
   @ManyToOne
   @JoinColumn(name = "estado_id")
   private Estado estado;
