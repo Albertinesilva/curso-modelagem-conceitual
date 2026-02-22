@@ -48,6 +48,7 @@ A aplicação foi construída com base na seguinte stack:
 |----------------------|------------------------------|------------|
 | **Framework Base**   | Spring Boot 4.0.2            | Bootstrap da aplicação, auto-configuração e gerenciamento do ciclo de vida |
 | **Linguagem**        | Java 17                      | Plataforma principal da aplicação |
+| **Documentação JavaDocs** | Java                    | A aplicação possui documentação em JavaDocs para referência |
 | **Web Layer**        | Spring Web MVC               | Construção da API REST e tratamento de requisições HTTP |
 | **Persistência**     | Spring Data JPA + Hibernate  | Mapeamento ORM e abstração de acesso a dados |
 | **Banco Produção**   | PostgreSQL                   | Banco de dados relacional principal em ambiente produtivo |
