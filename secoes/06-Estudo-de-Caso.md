@@ -2,37 +2,118 @@
 
 > **Objetivo:** Demonstrar, de forma técnica e aplicada, como um Modelo Conceitual completo é traduzido para uma aplicação RESTful utilizando Java, Spring Boot e JPA/Hibernate, seguindo padrões arquiteturais modernos.
 
-Nesta etapa crucial do curso, abandonamos o campo puramente teórico para observar como o **Modelo Conceitual** dita o comportamento de uma aplicação real de mercado. O foco aqui é a transição entre a abstração (Diagramas) e a construção técnica utilizando o ecossistema **Java**, **Spring Boot** e **JPA/Hibernate**.
+Esta seção é baseada no módulo de Estudo de Caso desenvolvido no curso de **Modelagem Conceitual com UML**, ministrado pelo professor **Nélio Alves**.  
+
+Aqui, apresento a consolidação prática do aprendizado adquirido no curso, juntamente com evoluções técnicas que implementei para aprofundar a aplicação em um contexto mais próximo de projetos reais de mercado.
+
+Nesta etapa, deixamos o campo puramente teórico para observar como o **Modelo Conceitual** orienta diretamente o comportamento de uma aplicação real. O foco é compreender a transição entre a abstração representada nos diagramas e sua materialização técnica utilizando o ecossistema **Java**, **Spring Boot**, **JPA/Hibernate** e **Flyway**.
+
+Mais do que apenas “codificar entidades”, este estudo de caso demonstra como decisões tomadas no nível conceitual impactam:
+
+- A estrutura do código
+- O modelo relacional gerado
+- A integridade dos dados
+- A organização arquitetural da aplicação
+- O contrato exposto pela API REST
+
+Além da implementação proposta no curso, foram aplicadas as seguintes evoluções técnicas:
+
+- Introdução de **DTOs (Data Transfer Objects)** organizados por contexto
+- Uso de **mappers** para isolamento entre domínio e camada de API
+- Estrutura inspirada em princípios básicos de **DDD (Domain-Driven Design)**, especialmente na organização do agregado `Pedido`
+- Utilização de **Flyway** para versionamento de banco de dados
+- Atualização da aplicação para **Spring Boot 4.0.2**
+- Uso de **PostgreSQL** como banco principal e **H2** para ambiente de desenvolvimento/teste
+- Validações com `spring-boot-starter-validation`
 
 ---
 
 ### 💻 Pré-requisitos Técnicos
 
-Para a execução deste estudo de caso, são necessários os seguintes conhecimentos e ferramentas:
+Para acompanhar a implementação com clareza técnica, recomenda-se que o leitor possua os seguintes conhecimentos e ferramentas:
 
-| Categoria       | Requisito                                                                      |
-| :-------------- | :----------------------------------------------------------------------------- |
-| **Ambiente**    | Computador (Mac, Linux ou Windows) com capacidade de instalação/terminal.      |
-| **Linguagem**   | Conhecimento básico em POO (Classes, Atributos, Encapsulamento, Construtores). |
-| **Ferramentas** | Java (JDK), Spring Boot e conhecimento desejável em Git.                       |
+| Categoria       | Requisito                                                                 |
+| :-------------- | :------------------------------------------------------------------------ |
+| **Ambiente**    | Computador (Mac, Linux ou Windows) com suporte a terminal e IDE.         |
+| **Linguagem**   | Fundamentos de POO (Classes, Atributos, Encapsulamento, Construtores).   |
+| **Ferramentas** | Java 17+, Maven, Spring Boot e noções básicas de Git.                    |
+
+---
+
+### ⚙️ Stack Tecnológica do Projeto
+
+A aplicação foi construída com base na seguinte stack:
+
+| Categoria            | Tecnologia / Ferramenta      | Finalidade |
+|----------------------|------------------------------|------------|
+| **Framework Base**   | Spring Boot 4.0.2            | Bootstrap da aplicação, auto-configuração e gerenciamento do ciclo de vida |
+| **Linguagem**        | Java 17                      | Plataforma principal da aplicação |
+| **Web Layer**        | Spring Web MVC               | Construção da API REST e tratamento de requisições HTTP |
+| **Persistência**     | Spring Data JPA + Hibernate  | Mapeamento ORM e abstração de acesso a dados |
+| **Banco Produção**   | PostgreSQL                   | Banco de dados relacional principal em ambiente produtivo |
+| **Banco Dev/Teste**  | H2 Database                  | Banco em memória para desenvolvimento e testes locais |
+| **Migrações**        | Flyway                       | Versionamento e controle evolutivo do schema do banco de dados |
+| **Validação**        | Bean Validation (Jakarta)    | Validação declarativa de dados via anotações |
+| **Ferramentas Dev**  | Spring Boot DevTools         | Hot reload e otimização do fluxo de desenvolvimento |
+| **Testes**           | Spring Boot Test             | Suporte a testes unitários e de integração |
+| **Build Tool**       | Maven                        | Gerenciamento de dependências e ciclo de build do projeto |
+| **Testes de API**    | Postman                      | Execução e validação manual de requisições HTTP |
+| **Controle de Versão** | Git                        | Versionamento de código e gerenciamento de histórico de alterações |
+
+Essa configuração permite:
+
+- Desenvolvimento local rápido com H2
+- Ambiente produtivo com PostgreSQL
+- Versionamento seguro do schema via Flyway
+- Persistência orientada a domínio com JPA/Hibernate
+- API REST padronizada com Spring MVC
 
 ---
 
 ### 🗺️ O Modelo de Referência
 
-Para este cenário, utilizaremos um modelo que engloba todos os desafios aprendidos nas seções anteriores. A implementação cobrirá desde a leitura dos diagramas até a persistência dos dados.
+O cenário adotado nesta seção é exatamente o modelo trabalhado ao longo do curso, cobrindo:
 
-#### **1. Diagrama de Classes (Visão Estrutural)**
+- Associações simples e complexas
+- Herança
+- Enumerações
+- Entidades fracas
+- Classes de associação
+- Chaves compostas
 
-O diagrama de classes abaixo serve como a "planta" do sistema, definindo as regras de negócio, multiplicidades e os tipos de associações (direcionadas ou não).
+A implementação parte da leitura do modelo conceitual e percorre todo o ciclo até a persistência relacional e exposição via API.
+
+---
+
+#### 1️⃣ Diagrama de Classes (Visão Estrutural)
+
+O diagrama de classes funciona como a **planta arquitetural do domínio**. Ele define:
+
+- Entidades
+- Atributos
+- Multiplicidades
+- Tipos de associações
+- Hierarquias (Generalização/Especialização)
 
 <img src="/secoes/assets/img/estudo-de-caso/diagrama-classes-completo.png" alt="Diagrama de Classes Completo" width="100%" />
 
-#### **2. Diagrama de Objetos (Visão de Instância)**
+Esse diagrama é a principal fonte de verdade para a implementação das entidades JPA.
 
-Para validar o modelo, utilizamos o diagrama de objetos para representar um cenário real de execução, demonstrando como os objetos se relacionam e trocam informações em tempo de execução.
+---
+
+#### 2️⃣ Diagrama de Objetos (Visão de Instância)
+
+Enquanto o diagrama de classes representa a estrutura estática do sistema, o diagrama de objetos valida o comportamento em tempo de execução.
+
+Ele demonstra:
+
+- Instâncias reais das entidades
+- Valores atribuídos aos atributos
+- Relações efetivamente estabelecidas entre objetos
 
 <img src="/secoes/assets/img/estudo-de-caso/diagrama-objetos-exemplo.png" alt="Diagrama de Objetos" width="100%" />
+
+Essa visualização auxilia na compreensão do fluxo de dados que será persistido no banco relacional.
 
 ---
 
@@ -40,27 +121,35 @@ Para validar o modelo, utilizamos o diagrama de objetos para representar um cen�
 
 Este módulo representa a transição definitiva da **modelagem conceitual** para a **implementação orientada a objetos com persistência relacional**.
 
-O projeto implementa um sistema de domínio completo contendo:
+O sistema desenvolvido segue a proposta original do curso e foi expandido com melhorias arquiteturais. Ele contempla:
 
 - Entidades com diferentes tipos de associações
-- Herança e polimorfismo
-- Enumerações persistidas
+- Herança e polimorfismo persistido
+- Enumerações convertidas para tipos compatíveis com banco relacional
 - Entidades fracas
 - Classes de associação
 - Chaves primárias compostas
 - API REST padronizada
 - Tratamento global de exceções
-- Boas práticas com Spring Boot 3+
+- Estrutura com DTOs e mapeadores
+- Versionamento de banco com Flyway
+- Organização inspirada em DDD
+
+A proposta é evidenciar que o modelo conceitual não é apenas documentação, mas a base estrutural que orienta decisões técnicas em todas as camadas da aplicação.
 
 ---
 
 ### 🎯 Objetivos de Aprendizado
 
-Demonstrar na prática como um modelo conceitual abrangente é traduzido para o paradigma orientado a objetos, aplicando padrões de arquitetura e boas práticas de desenvolvimento. O estudo visa consolidar o entendimento sobre:
+Este estudo de caso demonstra, na prática, como um modelo conceitual abrangente é traduzido para o paradigma orientado a objetos, preservando regras de negócio e integridade estrutural no modelo relacional.
 
-- **Implementação de Associações**: De 1:1 até N:N com tabelas de junção.
-- **Mapeamento de Herança e Enumerações**: Como o banco de dados lida com hierarquias e tipos enumerados.
-- **Conceitos Avançados**: Tratamento de entidades fracas (`@ElementCollection`) e chaves compostas (Tipos Primitivos como `ItemPedidoPK`).
+Serão consolidados os seguintes pontos técnicos:
+
+- **Implementação de Associações:** mapeamento de relacionamentos 1:1, 1:N e N:N, incluindo tabelas de junção e classes de associação.
+- **Mapeamento de Herança e Enumerações:** estratégias de persistência de hierarquias e conversão de tipos enumerados.
+- **Conceitos Avançados de Persistência:** tratamento de entidades fracas (`@ElementCollection`) e modelagem de chaves compostas com classes `@Embeddable` (ex.: `ItemPedidoPK`).
+- **Separação Arquitetural:** aplicação do padrão em camadas (Controller → Service → Repository).
+- **Evolução Arquitetural:** introdução de DTOs, validação e versionamento de banco com Flyway.
 
 Ao concluir esta seção, o desenvolvedor consolida os seguintes conhecimentos:
 
@@ -174,21 +263,6 @@ Controller → Service → Repository → Banco de Dados
 
 - Interface `JpaRepository`
 - Operações CRUD automáticas
-
----
-
-### 🛠️ Tecnologias Utilizadas
-
-| Tecnologia      | Finalidade                    |
-| --------------- | ----------------------------- |
-| Java 17+        | Linguagem principal           |
-| Spring Boot 3+  | Framework principal           |
-| Spring Data JPA | Persistência                  |
-| Hibernate       | Implementação ORM             |
-| H2 / MySQL      | Banco de dados                |
-| Maven           | Gerenciamento de dependências |
-| Postman         | Testes de API                 |
-| Git             | Controle de versão            |
 
 ---
 
