@@ -492,7 +492,8 @@ O projeto segue boas práticas de **API REST**, com:
 
 `GET /categorias?page=0&size=10&sort=nome,asc`
 
-**Response 200 OK**
+> [!TIP]
+> **Response 200 OK**
 
 ```json
 {
@@ -513,7 +514,8 @@ O projeto segue boas práticas de **API REST**, com:
 
 `GET /categorias/{id}`
 
-**Response 200 Ok**
+> [!TIP]
+> **Response 200 OK**
 
 ```json
 {
@@ -522,7 +524,8 @@ O projeto segue boas práticas de **API REST**, com:
 }
 ```
 
-**Response 404 Not Found (Exemplo)**
+> [!WARNING]
+> **Response 404 Not Found (Exemplo)**
 
 ```json
 {
@@ -539,11 +542,12 @@ O projeto segue boas práticas de **API REST**, com:
 
 ---
 
-### 🔸 Criar
+### 🔸 Criar categoria
 
 `POST /categorias`
 
-**Request**
+> [!NOTE]
+> **Request**
 
 ```json
 {
@@ -551,7 +555,7 @@ O projeto segue boas práticas de **API REST**, com:
 }
 ```
 
-**Response 201 Created**
+> [!TIP] **Response 201 Created**
 
 ```json
 {
@@ -560,7 +564,8 @@ O projeto segue boas práticas de **API REST**, com:
 }
 ```
 
-Headers importantes
+> [!IMPORTANT]
+> **Headers importantes**
 
 Location: http://localhost:8080/categorias/21
 Content-Type: application/json
@@ -571,7 +576,8 @@ Content-Type: application/json
 
 `PUT /categorias/{id}`
 
-**Request**
+> [!NOTE]
+> **Request**
 
 ```json
 {
@@ -579,7 +585,8 @@ Content-Type: application/json
 }
 ```
 
-**Response 200 OK**
+> [!TIP]
+> **Response 200 OK**
 
 ```json
 {
@@ -594,7 +601,8 @@ Content-Type: application/json
 
 `DELETE /categorias/{id}`
 
-**Response 204 No Content**
+> [!TIP]
+> **Response 204 No Content**
 
 ---
 
@@ -604,7 +612,8 @@ Content-Type: application/json
 
 `GET /clientes/{id}`
 
-**Response 200 OK**
+> [!TIP]
+> **Response 200 OK**
 
 ```json
 {
@@ -628,11 +637,12 @@ Content-Type: application/json
 }
 ```
 
-### 🔸 Criar
+### 🔸 Criar cliente
 
 `POST /clientes`
 
-**Request**
+> [!NOTE]
+> **Request**
 
 ```json
 {
@@ -650,7 +660,8 @@ Content-Type: application/json
 }
 ```
 
-**Response 201 Created**
+> [!TIP]
+> **Response 201 Created**
 
 ```json
 {
@@ -678,7 +689,8 @@ Content-Type: application/json
 
 `PUT /clientes/{id}`
 
-**Request**
+> [!NOTE]
+> **Request**
 
 ```json
 {
@@ -687,7 +699,8 @@ Content-Type: application/json
 }
 ```
 
-**Response 200 OK**
+> [!TIP]
+> **Response 200 OK**
 
 ```json
 {
@@ -704,7 +717,8 @@ Content-Type: application/json
 
 `DELETE /clientes/{id}`
 
-**Response 409 Conflict (Exemplo de integridade de dados)**
+> [!WARNING]
+> **Response 409 Conflict (Exemplo de integridade de dados)**
 
 ```json
 {
@@ -727,7 +741,8 @@ Content-Type: application/json
 
 `GET /pedidos/{id}`
 
-**Response 200 OK**
+> [!TIP]
+> **Response 200 OK**
 
 ```json
 {
@@ -757,7 +772,8 @@ Content-Type: application/json
 
 `POST /pedidos`
 
-**Request**
+> [!NOTE]
+> **Request**
 
 ```json
 {
@@ -772,7 +788,8 @@ Content-Type: application/json
 }
 ```
 
-**Response 201 Created**
+> [!TIP]
+> **Response 201 Created**
 
 ```json
 {
@@ -802,7 +819,8 @@ Content-Type: application/json
 
 `PUT /pedidos/{id}`
 
-**Request**
+> [!NOTE]
+> **Request**
 
 ```json
 {
@@ -816,7 +834,8 @@ Content-Type: application/json
 }
 ```
 
-**Response 200 OK**
+> [!TIP]
+> **Response 200 OK**
 
 ```json
 {
@@ -833,7 +852,8 @@ Content-Type: application/json
 
 `DELETE /pedidos/{id}`
 
-**Response 204 No Content**
+> [!TIP]
+> **Response 204 No Content**
 
 ---
 
@@ -873,7 +893,7 @@ public class GlobalExceptionHandler { ... }
 
 ---
 
-# 🧪 Como Testar no Postman
+### 🧪 Como Testar no Postman
 
 ### 1️⃣ Criar nova requisição
 
