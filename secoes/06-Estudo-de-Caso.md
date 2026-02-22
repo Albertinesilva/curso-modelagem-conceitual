@@ -1,5 +1,11 @@
-## 🏗️ Seção 6: Estudo de Caso — Implementação do Modelo Conceitual com Java, Spring Boot e JPA
+<h2>🏗️ Seção 6: Estudo de Caso</h2>
 
+<p align="center">
+  <em>Implementação do Modelo Conceitual com Java, Spring Boot e JPA.</em>
+</p>
+
+---
+> [!IMPORTANT]
 > **Objetivo:** Demonstrar, de forma técnica e aplicada, como um Modelo Conceitual completo é traduzido para uma aplicação RESTful utilizando Java, Spring Boot e JPA/Hibernate, seguindo padrões arquiteturais modernos.
 
 Esta seção é baseada no módulo de Estudo de Caso desenvolvido no curso de **Modelagem Conceitual com UML**, ministrado pelo professor **Nélio Alves**.
