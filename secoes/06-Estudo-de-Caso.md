@@ -243,8 +243,9 @@ Exemplo: `ItemPedidoPK`
 O projeto segue uma arquitetura em camadas:
 
 ```
-Controller → Service → Repository → Banco de Dados
+Controller → DTO → Service → Repository → Banco de Dados
 ```
+
 
 ### 🔹 Camadas
 
@@ -253,17 +254,27 @@ Controller → Service → Repository → Banco de Dados
 - Exposição de endpoints REST
 - Conversão JSON ↔ Objetos
 - Uso de `ResponseEntity`
+- Recebe e envia **DTOs** para separar a camada de apresentação das entidades de domínio
+
+### DTO (Data Transfer Object)
+
+- Objetos simples para transporte de dados entre Controller e Service
+- Contêm apenas os campos necessários para requisição ou resposta
+- Evitam expor diretamente entidades do domínio
+- Facilita validação, mapeamento e manutenção da API
 
 ### Service
 
 - Regras de negócio
 - Orquestração de operações
+- Mapeamento de DTOs para entidades e vice-versa
 - Lançamento de exceções de domínio
 
 ### Repository
 
 - Interface `JpaRepository`
 - Operações CRUD automáticas
+- Trabalha diretamente com entidades de domínio
 
 ---
 
@@ -439,7 +450,7 @@ A estrutura combina dois padrões:
 ### 1️⃣ Arquitetura em Camadas
 
 ```
-Controller → Service → Repository → Banco
+Controller → DTO → Service → Repository → Banco de Dados
 ```
 
 ### 2️⃣ Organização por Contexto de Domínio (Feature-based)
@@ -667,40 +678,53 @@ Inserir o JSON correspondente.
 
 ---
 
-### 🎯 Recapitulação: O Ciclo da Modelagem
-
-Este estudo de caso fecha o ciclo de aprendizado ao provar que **um bom código nasce de um bom modelo**. Ao dominar a leitura dos diagramas e a sua tradução para JPA, o desenvolvedor garante que o software seja:
-
-1.  **Fiel ao Negócio**: Refletindo exatamente os requisitos levantados.
-2.  **Escalável**: Através de associações bem definidas e tipos primitivos corretos.
-3.  **Padronizado**: Seguindo as melhores práticas da indústria (Spring/JPA).
-
----
-
 ### 🏁 Conclusão Técnica
 
-Este projeto consolida o ciclo completo:
+O estudo de caso apresentado consolida o ciclo completo de desenvolvimento backend moderno, demonstrando como a **modelagem conceitual** se traduz em software funcional e de qualidade.  
 
-```
-Modelo Conceitual → Modelo Orientado a Objetos → Modelo Relacional → API REST
-```
-
-O aprendizado obtido garante que:
-
-- O código reflita fielmente o domínio
-- A persistência preserve integridade
-- A API seja padronizada e previsível
-- A arquitetura seja escalável
-- O sistema esteja alinhado às boas práticas de mercado
+🔄 **Fluxo percorrido:**
+ 
+Esta abordagem garante que cada camada da aplicação seja **coerente com o domínio do negócio** e siga boas práticas técnicas reconhecidas:
 
 ---
 
-✅ **Seção 06 Concluída**
+### 1️⃣ Fidelidade ao Negócio
+- Diagramas conceituais traduzidos para **entidades JPA**, mantendo associações, cardinalidades e restrições de negócio.  
+- Regras de negócio refletidas no **Service**, garantindo comportamento consistente com os requisitos levantados.
 
-Este estudo de caso representa a consolidação prática da modelagem conceitual aplicada ao desenvolvimento backend moderno com Spring Boot.
+### 2️⃣ Separação de Responsabilidades e Escalabilidade
+- Arquitetura em camadas: **Controller → DTO → Service → Repository → Banco de Dados**, promovendo **desacoplamento** e manutenibilidade.  
+- **DTOs** isolam o domínio de detalhes de implementação, transmitindo apenas os dados necessários e permitindo adaptações futuras sem impacto no restante da aplicação.
+
+### 3️⃣ Padronização e Boas Práticas
+- Uso consistente de **Spring Boot, Spring Data JPA e Bean Validation** garante padronização no ciclo de vida da aplicação, validação de dados e persistência.  
+- **ResponseEntity** e tratamento estruturado de exceções tornam a API REST previsível e confiável.  
+- **Maven, Flyway e Git** reforçam práticas profissionais de engenharia de software.
+
+### 4️⃣ Integração entre Modelos
+- Tradução do modelo conceitual → objetos → modelo relacional, garantindo integridade e coerência dos dados persistidos.  
+- Integração **Service ↔ Repository** com mapeamento de entidades assegura que a persistência de dados preserve **integridade e consistência**.
+
+### 5️⃣ Benefícios do Estudo
+- **Fiel ao domínio:** reflete exatamente os requisitos levantados.  
+- **Escalável:** associações bem definidas e arquitetura modular.  
+- **Previsível e padronizada:** APIs REST claras e consistentes.  
+- **De fácil manutenção:** alterações futuras podem ser realizadas sem comprometer a base do sistema.
 
 ---
 
+✅ **Resumo Final**
+
+Este estudo de caso evidencia que **um bom modelo gera um bom código**.  
+Ao dominar a interpretação de diagramas e a tradução para **JPA e APIs REST**, o desenvolvedor constrói sistemas:  
+
+- **Robustos**  
+- **Escaláveis**  
+- **Alinhados às boas práticas de mercado**  
+
+Consolidando competências essenciais em **desenvolvimento backend com Spring Boot**.
+
+---
 ### 🔗 Navegação
 
 <p align="center">
