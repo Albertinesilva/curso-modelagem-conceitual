@@ -5,6 +5,7 @@
 </p>
 
 ---
+
 > [!IMPORTANT]
 > **Objetivo:** Demonstrar, de forma técnica e aplicada, como um Modelo Conceitual completo é traduzido para uma aplicação RESTful utilizando Java, Spring Boot e JPA/Hibernate, seguindo padrões arquiteturais modernos.
 
