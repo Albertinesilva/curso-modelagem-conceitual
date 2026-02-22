@@ -171,11 +171,11 @@ O desenvolvimento de software moderno exige o trânsito entre diferentes visões
 <p>Consolidada a visão macro sobre os níveis de abstração, avançaremos agora para a identificação granular das entidades e suas propriedades fundamentais.</p>
 
 ---
----
+
+### 🔗 Navegação
 
 <p align="center">
   <b>Seção 1 concluída ✔</b><br>
   <a href="../README.md">🏠 Início</a> |
   <a href="02-Conceitos-e-Atributos.md">Próxima Seção ➡</a>
 </p>
-

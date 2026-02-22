@@ -44,6 +44,8 @@ Parabéns por concluir o percurso de modelagem conceitual. Você está agora cap
 
 ---
 
+### 🔗 Navegação
+
 <p align="center">
   <b>🏁 Curso Finalizado</b><br>
   <a href="06-Estudo-de-Caso.md">⬅ Seção 6 - Estudo de Caso Prático</a> |

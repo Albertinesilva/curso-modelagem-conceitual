@@ -210,6 +210,8 @@ Consolidada a anatomia das entidades, avançaremos agora para a exploração de 
 
 ---
 
+### 🔗 Navegação
+
 <p align="center">
   <b>Seção 2 concluída ✔</b><br>
   <a href="01-Introducao-Modelagem-Dominio.md">⬅ Seção 1 - Introdução</a> |

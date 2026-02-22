@@ -2,7 +2,7 @@
 
 > **Objetivo:** Demonstrar, de forma técnica e aplicada, como um Modelo Conceitual completo é traduzido para uma aplicação RESTful utilizando Java, Spring Boot e JPA/Hibernate, seguindo padrões arquiteturais modernos.
 
-Esta seção é baseada no módulo de Estudo de Caso desenvolvido no curso de **Modelagem Conceitual com UML**, ministrado pelo professor **Nélio Alves**.  
+Esta seção é baseada no módulo de Estudo de Caso desenvolvido no curso de **Modelagem Conceitual com UML**, ministrado pelo professor **Nélio Alves**.
 
 Aqui, apresento a consolidação prática do aprendizado adquirido no curso, juntamente com evoluções técnicas que implementei para aprofundar a aplicação em um contexto mais próximo de projetos reais de mercado.
 
@@ -32,11 +32,11 @@ Além da implementação proposta no curso, foram aplicadas as seguintes evoluç
 
 Para acompanhar a implementação com clareza técnica, recomenda-se que o leitor possua os seguintes conhecimentos e ferramentas:
 
-| Categoria       | Requisito                                                                 |
-| :-------------- | :------------------------------------------------------------------------ |
-| **Ambiente**    | Computador (Mac, Linux ou Windows) com suporte a terminal e IDE.         |
-| **Linguagem**   | Fundamentos de POO (Classes, Atributos, Encapsulamento, Construtores).   |
-| **Ferramentas** | Java 17+, Maven, Spring Boot e noções básicas de Git.                    |
+| Categoria       | Requisito                                                              |
+| :-------------- | :--------------------------------------------------------------------- |
+| **Ambiente**    | Computador (Mac, Linux ou Windows) com suporte a terminal e IDE.       |
+| **Linguagem**   | Fundamentos de POO (Classes, Atributos, Encapsulamento, Construtores). |
+| **Ferramentas** | Java 17+, Maven, Spring Boot e noções básicas de Git.                  |
 
 ---
 
@@ -44,22 +44,22 @@ Para acompanhar a implementação com clareza técnica, recomenda-se que o leito
 
 A aplicação foi construída com base na seguinte stack:
 
-| Categoria            | Tecnologia / Ferramenta      | Finalidade |
-|----------------------|------------------------------|------------|
-| **Framework Base**   | Spring Boot 4.0.2            | Bootstrap da aplicação, auto-configuração e gerenciamento do ciclo de vida |
-| **Linguagem**        | Java 17                      | Plataforma principal da aplicação |
-| **Documentação JavaDocs** | Java                    | A aplicação possui documentação em JavaDocs para referência |
-| **Web Layer**        | Spring Web MVC               | Construção da API REST e tratamento de requisições HTTP |
-| **Persistência**     | Spring Data JPA + Hibernate  | Mapeamento ORM e abstração de acesso a dados |
-| **Banco Produção**   | PostgreSQL                   | Banco de dados relacional principal em ambiente produtivo |
-| **Banco Dev/Teste**  | H2 Database                  | Banco em memória para desenvolvimento e testes locais |
-| **Migrações**        | Flyway                       | Versionamento e controle evolutivo do schema do banco de dados |
-| **Validação**        | Bean Validation (Jakarta)    | Validação declarativa de dados via anotações |
-| **Ferramentas Dev**  | Spring Boot DevTools         | Hot reload e otimização do fluxo de desenvolvimento |
-| **Testes**           | Spring Boot Test             | Suporte a testes unitários e de integração |
-| **Build Tool**       | Maven                        | Gerenciamento de dependências e ciclo de build do projeto |
-| **Testes de API**    | Postman                      | Execução e validação manual de requisições HTTP |
-| **Controle de Versão** | Git                        | Versionamento de código e gerenciamento de histórico de alterações |
+| Categoria                 | Tecnologia / Ferramenta     | Finalidade                                                                 |
+| ------------------------- | --------------------------- | -------------------------------------------------------------------------- |
+| **Framework Base**        | Spring Boot 4.0.2           | Bootstrap da aplicação, auto-configuração e gerenciamento do ciclo de vida |
+| **Linguagem**             | Java 17                     | Plataforma principal da aplicação                                          |
+| **Documentação JavaDocs** | Java                        | A aplicação possui documentação em JavaDocs para referência                |
+| **Web Layer**             | Spring Web MVC              | Construção da API REST e tratamento de requisições HTTP                    |
+| **Persistência**          | Spring Data JPA + Hibernate | Mapeamento ORM e abstração de acesso a dados                               |
+| **Banco Produção**        | PostgreSQL                  | Banco de dados relacional principal em ambiente produtivo                  |
+| **Banco Dev/Teste**       | H2 Database                 | Banco em memória para desenvolvimento e testes locais                      |
+| **Migrações**             | Flyway                      | Versionamento e controle evolutivo do schema do banco de dados             |
+| **Validação**             | Bean Validation (Jakarta)   | Validação declarativa de dados via anotações                               |
+| **Ferramentas Dev**       | Spring Boot DevTools        | Hot reload e otimização do fluxo de desenvolvimento                        |
+| **Testes**                | Spring Boot Test            | Suporte a testes unitários e de integração                                 |
+| **Build Tool**            | Maven                       | Gerenciamento de dependências e ciclo de build do projeto                  |
+| **Testes de API**         | Postman                     | Execução e validação manual de requisições HTTP                            |
+| **Controle de Versão**    | Git                         | Versionamento de código e gerenciamento de histórico de alterações         |
 
 Essa configuração permite:
 
@@ -245,7 +245,6 @@ O projeto segue uma arquitetura em camadas:
 ```
 Controller → DTO → Service → Repository → Banco de Dados
 ```
-
 
 ### 🔹 Camadas
 
@@ -680,35 +679,40 @@ Inserir o JSON correspondente.
 
 ### 🏁 Conclusão Técnica
 
-O estudo de caso apresentado consolida o ciclo completo de desenvolvimento backend moderno, demonstrando como a **modelagem conceitual** se traduz em software funcional e de qualidade.  
+O estudo de caso apresentado consolida o ciclo completo de desenvolvimento backend moderno, demonstrando como a **modelagem conceitual** se traduz em software funcional e de qualidade.
 
 🔄 **Fluxo percorrido:**
- 
+
 Esta abordagem garante que cada camada da aplicação seja **coerente com o domínio do negócio** e siga boas práticas técnicas reconhecidas:
 
 ---
 
 ### 1️⃣ Fidelidade ao Negócio
-- Diagramas conceituais traduzidos para **entidades JPA**, mantendo associações, cardinalidades e restrições de negócio.  
+
+- Diagramas conceituais traduzidos para **entidades JPA**, mantendo associações, cardinalidades e restrições de negócio.
 - Regras de negócio refletidas no **Service**, garantindo comportamento consistente com os requisitos levantados.
 
 ### 2️⃣ Separação de Responsabilidades e Escalabilidade
-- Arquitetura em camadas: **Controller → DTO → Service → Repository → Banco de Dados**, promovendo **desacoplamento** e manutenibilidade.  
+
+- Arquitetura em camadas: **Controller → DTO → Service → Repository → Banco de Dados**, promovendo **desacoplamento** e manutenibilidade.
 - **DTOs** isolam o domínio de detalhes de implementação, transmitindo apenas os dados necessários e permitindo adaptações futuras sem impacto no restante da aplicação.
 
 ### 3️⃣ Padronização e Boas Práticas
-- Uso consistente de **Spring Boot, Spring Data JPA e Bean Validation** garante padronização no ciclo de vida da aplicação, validação de dados e persistência.  
-- **ResponseEntity** e tratamento estruturado de exceções tornam a API REST previsível e confiável.  
+
+- Uso consistente de **Spring Boot, Spring Data JPA e Bean Validation** garante padronização no ciclo de vida da aplicação, validação de dados e persistência.
+- **ResponseEntity** e tratamento estruturado de exceções tornam a API REST previsível e confiável.
 - **Maven, Flyway e Git** reforçam práticas profissionais de engenharia de software.
 
 ### 4️⃣ Integração entre Modelos
-- Tradução do modelo conceitual → objetos → modelo relacional, garantindo integridade e coerência dos dados persistidos.  
+
+- Tradução do modelo conceitual → objetos → modelo relacional, garantindo integridade e coerência dos dados persistidos.
 - Integração **Service ↔ Repository** com mapeamento de entidades assegura que a persistência de dados preserve **integridade e consistência**.
 
 ### 5️⃣ Benefícios do Estudo
-- **Fiel ao domínio:** reflete exatamente os requisitos levantados.  
-- **Escalável:** associações bem definidas e arquitetura modular.  
-- **Previsível e padronizada:** APIs REST claras e consistentes.  
+
+- **Fiel ao domínio:** reflete exatamente os requisitos levantados.
+- **Escalável:** associações bem definidas e arquitetura modular.
+- **Previsível e padronizada:** APIs REST claras e consistentes.
 - **De fácil manutenção:** alterações futuras podem ser realizadas sem comprometer a base do sistema.
 
 ---
@@ -716,15 +720,16 @@ Esta abordagem garante que cada camada da aplicação seja **coerente com o dom�
 ✅ **Resumo Final**
 
 Este estudo de caso evidencia que **um bom modelo gera um bom código**.  
-Ao dominar a interpretação de diagramas e a tradução para **JPA e APIs REST**, o desenvolvedor constrói sistemas:  
+Ao dominar a interpretação de diagramas e a tradução para **JPA e APIs REST**, o desenvolvedor constrói sistemas:
 
-- **Robustos**  
-- **Escaláveis**  
-- **Alinhados às boas práticas de mercado**  
+- **Robustos**
+- **Escaláveis**
+- **Alinhados às boas práticas de mercado**
 
 Consolidando competências essenciais em **desenvolvimento backend com Spring Boot**.
 
 ---
+
 ### 🔗 Navegação
 
 <p align="center">

@@ -318,6 +318,8 @@ Para garantir que sua modelagem seja robusta e fácil de manter, utilize este re
 
 ---
 
+### 🔗 Navegação
+
 <p align="center">
   <b>Seção 5 concluída ✔</b><br>
   <a href="04-Todo-Parte-e-Classe-Associacao.md">⬅ Seção 4 - Associações Todo-Parte e Classe de Associação</a> |

@@ -257,6 +257,8 @@ Para manter o rigor técnico em projetos de Engenharia de Software, considere as
 
 ---
 
+### 🔗 Navegação
+
 <p align="center">
   <b>Seção 4 concluída ✔</b><br>
   <a href="03-Associacoes-e-Multiplicidades.md">⬅ Seção 3 - Associações e Multiplicidades</a> |

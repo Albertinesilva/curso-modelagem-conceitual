@@ -251,6 +251,8 @@ Consolidada a lógica de comunicação entre as classes, avançaremos agora para
 
 ---
 
+### 🔗 Navegação
+
 <p align="center">
   <b>Seção 3 concluída ✔</b><br>
   <a href="02-Conceitos-e-Atributos.md">⬅ Seção 2 - Conceitos e Atributos</a> |
