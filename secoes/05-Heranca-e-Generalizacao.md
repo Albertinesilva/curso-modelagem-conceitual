@@ -1,14 +1,18 @@
 ## 🌳 Seção 5: Herança e Tipos de Generalização
 
+<p style="text-align: justify;">
+<em>
 Esta seção explora os mecanismos de especialização e organização taxonômica de dados. O estudo está estruturado em uma progressão lógica que se inicia pela padronização de domínios finitos e estruturas atômicas, evoluindo para a complexidade das hierarquias de classes.
 
-O objetivo principal aqui é entender como reduzir a redundância do modelo, garantindo que tipos de dados simples sejam padronizados antes de avançarmos para o reaproveitamento de estruturas complexas entre classes.
+O objetivo principal aqui é entender como reduzir a redundância do modelo, garantindo que tipos de dados simples sejam padronizados antes de avançarmos para o reaproveitamento de estruturas complexas entre classes. 
 
 A seção está dividida em três atos fundamentais:
 
 1.  **Enumerações e Tipos Primitivos:** Padronização de valores e tipos customizados.
 2.  **Herança (Parte 1):** Fundamentos, motivação e definições essenciais.
 3.  **Herança (Parte 2):** Critérios de aplicabilidade e restrições de design.
+</em>
+</p>
 
 ---
 
